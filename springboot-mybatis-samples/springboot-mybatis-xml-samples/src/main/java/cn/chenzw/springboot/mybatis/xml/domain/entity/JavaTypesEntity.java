@@ -2,6 +2,7 @@ package cn.chenzw.springboot.mybatis.xml.domain.entity;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * Java数据类型实体
@@ -18,6 +19,8 @@ public class JavaTypesEntity {
     private Long longType;
     private Double doubleType;
     private BigDecimal bigDecimalType;
+    private Date dateType;
+
 
     public Byte getByteType() {
         return byteType;
@@ -99,11 +102,23 @@ public class JavaTypesEntity {
         this.bigDecimalType = bigDecimalType;
     }
 
+    public Date getDateType() {
+        return dateType;
+    }
+
+    public void setDateType(Date dateType) {
+        this.dateType = dateType;
+    }
+
     @Override
     public String toString() {
         return "JavaTypesEntity{" + "byteType=" + byteType + ", bytesType=" + Arrays.toString(bytesType)
                 + ", booleanType=" + booleanType + ", shortType=" + shortType + ", characterType=" + characterType
                 + ", integerType=" + integerType + ", floatType=" + floatType + ", longType=" + longType
                 + ", doubleType=" + doubleType + ", bigDecimalType=" + bigDecimalType + '}';
+    }
+
+    public static enum EnumType{
+        MAN, WONMAN;
     }
 }

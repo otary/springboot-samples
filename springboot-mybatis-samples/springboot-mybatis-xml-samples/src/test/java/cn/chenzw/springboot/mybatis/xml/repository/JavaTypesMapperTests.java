@@ -2,6 +2,7 @@ package cn.chenzw.springboot.mybatis.xml.repository;
 
 import cn.chenzw.springboot.mybatis.xml.MybatisXmlApp;
 import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,13 @@ public class JavaTypesMapperTests {
     JavaTypesMapper typesMapper;
 
     @Test
-    public void testListAll(){
+    public void testListAll() {
         List<JavaTypesEntity> typesEntiys = typesMapper.listAll();
+
+        for (JavaTypesEntity typesEntiy : typesEntiys) {
+            Assert.assertNotNull(typesEntiy.getBooleanType());
+        }
+
         System.out.println(typesEntiys);
 
     }
