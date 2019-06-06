@@ -9,6 +9,7 @@
     <modules>
         <module>springboot-helloworld-samples</module>
         <module>springboot-mybatis-samples</module>
+        <module>springboot-swagger-samples</module>
     </modules>
 
     <properties>

@@ -12,6 +12,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>springboot-mybatis-xml-samples</module>
+        <module>springboot-tkmybatis-samples</module>
     </modules>
 
     <properties>
