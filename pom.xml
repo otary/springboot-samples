@@ -10,6 +10,7 @@
         <module>springboot-helloworld-samples</module>
         <module>springboot-mybatis-samples</module>
         <module>springboot-swagger-samples</module>
+        <module>springboot-aop-samples</module>
     </modules>
 
     <properties>
