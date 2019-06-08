@@ -1,6 +1,6 @@
 package cn.chenzw.springboot.mybatis.xml.repository;
 
-import cn.chenzw.springboot.mybatis.xml.MybatisXmlApp;
+import cn.chenzw.springboot.mybatis.xml.MybatisXmlSamplesApp;
 import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = {MybatisXmlApp.class})
+@SpringBootTest(classes = {MybatisXmlSamplesApp.class})
 @WebAppConfiguration
 public class JavaTypesMapperTests {
 
