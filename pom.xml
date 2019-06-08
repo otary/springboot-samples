@@ -11,6 +11,7 @@
         <module>springboot-mybatis-samples</module>
         <module>springboot-swagger-samples</module>
         <module>springboot-aop-samples</module>
+        <module>springboot-async-samples</module>
     </modules>
 
     <properties>

@@ -7,3 +7,4 @@
   - [springboot-tkmybatis-samples](./springboot-mybatis-samples/springboot-tkmybatis-samples): 集成tkmybatis示例
 - [springboot-aop-samples](./springboot-aop-samples):集成AOP示例
 - [springboot-swagger-samples](./springboot-swagger-samples):集成swagger2示例
+- [springboot-async-samples](./springboot-async-samples): 异步请求示例
