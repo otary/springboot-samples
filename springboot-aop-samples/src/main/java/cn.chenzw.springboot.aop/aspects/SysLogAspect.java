@@ -1,16 +1,12 @@
 package cn.chenzw.springboot.aop.aspects;
 
+import cn.chenzw.toolkit.spring.aop.JoinPointWrapper;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
@@ -23,6 +19,8 @@ public class SysLogAspect {
     private static final Logger logger = LoggerFactory.getLogger(SysLogAspect.class);
     private static final String POINT_CUT = "sysLog()";
 
+    private ThreadLocal<JoinPointWrapper> joinPointWrapper = new ThreadLocal<>();
+
     @Pointcut("@annotation(cn.chenzw.springboot.aop.support.SysLog)")
     public void sysLog() {
 
@@ -30,24 +28,15 @@ public class SysLogAspect {
 
     @Before(POINT_CUT)
     public void before(JoinPoint joinPoint) {
-        // 接收到请求，记录请求内容
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
+        joinPointWrapper.set(new JoinPointWrapper(joinPoint));
 
-        // 记录下请求内容
-        logger.info("URL : {}", request.getRequestURL().toString());
-        logger.info("HTTP_METHOD : {} ", request.getMethod());
-        logger.info("IP : {}", request.getRemoteAddr());
-        logger.info("CLASS_METHOD : {}",
-                joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
-        logger.info("ARGS : {}", Arrays.toString(joinPoint.getArgs()));
+        System.out.println("");
 
-        Signature signature = joinPoint.getSignature();
-        MethodSignature methodSignature = (MethodSignature) signature;
-        String[] parameterNames = methodSignature.getParameterNames();
-        Class[] parameterTypes = methodSignature.getParameterTypes();
-        logger.info("PARAMS: {}", Arrays.toString(parameterNames));
-        logger.info("PARAM_TYPEs: {}", Arrays.toString(parameterTypes));
+        logger.info("URL : {}", joinPointWrapper.get().getURI());
+        logger.info("HTTP_METHOD : {} ", joinPointWrapper.get().getHttpMethod());
+        logger.info("IP : {}", joinPointWrapper.get().getClientIp());
+        logger.info("CLASS_METHOD : {}", joinPointWrapper.get().getCanonicalClassMethod());
+        logger.info("METHOD_ARGS : {}", Arrays.toString(joinPointWrapper.get().getMethodArgs()));
 
         logger.info("----------[{}] syslog before--------------", joinPoint.getSignature().getName());
     }
