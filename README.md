@@ -8,3 +8,4 @@
 - [springboot-aop-samples](./springboot-aop-samples):集成AOP示例
 - [springboot-swagger-samples](./springboot-swagger-samples):集成swagger2示例
 - [springboot-async-samples](./springboot-async-samples): 异步请求示例
+- [springboot-dynamic-registration-samples](./springboot-dynamic-registration-samples): 动态注册Controller、Component

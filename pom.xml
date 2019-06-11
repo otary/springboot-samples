@@ -12,6 +12,7 @@
         <module>springboot-swagger-samples</module>
         <module>springboot-aop-samples</module>
         <module>springboot-async-samples</module>
+        <module>springboot-admin-samples</module>
     </modules>
 
     <properties>
@@ -32,6 +33,16 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.1.5.RELEASE</version>
     </parent>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server</artifactId>
+                <version>2.1.5</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
