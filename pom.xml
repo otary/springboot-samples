@@ -14,6 +14,7 @@
         <module>springboot-async-samples</module>
         <module>springboot-admin-samples</module>
         <module>springboot-web-samples</module>
+        <module>springboot-banner-samples</module>
     </modules>
 
     <properties>
@@ -108,6 +109,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                </configuration>
             </plugin>
         </plugins>
     </build>
