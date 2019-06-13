@@ -13,6 +13,7 @@
         <module>springboot-aop-samples</module>
         <module>springboot-async-samples</module>
         <module>springboot-admin-samples</module>
+        <module>springboot-web-samples</module>
     </modules>
 
     <properties>
@@ -26,6 +27,8 @@
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
 
         <java.version>1.8</java.version>
+
+        <springboot-admin.version>2.1.5</springboot-admin.version>
     </properties>
 
     <parent>
@@ -39,7 +42,18 @@
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-server</artifactId>
-                <version>2.1.5</version>
+                <version>${springboot-admin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${springboot-admin.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-server-ui</artifactId>
+                <version>${springboot-admin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -67,6 +81,19 @@
             <optional>true</optional>
             <scope>true</scope>
         </dependency>-->
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.12</version>
+        </dependency>
 
         <dependency>
             <groupId>cn.chenzw.toolkit</groupId>
