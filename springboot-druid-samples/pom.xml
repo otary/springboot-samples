@@ -16,16 +16,10 @@
         <module>springboot-druid-props-samples</module>
     </modules>
 
-
     <dependencies>
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
         </dependency>
 
         <dependency>
