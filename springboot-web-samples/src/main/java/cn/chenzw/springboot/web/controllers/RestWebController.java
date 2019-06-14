@@ -2,7 +2,6 @@ package cn.chenzw.springboot.web.controllers;
 
 import org.apache.commons.collections.MapUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +14,6 @@ public class RestWebController {
 
     @GetMapping("/hello")
     public String hello(HttpServletRequest request) {
-
         return "hello!";
     }
 
