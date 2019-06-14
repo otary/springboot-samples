@@ -15,5 +15,12 @@
         <module>springboot-datasources-h2-samples</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>
