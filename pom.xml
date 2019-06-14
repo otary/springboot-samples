@@ -15,6 +15,9 @@
         <module>springboot-admin-samples</module>
         <module>springboot-web-samples</module>
         <module>springboot-banner-samples</module>
+        <module>springboot-filters-samples</module>
+        <module>springboot-druid-samples</module>
+        <module>springboot-datasources-samples</module>
     </modules>
 
     <properties>
@@ -26,10 +29,13 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
-
         <java.version>1.8</java.version>
 
         <springboot-admin.version>2.1.5</springboot-admin.version>
+        <commons-io.version>2.6</commons-io.version>
+        <commons-codec.version>1.12</commons-codec.version>
+        <druid.version>1.1.17</druid.version>
+        <h2.version>1.4.199</h2.version>
     </properties>
 
     <parent>
@@ -56,6 +62,18 @@
                 <artifactId>spring-boot-admin-server-ui</artifactId>
                 <version>${springboot-admin.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -76,24 +94,17 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-            <scope>true</scope>
-        </dependency>-->
-
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.6</version>
+            <version>${commons-io.version}</version>
         </dependency>
 
 
         <dependency>
             <groupId>commons-codec</groupId>
             <artifactId>commons-codec</artifactId>
-            <version>1.12</version>
+            <version>${commons-codec.version}</version>
         </dependency>
 
         <dependency>
