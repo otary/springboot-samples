@@ -21,7 +21,7 @@
         <module>springboot-validation-samples</module>
         <module>springboot-druid-samples</module>
         <module>springboot-filters-samples</module>
-        <module>springboot-profile-samples</module>
+        <module>springboot-profiles-samples</module>
         <module>springboot-scheduler-samples</module>
     </modules>
 
