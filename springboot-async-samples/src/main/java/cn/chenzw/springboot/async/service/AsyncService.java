@@ -10,8 +10,11 @@ public class AsyncService {
 
     private static final Logger logger = LoggerFactory.getLogger(AsyncService.class);
 
+    /**
+     * @Async注解在方法上表示该方法是个异步方法，如果注解在类上，则表示该类所有方法都是异步方法
+     */
     @Async
-    public void update(){
+    public void update() {
         try {
             // 模拟耗时10秒操作
             Thread.sleep(10000);
