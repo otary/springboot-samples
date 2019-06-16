@@ -4,6 +4,6 @@ public class ProdTemplate implements AbstractTemplate {
 
     @Override
     public String getName() {
-        return "prod-template";
+        return "prod-templates";
     }
 }

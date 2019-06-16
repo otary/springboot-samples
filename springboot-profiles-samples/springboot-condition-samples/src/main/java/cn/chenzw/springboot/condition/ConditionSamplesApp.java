@@ -12,6 +12,6 @@ public class ConditionSamplesApp {
         ConfigurableApplicationContext cac = SpringApplication.run(ConditionSamplesApp.class, args);
         AbstractTemplate bean = cac.getBean(AbstractTemplate.class);
 
-        System.out.println("OS系统:[ " + cac.getEnvironment().getProperty("os.name") + " ], template:[ " + bean.getName() + " ]");
+        System.out.println("OS系统:[ " + cac.getEnvironment().getProperty("os.name") + " ], templates:[ " + bean.getName() + " ]");
     }
 }

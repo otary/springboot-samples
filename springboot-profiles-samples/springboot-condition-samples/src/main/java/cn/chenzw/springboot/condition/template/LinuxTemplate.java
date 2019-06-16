@@ -4,6 +4,6 @@ public class LinuxTemplate implements AbstractTemplate {
 
     @Override
     public String getName() {
-        return "linux-template";
+        return "linux-templates";
     }
 }

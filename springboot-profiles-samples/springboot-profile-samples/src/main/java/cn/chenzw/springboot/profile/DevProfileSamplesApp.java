@@ -16,7 +16,7 @@ public class DevProfileSamplesApp {
         AbstractTemplate bean = cac.getBean(AbstractTemplate.class);
         System.out.println(bean);  // => DevTemplate
 
-        Assert.isTrue("dev-template".endsWith(bean.getName()), "");
+        Assert.isTrue("dev-templates".endsWith(bean.getName()), "");
 
     }
 }

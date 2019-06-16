@@ -15,6 +15,6 @@ public class ProdProfileSamplesApp {
         AbstractTemplate bean = cac.getBean(AbstractTemplate.class);
         System.out.println(bean);  // => ProdTemplate
 
-        Assert.isTrue("prod-template".endsWith(bean.getName()), "");
+        Assert.isTrue("prod-templates".endsWith(bean.getName()), "");
     }
 }

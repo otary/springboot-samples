@@ -9,16 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springboot-web-samples</artifactId>
-    <packaging>war</packaging>
+    <artifactId>springboot-views-samples</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>springboot-views-jsp-samples</module>
+    </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
-
-    </dependencies>
 
 </project>
