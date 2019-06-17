@@ -24,6 +24,7 @@
         <module>springboot-profiles-samples</module>
         <module>springboot-scheduler-samples</module>
         <module>springboot-views-samples</module>
+        <module>springboot-shiro-samples</module>
     </modules>
 
     <properties>
