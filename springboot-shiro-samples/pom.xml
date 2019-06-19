@@ -10,7 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>springboot-shiro-samples</artifactId>
-    <packaging>poms</packaging>
+    <packaging>pom</packaging>
+    <modules>
+        <module>springboot-shiro-config-samples</module>
+    </modules>
 
 
 </project>

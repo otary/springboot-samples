@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/cs/fragment.css}">
+</head>
+<body>
+<div layout:fragment="content">
+    <!-- text 示例 -->
+    <h1 th:text="${message}">message</h1>
+</div>
+
+<!-- eq 示例 -->
+<div>
+    <input th:value="${name}"/>
+    <br/>
+    <input th:value="${age gt 30 ? '中年':'年轻'}"/>
+    <br/>
+    <a th:if="${flag eq 'yes'}" th:href="@{http://favorites.ren/}"> favorites </a>
+</div>
+
+<!-- if/unless -->
+<div>
+    <a th:if="${flag == 'yes'}" th:href="@{http://www.baidu.com/}"> home </a>
+    <br/>
+    <a th:unless="${flag != 'no'}" th:href="@{http://www.baidu.com/}">ityouknow</a>
+</div>
+
+<!-- each -->
+<table>
+    <tr th:each="user,iterStat : ${users}">
+        <td th:text="${user.name}">neo</td>
+        <td th:text="${user.age}">6</td>
+        <td th:text="${user.pass}">213</td>
+        <td th:text="${iterStat.index}">index</td>
+    </tr>
+</table>
+
+<!-- switch 示例 -->
+
+<div th:switch="${sex}">
+    <p th:case="'woman'">她是一个姑娘...</p>
+    <p th:case="'man'">这是一个爷们!</p>
+    <!-- *: case的默认的选项 -->
+    <p th:case="*">未知性别的一个家伙。</p>
+</div>
+
+<!-- href -->
+<div>
+    <a th:href="@{http://www.ityouknow.com/{type}(type=${type})}">link1</a>
+    <br/>
+    <a th:href="@{http://www.ityouknow.com/{pageId}/can-use-springcloud.html(pageId=${pageId})}">view</a>
+</div>
+
+<!-- style -->
+<div th:style="'background:url(' + @{${img}} + ');'">
+    <br/><br/><br/>
+</div>
+
+</body>
+</html>

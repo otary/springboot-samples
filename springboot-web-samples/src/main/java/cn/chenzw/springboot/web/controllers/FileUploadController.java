@@ -1,5 +1,6 @@
 package cn.chenzw.springboot.web.controllers;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,9 @@ public class FileUploadController {
         }
         // 写入文件
         uploadFile.transferTo(file);
+
+
+        // FileUtils.writeByteArrayToFile(file, uploadFile.getBytes());
     }
 
     /**
