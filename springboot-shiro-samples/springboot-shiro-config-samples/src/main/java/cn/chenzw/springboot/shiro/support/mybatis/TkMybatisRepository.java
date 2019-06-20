@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.tkmybatis.support;
+package cn.chenzw.springboot.shiro.support.mybatis;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
