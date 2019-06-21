@@ -1,5 +1,6 @@
 package cn.chenzw.springboot.tkmybatis.domain.entity;
 
+import javax.persistence.Column;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
@@ -18,7 +19,10 @@ public class JavaTypesEntity {
     private Float floatType;
     private Long longType;
     private Double doubleType;
+
+    @Column(name = "bigdecimal_type")
     private BigDecimal bigDecimalType;
+
     private Date dateType;
 
 
@@ -118,7 +122,7 @@ public class JavaTypesEntity {
                 + ", doubleType=" + doubleType + ", bigDecimalType=" + bigDecimalType + '}';
     }
 
-    public static enum EnumType{
+    public static enum EnumType {
         MAN, WONMAN;
     }
 }
