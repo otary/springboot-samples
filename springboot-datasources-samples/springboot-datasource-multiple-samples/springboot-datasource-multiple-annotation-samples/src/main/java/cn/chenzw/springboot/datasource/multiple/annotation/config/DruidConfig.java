@@ -1,15 +1,23 @@
 package cn.chenzw.springboot.datasource.multiple.annotation.config;
 
 import cn.chenzw.springboot.datasource.multiple.annotation.support.mybatis.DynamicDataSource;
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
+import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -23,9 +31,17 @@ public class DruidConfig {
 
 
     @Bean
-    @ConfigurationProperties("spring.datasource.h2")
+    @ConfigurationProperties("spring.datasource.druid.h2")
     public DataSource h2DataSource() {
-        return DruidDataSourceBuilder.create().build();
+        DataSource ds = DruidDataSourceBuilder.create().build();
+
+        ResourceDatabasePopulator populator = new
+                ResourceDatabasePopulator();
+        populator.addScript(new ClassPathResource("classpath:/data.sql"));
+        populator.addScript(new ClassPathResource("classpath:/schema.sql"));
+
+        DatabasePopulatorUtils.execute(populator, ds);
+        return  ds;
     }
 
     @Bean
@@ -46,6 +62,7 @@ public class DruidConfig {
         dsMap.put(H2_DATASOURCE_NAME, h2DataSource());
         dsMap.put(MYSQL_DATASOURCE_NAME, mysqlDataSource());
         dynamicDataSource.setTargetDataSources(dsMap);
+
 
         return dynamicDataSource;
     }
