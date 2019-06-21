@@ -2,6 +2,7 @@ package cn.chenzw.springboot.shiro.domain.entity;
 
 import javax.persistence.*;
 
+@Table(name = "sys_user")
 public class SysUser {
 
     @Id
