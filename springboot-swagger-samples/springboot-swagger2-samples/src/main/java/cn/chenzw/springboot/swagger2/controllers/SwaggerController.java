@@ -1,7 +1,7 @@
-package cn.chenzw.springboot.swagger.controllers;
+package cn.chenzw.springboot.swagger2.controllers;
 
-import cn.chenzw.springboot.swagger.domain.entify.SwaggerEntity;
-import cn.chenzw.springboot.swagger.domain.entify.SwaggerParamEntity;
+import cn.chenzw.springboot.swagger2.domain.dto.input.SwaggerRespDto;
+import cn.chenzw.springboot.swagger2.domain.dto.output.SwaggerParamDto;
 import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,10 +13,10 @@ import java.util.Map;
 public class SwaggerController {
 
     @ApiOperation(value = "@ApiOperation-value", notes = "@ApiOperation-notes", tags = {"@ApiOperation-tags1",
-            "@ApiOperation-tags2"}, response = SwaggerEntity.class, nickname = "@ApiOperation-nickname")
+            "@ApiOperation-tags2"}, response = SwaggerRespDto.class, nickname = "@ApiOperation-nickname")
     @GetMapping("/basic")
-    public SwaggerEntity basic() {
-        return new SwaggerEntity();
+    public SwaggerRespDto basic() {
+        return new SwaggerRespDto();
     }
 
 
@@ -25,8 +25,8 @@ public class SwaggerController {
             @ApiImplicitParam(name = "sex", value = "@ApiImplictParam-value", defaultValue = "@ApiImplictParam-defaultValue", allowableValues = "男,女", required = true, example = "女"),
             @ApiImplicitParam(name = "query", value = "@ApiImplictParam-value", defaultValue = "@ApiImplictParam-defaultValue", access = "test", example = "example")})
     @GetMapping("/get-with-args")
-    public SwaggerEntity testGetWithArgs(SwaggerParamEntity swaggerParamEntity, String sex, String query) {
-        return new SwaggerEntity();
+    public SwaggerRespDto testGetWithArgs(SwaggerParamDto swaggerParamEntity, String sex, String query) {
+        return new SwaggerRespDto();
     }
 
     @ApiOperation(value = "Map参数测试", notes = "Map请求参数和响应值测试")
