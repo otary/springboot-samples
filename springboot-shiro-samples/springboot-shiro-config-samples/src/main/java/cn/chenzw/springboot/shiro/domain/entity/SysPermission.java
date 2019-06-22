@@ -14,7 +14,7 @@ public class SysPermission {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     /**
      * 权限名称
@@ -25,7 +25,7 @@ public class SysPermission {
      * 资源类型，[menu|button]
      */
     @Column(columnDefinition = "enum('menu','button')")
-    private String resourceType;
+    private String type;
 
     /**
      * 资源路径
@@ -53,12 +53,17 @@ public class SysPermission {
      */
     private Boolean available = Boolean.FALSE;
 
+    /**
+     * 排序
+     */
+    private Integer sortId;
 
-    public Integer getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -70,12 +75,12 @@ public class SysPermission {
         this.name = name;
     }
 
-    public String getResourceType() {
-        return resourceType;
+    public String getType() {
+        return type;
     }
 
-    public void setResourceType(String resourceType) {
-        this.resourceType = resourceType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getUrl() {
@@ -118,17 +123,26 @@ public class SysPermission {
         this.available = available;
     }
 
+    public Integer getSortId() {
+        return sortId;
+    }
+
+    public void setSortId(Integer sortId) {
+        this.sortId = sortId;
+    }
+
     @Override
     public String toString() {
         return "SysPermission{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", resourceType='" + resourceType + '\'' +
+                ", type='" + type + '\'' +
                 ", url='" + url + '\'' +
                 ", permission='" + permission + '\'' +
                 ", parentId=" + parentId +
                 ", parentIds='" + parentIds + '\'' +
                 ", available=" + available +
+                ", sortId=" + sortId +
                 '}';
     }
 }

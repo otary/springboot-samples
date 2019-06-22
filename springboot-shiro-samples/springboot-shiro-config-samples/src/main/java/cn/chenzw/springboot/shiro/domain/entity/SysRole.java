@@ -13,12 +13,12 @@ public class SysRole {
      */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     /**
      * 角色标识
      */
-    private String role;
+    private String name;
 
     /**
      * 角色描述（UI界面显示使用）
@@ -31,20 +31,20 @@ public class SysRole {
     private Boolean available = Boolean.FALSE;
 
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -67,7 +67,7 @@ public class SysRole {
     public String toString() {
         return "SysRole{" +
                 "id=" + id +
-                ", role='" + role + '\'' +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", available=" + available +
                 '}';

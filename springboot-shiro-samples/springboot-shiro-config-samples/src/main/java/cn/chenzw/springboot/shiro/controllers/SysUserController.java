@@ -19,7 +19,7 @@ public class SysUserController {
     SysUserService sysUserService;
 
     @GetMapping("/list")
-    @RequiresPermissions("user:create")
+    @RequiresPermissions("user:view")
     public List<SysUser> listAll() {
         return sysUserService.listAll();
     }

@@ -20,9 +20,9 @@ CREATE TABLE `sys_permission` (
   `type` varchar(32) NOT NULL COMMENT '资源类型：menu,button,',
   `url` varchar(128) DEFAULT NULL COMMENT '访问url地址',
   `permission` varchar(128) DEFAULT NULL COMMENT '权限代码字符串',
-  `parentid` bigint(20) DEFAULT NULL COMMENT '父结点id',
-  `parentids` varchar(128) DEFAULT NULL COMMENT '父结点id列表串',
-  `sortstring` varchar(128) DEFAULT NULL COMMENT '排序号',
+  `parent_id` bigint(20) DEFAULT NULL COMMENT '父结点id',
+  `parent_ids` varchar(128) DEFAULT NULL COMMENT '父结点id列表串',
+  `sort_id` varchar(128) DEFAULT NULL COMMENT '排序号',
   `available` char(1) DEFAULT NULL COMMENT '是否可用,1：可用，0不可用',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -30,7 +30,7 @@ CREATE TABLE `sys_permission` (
 /*Table structure for table `sys_role` */
 
 CREATE TABLE `sys_role` (
-  `id` varchar(36) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `name` varchar(128) NOT NULL,
   `available` char(1) DEFAULT NULL COMMENT '是否可用,1：可用，0不可用',
   PRIMARY KEY (`id`)
@@ -39,16 +39,16 @@ CREATE TABLE `sys_role` (
 /*Table structure for table `sys_role_permission` */
 
 CREATE TABLE `sys_role_permission` (
-  `id` varchar(36) NOT NULL,
-  `sys_role_id` varchar(32) NOT NULL COMMENT '角色id',
-  `sys_permission_id` varchar(32) NOT NULL COMMENT '权限id',
+  `id` bigint(20) NOT NULL,
+  `sys_role_id` bigint(20) NOT NULL COMMENT '角色id',
+  `sys_permission_id` bigint(20) NOT NULL COMMENT '权限id',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Table structure for table `sys_user` */
 
 CREATE TABLE `sys_user` (
-  `id` varchar(36) NOT NULL COMMENT '主键',
+  `id` bigint(20) NOT NULL COMMENT '主键',
   `username` varchar(32) NOT NULL COMMENT '账号',
   `name` varchar(64) NOT NULL COMMENT '姓名',
   `password` varchar(32) NOT NULL COMMENT '密码',
@@ -60,9 +60,9 @@ CREATE TABLE `sys_user` (
 /*Table structure for table `sys_user_role` */
 
 CREATE TABLE `sys_user_role` (
-  `id` varchar(36) NOT NULL,
-  `sys_user_id` varchar(32) NOT NULL,
-  `sys_role_id` varchar(32) NOT NULL,
+  `id` bigint(20) NOT NULL,
+  `sys_user_id` bigint(20) NOT NULL,
+  `sys_role_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
