@@ -26,6 +26,7 @@
         <module>springboot-views-samples</module>
         <module>springboot-shiro-samples</module>
         <module>springboot-security-samples</module>
+        <module>springboot-jpa-samples</module>
     </modules>
 
     <properties>
