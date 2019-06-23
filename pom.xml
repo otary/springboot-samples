@@ -28,6 +28,7 @@
         <module>springboot-security-samples</module>
         <module>springboot-jpa-samples</module>
         <module>springboot-mail-samples</module>
+        <module>springboot-container-samples</module>
     </modules>
 
     <properties>
