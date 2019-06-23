@@ -29,6 +29,7 @@
         <module>springboot-jpa-samples</module>
         <module>springboot-mail-samples</module>
         <module>springboot-container-samples</module>
+        <module>springboot-cache-samples</module>
     </modules>
 
     <properties>
