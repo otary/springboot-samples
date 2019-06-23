@@ -9,6 +9,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -22,9 +26,6 @@ public class SysUserRepositoryTests {
 
     @Autowired
     SysUserRepository sysUserRepository;
-
-    @Autowired
-    SysRoleRepository sysRoleRepository;
 
     @Test
     public void testFindByUserName() {
@@ -43,5 +44,31 @@ public class SysUserRepositoryTests {
     public void testFindById() {
         Optional<SysUser> sysUser = sysUserRepository.findById(1L);
         Assert.assertNotNull(sysUser.get());
+    }
+
+    @Test
+    public void testFindByName() {
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(0, 10, sort);
+        Page<SysUser> page = sysUserRepository.findByName("管理员", pageable);
+
+        Assert.assertTrue(page.getTotalPages() > 0);
+        Assert.assertTrue(page.getTotalElements() > 0);
+        Assert.assertNotNull(page.getContent());
+    }
+
+
+    @Test
+    public void testDeleteById() {
+        sysUserRepository.deleteById(1L);
+    }
+
+    @Test
+    public void testModifyById() {
+        sysUserRepository.modifyById("张三", 1L);
+
+        SysUser sysUser = sysUserRepository.findById(1L).get();
+        Assert.assertEquals(sysUser.getName(), "张三");
+
     }
 }

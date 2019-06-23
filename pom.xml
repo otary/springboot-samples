@@ -27,6 +27,7 @@
         <module>springboot-shiro-samples</module>
         <module>springboot-security-samples</module>
         <module>springboot-jpa-samples</module>
+        <module>springboot-mail-samples</module>
     </modules>
 
     <properties>
