@@ -17,7 +17,15 @@ public class JavaTypesService {
         return javaTypesMapper.listAll();
     }
 
-    public JavaTypesEntity findOne(Long id) {
-        return javaTypesMapper.findOne(id);
+    public JavaTypesEntity findBy(byte byteType) {
+        return javaTypesMapper.findBy(byteType);
+    }
+
+    public void insert(JavaTypesEntity javaTypesEntity) {
+        javaTypesMapper.insert(javaTypesEntity);
+    }
+
+    public void update(JavaTypesEntity javaTypesEntity) {
+        javaTypesMapper.update(javaTypesEntity);
     }
 }

@@ -1,5 +1,6 @@
 package cn.chenzw.springboot.mybatis.annotation.domain.entity;
 
+import cn.chenzw.springboot.mybatis.annotation.domain.enums.OSEnum;
 import cn.chenzw.springboot.mybatis.annotation.support.MyBatisRepository;
 
 import java.math.BigDecimal;
@@ -11,7 +12,6 @@ import java.util.Date;
  */
 public class JavaTypesEntity {
 
-    private Long id;
     private Byte byteType;
     private Byte[] bytesType;
     private Boolean booleanType;
@@ -23,7 +23,7 @@ public class JavaTypesEntity {
     private Double doubleType;
     private BigDecimal bigDecimalType;
     private Date dateType;
-
+    private OSEnum osEnum;
 
     public Byte getByteType() {
         return byteType;
@@ -113,23 +113,31 @@ public class JavaTypesEntity {
         this.dateType = dateType;
     }
 
-    public Long getId() {
-        return id;
+
+    public OSEnum getOsEnum() {
+        return osEnum;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setOsEnum(OSEnum osEnum) {
+        this.osEnum = osEnum;
     }
 
     @Override
     public String toString() {
-        return "JavaTypesEntity{" + "id=" + id + ", byteType=" + byteType + ", bytesType=" + Arrays.toString(bytesType)
-                + ", booleanType=" + booleanType + ", shortType=" + shortType + ", characterType=" + characterType
-                + ", integerType=" + integerType + ", floatType=" + floatType + ", longType=" + longType
-                + ", doubleType=" + doubleType + ", bigDecimalType=" + bigDecimalType + ", dateType=" + dateType + '}';
+        return "JavaTypesEntity{" +
+                "byteType=" + byteType +
+                ", bytesType=" + Arrays.toString(bytesType) +
+                ", booleanType=" + booleanType +
+                ", shortType=" + shortType +
+                ", characterType=" + characterType +
+                ", integerType=" + integerType +
+                ", floatType=" + floatType +
+                ", longType=" + longType +
+                ", doubleType=" + doubleType +
+                ", bigDecimalType=" + bigDecimalType +
+                ", dateType=" + dateType +
+                ", osEnum=" + osEnum +
+                '}';
     }
 
-    public static enum EnumType {
-        MAN, WONMAN;
-    }
 }

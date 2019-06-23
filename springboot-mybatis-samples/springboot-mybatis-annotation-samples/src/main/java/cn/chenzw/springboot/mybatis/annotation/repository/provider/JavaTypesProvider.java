@@ -5,12 +5,12 @@ import org.apache.ibatis.jdbc.SQL;
 public class JavaTypesProvider {
 
 
-    public String findById() {
+    public String findBy() {
         return new SQL() {
             {
                 SELECT("*");
                 FROM("java_types_entity");
-                WHERE("id = #{id}");
+                WHERE("byte_type = #{byteType}");
             }
         }.toString();
     }
