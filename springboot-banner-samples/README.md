@@ -1,6 +1,8 @@
 # springboot-banner-samples
 
-自定义banner
+- 自定义banner
+- 设置favicon
+
 
 ---
 **核心类**
@@ -16,3 +18,5 @@
 - http://www.network-science.de/ascii/
 - http://patorjk.com/software/taag/
 - http://www.degraeve.com/img2txt.php
+
+---
