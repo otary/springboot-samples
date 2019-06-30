@@ -30,6 +30,7 @@
         <module>springboot-mail-samples</module>
         <module>springboot-container-samples</module>
         <module>springboot-cache-samples</module>
+        <module>springboot-websocket-samples</module>
     </modules>
 
     <properties>
