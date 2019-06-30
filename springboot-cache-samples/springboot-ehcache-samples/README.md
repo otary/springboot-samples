@@ -2,10 +2,19 @@
 
 
 
-**访问**
+**查询数据（不存在时添加缓存）**
 - 只有第一次访问会进行数据库访问
 
 http://localhost:8080/user/1?name=444
+
+**保存数据（总是添加缓存）**
+
+http://localhost:8080/user/save?id=5&name=zhangsan&username=zs
+
+
+**删除数据（删除缓存）**
+
+http://localhost:8080/user/del/1
 
 **查看当前缓存**
 

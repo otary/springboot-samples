@@ -31,6 +31,16 @@ public class SysUserController {
     }
 
 
+    @GetMapping("/save")
+    public void save(SysUser sysUser) {
+        sysUserService.save(sysUser);
+    }
+
+    @GetMapping("/del/{id}")
+    public void deleteOne(@PathVariable Long id) {
+        sysUserService.deleteOne(id);
+    }
+
     @GetMapping("/caches/list")
     public String listCaches() {
         StringBuilder buffer = new StringBuilder();
