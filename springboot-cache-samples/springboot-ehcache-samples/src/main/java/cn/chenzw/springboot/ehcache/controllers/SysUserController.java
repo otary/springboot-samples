@@ -4,6 +4,8 @@ import cn.chenzw.springboot.ehcache.domain.entity.SysUser;
 import cn.chenzw.springboot.ehcache.service.SysUserService;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
+import net.sf.ehcache.Element;
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,22 +32,19 @@ public class SysUserController {
 
 
     @GetMapping("/caches/list")
-    public List<Object> listCaches() {
-        List<Object> elements = new ArrayList<>();
+    public String listCaches() {
+        StringBuilder buffer = new StringBuilder();
         String[] cacheNames = cacheManager.getCacheNames();
         for (String cacheName : cacheNames) {
             Cache cache = cacheManager.getCache(cacheName);
-
+            buffer.append("Cache: " + cache.toString() + "<br/>");
 
             List keys = cache.getKeys();
-            elements.addAll(keys);
             for (Object key : keys) {
-                System.out.println(key);
+                Element element = cache.get(key);
+                buffer.append("Element: " + element.toString() + "<br/>");
             }
-
         }
-        return elements;
-        //System.out.println(caches);
-
+        return buffer.toString();
     }
 }

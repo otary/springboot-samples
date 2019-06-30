@@ -1,6 +1,8 @@
 package cn.chenzw.springboot.ehcache.domain.entity;
 
-public class SysUser {
+import java.io.Serializable;
+
+public class SysUser implements Serializable {
 
     private Long id;
 

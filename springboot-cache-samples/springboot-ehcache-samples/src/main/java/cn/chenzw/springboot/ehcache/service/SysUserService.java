@@ -15,13 +15,6 @@ public class SysUserService {
 
     @Cacheable(value = "userCache")
     public SysUser findOne(Long id, String name) {
-
-       /* Collection<String> cacheNames = cacheManager.getCacheNames();
-        for (String cacheName : cacheNames) {
-            System.out.println();
-        }*/
-
-
         System.out.println("--------------数据库查询-------------------------");
 
         SysUser sysUser = new SysUser();

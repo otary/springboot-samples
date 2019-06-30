@@ -50,7 +50,7 @@ public class SysUserRepositoryTests {
     public void testFindByName() {
         Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = PageRequest.of(0, 10, sort);
-        Page<SysUser> page = sysUserRepository.findByName("管理员", pageable);
+        Page<SysUser> page = sysUserRepository.findByName("管理员", pageable, new Sort(Sort.Direction.ASC, "name"));
 
         Assert.assertTrue(page.getTotalPages() > 0);
         Assert.assertTrue(page.getTotalElements() > 0);

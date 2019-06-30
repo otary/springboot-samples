@@ -7,6 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+/**
+ * @author chenzw
+ */
 public interface SysRoleRepository extends JpaRepository<SysRole, Long> {
 
     @Query(nativeQuery = true, value = "SELECT " +
