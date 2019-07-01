@@ -31,6 +31,7 @@
         <module>springboot-container-samples</module>
         <module>springboot-cache-samples</module>
         <module>springboot-websocket-samples</module>
+        <module>springboot-redis-samples</module>
     </modules>
 
     <properties>
