@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>springboot-config-samples</artifactId>
+        <groupId>cn.chenzw.springboot</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>springboot-web01-samples</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.chenzw.springboot</groupId>
+            <artifactId>springboot-base01-samples</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.chenzw.springboot</groupId>
+            <artifactId>springboot-base02-samples</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <mainClass>cn.chenzw.springboot.web01.Web01SamplesApp</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

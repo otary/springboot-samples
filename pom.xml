@@ -33,6 +33,7 @@
         <module>springboot-websocket-samples</module>
         <module>springboot-redis-samples</module>
         <module>springboot-message-samples</module>
+        <module>springboot-config-samples</module>
     </modules>
 
     <properties>
@@ -137,18 +138,4 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
-
 </project>    
