@@ -32,6 +32,7 @@
         <module>springboot-cache-samples</module>
         <module>springboot-websocket-samples</module>
         <module>springboot-redis-samples</module>
+        <module>springboot-message-samples</module>
     </modules>
 
     <properties>
