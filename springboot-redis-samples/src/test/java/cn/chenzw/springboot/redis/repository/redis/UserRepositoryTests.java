@@ -2,6 +2,7 @@ package cn.chenzw.springboot.redis.repository.redis;
 
 import cn.chenzw.springboot.redis.RedisSamplesApp;
 import cn.chenzw.springboot.redis.domain.entity.User;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.Date;
+import java.util.Objects;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = RedisSamplesApp.class)
@@ -28,9 +30,11 @@ public class UserRepositoryTests {
         user.setAge(20);
         user.setBirth(new Date());
 
+        // 保存
         userRepository.save(user);
 
+        // 读取
         User user2 = userRepository.findById(1L);
-        System.out.println(user2);
+        Assert.assertTrue(Objects.equals(user, user2));
     }
 }
