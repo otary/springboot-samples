@@ -14,7 +14,7 @@
     <modules>
         <module>springboot-security-jwt-samples</module>
         <module>springboot-security-oauth2-samples</module>
-        <module>springboot-security-base-samples</module>
+        <module>springboot-security-basic-samples</module>
     </modules>
 
     <dependencies>
