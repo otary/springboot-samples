@@ -15,7 +15,6 @@
         <module>springboot-datasources-h2-samples</module>
         <module>springboot-datasource-multiple-samples</module>
         <module>springboot-datasources-mysql-samples</module>
-        <module>springboot-datasources-embed-mysql-samples</module>
     </modules>
 
     <dependencies>

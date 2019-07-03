@@ -10,6 +10,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>springboot-security-samples</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>springboot-security-jwt-samples</module>
+        <module>springboot-security-oauth2-samples</module>
+        <module>springboot-security-base-samples</module>
+    </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+    </dependencies>
 
 </project>
