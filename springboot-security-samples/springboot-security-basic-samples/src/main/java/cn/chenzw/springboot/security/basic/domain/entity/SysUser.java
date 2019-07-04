@@ -139,13 +139,14 @@ public class SysUser implements UserDetails {
 
     @Override
     public String toString() {
-        return "SysUserMapper{" +
+        return "SysUser{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", salt='" + salt + '\'' +
                 ", state=" + state +
+                ", roles=" + roles +
                 '}';
     }
 }

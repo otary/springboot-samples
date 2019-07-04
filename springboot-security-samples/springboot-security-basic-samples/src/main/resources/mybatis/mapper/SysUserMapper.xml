@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.chenzw.springboot.security.basic.repository.SysUserMapper">
+
+
+    <resultMap id="sysUserMap" type="cn.chenzw.springboot.security.basic.domain.entity.SysUser">
+        <id property="id" column="id"/>
+
+        <collection property="roles" ofType="string">
+            <constructor>
+                <arg column="role_name"/>
+            </constructor>
+        </collection>
+    </resultMap>
+
+    <select id="findByUsername"
+            resultMap="sysUserMap">
+       select su.id, su.username, su.name ,su.password, su.salt, su.state, sr.name as role_name from sys_user su
+       left join sys_user_role sur on su.id = sur.sys_user_id
+       left join sys_role sr on sur.sys_role_id = sr.id where username = #{username}
+    </select>
+
+</mapper>

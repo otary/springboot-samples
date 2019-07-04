@@ -8,20 +8,24 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomUserService implements UserDetailsService {
 
     @Autowired
     SysUserMapper sysUserMapper;
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = sysUserMapper.findByUsername(username);
         if (user == null) {
-            System.out.println("用户名不存在");
-            //throw new
+            throw new IllegalArgumentException("用户不存在");
         }
         return user;
+    }
+
+    public List<SysUser> listAll() {
+        return sysUserMapper.selectAll();
     }
 }
