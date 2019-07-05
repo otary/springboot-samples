@@ -20,7 +20,7 @@ public class HelloController {
     }
 
     @PostMapping("/say2")
-    public String say2(UserParamDto userParamDto) {
+    public String say2(@Validated UserParamDto userParamDto) {
         return "hello," + userParamDto.getName();
     }
 

@@ -1,9 +1,11 @@
 package cn.chenzw.springboot.validation.domain.dto;
 
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class UserParamDto {
 
+    @NotNull
     private Integer id;
     private String name;
     private Date birthDate;
@@ -30,5 +32,10 @@ public class UserParamDto {
 
     public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
+    }
+
+    @Override
+    public String toString() {
+        return "UserParamDto{" + "id=" + id + ", name='" + name + '\'' + ", birthDate=" + birthDate + '}';
     }
 }

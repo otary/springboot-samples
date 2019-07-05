@@ -12,7 +12,7 @@
     <artifactId>springboot-jpa-samples</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>springboot-jpa2-samples</module>
+        <module>springboot-jpa-basic-samples</module>
     </modules>
 
 
