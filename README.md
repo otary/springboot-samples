@@ -9,9 +9,7 @@
   - [springboot-ehcache-samples](./springboot-cache-samples/springboot-ehcache-samples): 集成ehcache缓存示例
   - [springboot-redis-cache-samples](./springboot-cache-samples/springboot-redis-cache-samples)：集成redis缓存示例
 
-- [springboot-container-samples](./springboot-container-samples)：集成容器示例
-  - [springboot-container-jetty-samples](./springboot-container-samples/springboot-container-jetty-samples)：集成jetty容器示例
-  - [springboot-container-tomcat-samples](./springboot-container-samples/springboot-container-tomcat-samples)：集成tomcat容器示例
+
 - [springboot-config-samples](./springboot-config-samples)：spring配置加载优先级示例
   - [springboot-base01-samples](./springboot-config-samples/springboot-base01-samples)：子模块01配置
   - [springboot-base02-samples](./springboot-config-samples/springboot-base02-samples): 子模块02配置
@@ -33,7 +31,7 @@
 - [springboot-validation-samples](./springboot-validation-samples)：参数校验示例
 - [springboot-websocket-samples](./springboot-websocket-samples)：集成websocket示例
 
-**持久层相关**
+**持久层**
 - [springboot-mybatis-samples](./springboot-mybatis-samples): 集成mybatis示例
   - [springboot-mybatis-xml-samples](./springboot-mybatis-samples/springboot-mybatis-xml-samples): mybatis xml配置方式集成示例
   - [springboot-tkmybatis-samples](./springboot-mybatis-samples/springboot-tkmybatis-samples): 集成tkmybatis示例
@@ -49,18 +47,20 @@
   - [springboot-jpa-basic-samples](./springboot-jpa-samples/springboot-jpa-basic-samples)：集成JAP示例(基础)
 - [springboot-redis-samples](./springboot-redis-samples)：集成redis示例
 
-
-  
-**视图层相关**
+**视图层**
 - [springboot-views-samples](./springboot-views-samples)：视图模版示例
   - [springboot-views-jsp-samples](./springboot-views-samples/springboot-views-jsp-samples)：集成JSP示例
- 
+  - [springboot-thymeleaf-samples](./springboot-views-samples/springboot-thymeleaf-samples)：集成thymeleaf示例
 
 **安全认证**
 - [springboot-security-samples](./springboot-security-samples)：集成spring security示例
   - [springboot-security-basic-samples](./springboot-security-samples/springboot-security-basic-samples)：spring security基础示例
   - [springboot-security-jwt-samples](./springboot-security-samples/springboot-security-jwt-samples)：
   - [springboot-security-oauth2-samples](./springboot-security-samples/springboot-security-oauth2-samples):
-
 - [springboot-shiro-samples](./springboot-shiro-samples)：集成shiro示例
-  - [springboot-shiro-config-samples](./springboot-shiro-samples/springboot-shiro-config-samples)：基于配置的shiro示例
+  - [springboot-shiro-config-samples](./springboot-shiro-samples/springboot-shiro-config-samples)：纯代码配置的shiro示例
+
+**容器**
+- [springboot-container-samples](./springboot-container-samples)：集成容器示例
+  - [springboot-container-jetty-samples](./springboot-container-samples/springboot-container-jetty-samples)：集成jetty容器示例
+  - [springboot-container-tomcat-samples](./springboot-container-samples/springboot-container-tomcat-samples)：集成tomcat容器示例
