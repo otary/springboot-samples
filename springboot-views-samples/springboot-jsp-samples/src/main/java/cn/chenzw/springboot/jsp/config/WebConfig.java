@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.views.jsp.config;
+package cn.chenzw.springboot.jsp.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

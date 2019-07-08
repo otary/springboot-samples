@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springboot-views-jsp-samples</artifactId>
+    <artifactId>springboot-jsp-samples</artifactId>
     <packaging>war</packaging>
 
     <dependencies>
@@ -48,7 +48,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <fork>true</fork>
-                    <mainClass>cn.chenzw.springboot.views.jsp.JspSamplesApp</mainClass>
+                    <mainClass>cn.chenzw.springboot.jsp.JspSamplesApp</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -1,4 +1,4 @@
-# springboot-views-jsp-samples
+# springboot-jsp-samples
 
 #### 运行
 
