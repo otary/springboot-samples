@@ -12,11 +12,13 @@ import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 import java.time.Duration;
 
 @Configuration
 @EnableCaching
+@EnableRedisHttpSession(maxInactiveIntervalInSeconds = 86400*30)
 public class RedisConfig extends CachingConfigurerSupport {
 
 
