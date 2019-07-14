@@ -1,7 +1,6 @@
 package cn.chenzw.springboot.mybatis.repository;
 
 import cn.chenzw.springboot.mybatis.domain.entity.JavaTypesEntity;
-
 import java.util.List;
 
 /**

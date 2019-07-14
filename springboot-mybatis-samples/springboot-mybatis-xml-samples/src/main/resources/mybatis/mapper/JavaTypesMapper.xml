@@ -5,7 +5,7 @@
     <resultMap id="javaTypesEntity" type="cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity">
         <result column="bigdecimal_type" property="bigDecimalType"/>
     </resultMap>
-    
+
     <select id="listAll" resultMap="javaTypesEntity">
         select *
         from java_types_entity
