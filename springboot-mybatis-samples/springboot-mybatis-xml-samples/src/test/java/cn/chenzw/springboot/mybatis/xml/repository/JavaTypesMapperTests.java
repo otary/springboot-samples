@@ -28,8 +28,7 @@ public class JavaTypesMapperTests {
             Assert.assertNotNull(typesEntiy.getBooleanType());
         }
 
-        System.out.println(typesEntiys);
-
+        Assert.assertFalse(typesEntiys.isEmpty());
     }
 
 }

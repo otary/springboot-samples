@@ -1,12 +1,12 @@
-package cn.chenzw.springboot.swagger2;
+package cn.chenzw.springboot.mybatis;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Swagger2SamplesApp {
+public class MybatisPluginSamplesApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(Swagger2SamplesApp.class, args);
+        SpringApplication.run(MybatisPluginSamplesApp.class, args);
     }
 }

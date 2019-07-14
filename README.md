@@ -35,7 +35,9 @@
 **持久层**
 - [springboot-mybatis-samples](./springboot-mybatis-samples): 集成mybatis示例
   - [springboot-mybatis-xml-samples](./springboot-mybatis-samples/springboot-mybatis-xml-samples): mybatis xml配置方式集成示例
+  - [springboot-mybatis-annotation-samples](./springboot-mybatis-samples/springboot-mybatis-annotation-samples): mybatis 注解配置方式集成示例
   - [springboot-tkmybatis-samples](./springboot-mybatis-samples/springboot-tkmybatis-samples): 集成tkmybatis示例
+  - [springboot-mybaits-plugin-samples](./springboot-mybatis-samples/springboot-mybtias-plugin-samples): 自定义Mybatis插件示例
 - [springboot-datasources-samples](./springboot-datasources-samples)：数据源相关示例
   - [springboot-datasources-h2-samples](./springboot-datasources-samples/springboot-datasources-h2-samples)：集成H2数据库示例
   - [springboot-datasources-multiple-samples](./springboot-datasources-samples/springboot-datasources-multiple-samples)：多数据源示例
