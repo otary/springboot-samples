@@ -14,7 +14,6 @@
     <modules>
         <module>springboot-ehcache-samples</module>
         <module>springboot-redis-cache-samples</module>
-        <module>springboot-ehcache3-samples</module>
     </modules>
 
 
