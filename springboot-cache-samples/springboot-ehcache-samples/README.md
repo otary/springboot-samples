@@ -1,6 +1,7 @@
 # springboot-ehcache-sample
 
-
+- [springboot-ehcache2-samples](./springboot-ehcache2-samples): 集成ehcache2
+- [springboot-ehcache3-samples](./springboot-ehcache3-samples): 集成ehcache3
 
 **查询数据（不存在时添加缓存）**
 - 只有第一次访问会进行数据库访问

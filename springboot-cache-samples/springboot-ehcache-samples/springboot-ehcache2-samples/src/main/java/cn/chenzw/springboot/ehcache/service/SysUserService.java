@@ -1,9 +1,6 @@
 package cn.chenzw.springboot.ehcache.service;
 
 import cn.chenzw.springboot.ehcache.domain.entity.SysUser;
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
