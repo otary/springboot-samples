@@ -33,6 +33,7 @@
         <module>springboot-websocket-samples</module>
         <module>springboot-redis-samples</module>
         <module>springboot-config-samples</module>
+        <module>spring-boot-starter</module>
     </modules>
 
     <properties>

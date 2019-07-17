@@ -9,9 +9,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class ConditionSamplesApp {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext cac = SpringApplication.run(ConditionSamplesApp.class, args);
-        AbstractTemplate bean = cac.getBean(AbstractTemplate.class);
-
-        System.out.println("OS系统:[ " + cac.getEnvironment().getProperty("os.name") + " ], templates:[ " + bean.getName() + " ]");
+        SpringApplication.run(ConditionSamplesApp.class, args);
     }
 }
