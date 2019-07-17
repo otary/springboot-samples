@@ -99,4 +99,17 @@ public class SSOProperties {
     public void setDefaultRedirectUrl(String defaultRedirectUrl) {
         this.defaultRedirectUrl = defaultRedirectUrl;
     }
+
+    @Override
+    public String toString() {
+        return "SSOProperties{" +
+                "sourceIdentifier='" + sourceIdentifier + '\'' +
+                ", keyIdentifier='" + keyIdentifier + '\'' +
+                ", usernameIdentifier='" + usernameIdentifier + '\'' +
+                ", redirectUrlIdentifier='" + redirectUrlIdentifier + '\'' +
+                ", privateKey='" + privateKey + '\'' +
+                ", limitMilliSecond=" + limitMilliSecond +
+                ", defaultRedirectUrl='" + defaultRedirectUrl + '\'' +
+                '}';
+    }
 }
