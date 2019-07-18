@@ -1,9 +1,0 @@
-{
-  "properties": [
-    {
-      "name": "sso.source-identifier",
-      "type": "java.lang.String",
-      "defaultValue": "source"
-    }
-  ]
-}

@@ -1,0 +1,59 @@
+{
+  "groups": [
+    {
+      "name": "sso",
+      "type": "cn.chenzw.spring.boot.autoconfigure.SSOProperties",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "sso.default-redirect-url",
+      "type": "java.lang.String",
+      "description": "默认的跳转主页",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties"
+    },
+    {
+      "name": "sso.key-identifier",
+      "type": "java.lang.String",
+      "description": "一次性密钥-标识符",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties",
+      "defalutValue": "key"
+    },
+    {
+      "name": "sso.limit-milli-second",
+      "type": "java.lang.Integer",
+      "description": "时效性（默认:30分钟）",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties",
+      "defaultValue": 30
+    },
+    {
+      "name": "sso.private-key",
+      "type": "java.lang.String",
+      "description": "密钥",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties"
+    },
+    {
+      "name": "sso.redirect-url-identifier",
+      "type": "java.lang.String",
+      "description": "跳转url",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties",
+      "defaultValue": "redirectUrl"
+    },
+    {
+      "name": "sso.source-identifier",
+      "type": "java.lang.String",
+      "description": "来源系统-标识符",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties",
+      "defaultValue": "source"
+    },
+    {
+      "name": "sso.username-identifier",
+      "type": "java.lang.String",
+      "description": "用户帐号-标识符",
+      "sourceType": "cn.chenzw.spring.boot.autoconfigure.SSOProperties",
+      "defaultValue": "username"
+    }
+  ],
+  "hints": []
+}

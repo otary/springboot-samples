@@ -10,23 +10,23 @@ public class SSOProperties {
     /**
      * 来源系统-标识符
      */
-    private String sourceIdentifier;
+    private String sourceIdentifier = "source";
 
     /**
      * 一次性密钥-标识符
      */
-    private String keyIdentifier;
+    private String keyIdentifier = "key";
 
 
     /**
      * 用户帐号-标识符
      */
-    private String usernameIdentifier;
+    private String usernameIdentifier = "username";
 
     /**
      * 跳转url
      */
-    private String redirectUrlIdentifier;
+    private String redirectUrlIdentifier = "redirectUrl";
 
     /**
      * 密钥
@@ -36,7 +36,7 @@ public class SSOProperties {
     /**
      * 时效性（默认:30分钟）
      */
-    private int limitMilliSecond;
+    private int limitMilliSecond = 30;
 
     /**
      * 默认的跳转主页

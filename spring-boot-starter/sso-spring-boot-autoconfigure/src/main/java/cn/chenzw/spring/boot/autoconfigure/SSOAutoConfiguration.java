@@ -17,6 +17,10 @@ public class SSOAutoConfiguration {
 
     private SSOProperties properties;
 
+    SSOAutoConfiguration(SSOProperties properties) {
+        this.properties = properties;
+    }
+
     @Bean
     @ConditionalOnMissingBean
     public AbstractSSOTemplate defaultSSOTemplate() {

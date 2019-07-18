@@ -11,4 +11,11 @@
     <artifactId>sso-spring-boot-autoconfigure</artifactId>
     <version>${sso.version}</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
 </project>
