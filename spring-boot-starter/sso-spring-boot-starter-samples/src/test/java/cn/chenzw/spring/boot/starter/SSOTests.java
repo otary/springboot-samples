@@ -2,6 +2,7 @@ package cn.chenzw.spring.boot.starter;
 
 import cn.chenzw.spring.boot.autoconfigure.SSOProperties;
 import cn.chenzw.spring.boot.autoconfigure.support.AbstractSSOTemplate;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class SSOTests {
     @Test
     public void test(){
         SSOProperties properties = abstractSSOTemplate.getProperties();
-        System.out.println(properties);
+        Assert.assertEquals(properties.getSourceIdentifier(), "source");
+        Assert.assertEquals(properties.getKeyIdentifier(), "key");
+        Assert.assertEquals(properties.getUsernameIdentifier(), "username");
+        Assert.assertEquals(properties.getPrivateKey(), "123456");
     }
 }

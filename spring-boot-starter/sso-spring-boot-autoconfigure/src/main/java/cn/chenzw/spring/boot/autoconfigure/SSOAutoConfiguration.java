@@ -17,6 +17,11 @@ public class SSOAutoConfiguration {
 
     private SSOProperties properties;
 
+    /**
+     * 注入属性
+     *
+     * @param properties
+     */
     SSOAutoConfiguration(SSOProperties properties) {
         this.properties = properties;
     }
@@ -24,7 +29,6 @@ public class SSOAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean
     public AbstractSSOTemplate defaultSSOTemplate() {
-        System.out.println("---------------------------" + properties);
         return new DefaultSSOTemplate(properties);
     }
 
