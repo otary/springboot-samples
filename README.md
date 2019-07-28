@@ -67,3 +67,19 @@
 - [springboot-container-samples](./springboot-container-samples)：集成容器示例
   - [springboot-container-jetty-samples](./springboot-container-samples/springboot-container-jetty-samples)：集成jetty容器示例
   - [springboot-container-tomcat-samples](./springboot-container-samples/springboot-container-tomcat-samples)：集成tomcat容器示例
+
+
+## 问题解决
+
+- 文件名超长clone报错
+```
+unable to create file springboot-datasources-samples/springboot-datasources-multiple-samples/springboot-datasources-multiple-annotation-samples/src/main/java/cn/chenzw/springboot/datasources/multiple/annotation/MultipleDatasourceAnnotationSamplesApp.java: Filename too long unable to create file springboot-datasources-samples/springboot-datasources-multiple-samples/springboot-datasources-multiple-annotation-samples/src/main/java/cn/chenzw/springboot/datasources/multiple/annotation/aop/DataSourceAspect.java: Filename too long unable to create file springboot-datasources-samples/springboot-datasources-multiple-samples/springboot-datasources-multiple-annotation-samples/src/main/java/cn/chenzw/springboot/datasources/multiple/annotation/config/DruidConfig.java: Filename too long unable to create file springboot-datasources-samples/springboot-datasources-multiple-samples/springboot-datasources-multiple-annotation-samples/src/main/java/cn/chenzw/springboot/datasources/multiple/annotation/config/TkMybatisConfig.java: Filename too long cannot create directory at 'springboot-datasources-samples/springboot-datasources-multiple-samples/springboot-datasources-multiple-annotation-samples/src/main/java/cn/chenzw/springboot/datasources/multiple/annotation/domain/entity': Filename too long warning: Clone succeeded, but checkout failed. You can inspect what was checked out with 'git status' and retry the checkout with 'git checkout -f HEAD' 
+```
+
+> 解决方法
+
+```
+git config --system core.longpaths true
+```
+
+
