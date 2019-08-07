@@ -1,55 +1,99 @@
 package cn.chenzw.springboot.validation;
 
+import cn.chenzw.toolkit.commons.StringExtUtils;
+import cn.chenzw.toolkit.http.HttpRequestWrapper;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class DefaultConstraintViolationExceptionWrapper implements ConstraintViolationExceptionWrapper {
 
-    private List<InvalidField> invalidFields;
+    private List<InvalidField> invalidFields = new ArrayList<>();
+    private String methodName;
+    private Class<?> beanClass;
+    private HttpRequestWrapper httpRequestWrapper = new HttpRequestWrapper();
 
-
+    /**
+     * <p>GET + @RequestParam 参数异常</p>
+     *
+     * @param constraintViolationException
+     */
     public DefaultConstraintViolationExceptionWrapper(ConstraintViolationException constraintViolationException) {
-
-        /*StringBuilder msgBuilder = new StringBuilder();
-        Iterator<ConstraintViolation<?>> iterator = e.getConstraintViolations().iterator();
-        while (iterator.hasNext()) {
-            ConstraintViolation<?> constraintViolation = iterator.next();
-            msgBuilder.append(String.format("参数[ %s = %s ]校验不通过！详细:[%s]", constraintViolation.getPropertyPath(),
-                    constraintViolation.getInvalidValue(), constraintViolation.getMessageTemplate()));
-        }*/
-
-        // constraintViolationException
-
-
         for (ConstraintViolation<?> cv : constraintViolationException.getConstraintViolations()) {
+            String fieldName = StringExtUtils.subStringFirstAfter(cv.getPropertyPath().toString(), ".");
+            this.invalidFields.add(new InvalidField(fieldName, cv.getMessage(), cv.getInvalidValue(), cv.getMessageTemplate()));
 
-            String propertyPath = cv.getPropertyPath().toString();
-            if (propertyPath.indexOf(".") != -1) {
-                String[] propertyPathArr = propertyPath.split("\\.");
-
-
-                System.out.println("-----------filedName: " + propertyPathArr[propertyPathArr.length - 1]);
-            } else {
-                System.out.println("-------------------fieldName22:" + propertyPath);
-            }
-            System.out.println("------------------message:" + cv.getMessage());
-            System.out.println("---------------------getPropertyPath:" + cv.getPropertyPath());
-
-            System.out.println("-------------------------------getInvalidValue:" + cv.getInvalidValue());
-
-            System.out.println("--------------------------getMessageTemplate:" + cv.getMessageTemplate());
+            this.beanClass = cv.getRootBeanClass();
+            this.methodName = StringExtUtils.subStringFirstBefore(cv.getPropertyPath().toString(), ".");
         }
+    }
 
+    /**
+     * <p>@RequestBody + @Validated 参数异常</p>
+     *
+     * @param methodArgumentNotValidException
+     */
+    public DefaultConstraintViolationExceptionWrapper(MethodArgumentNotValidException methodArgumentNotValidException) {
+        List<FieldError> fieldErrors = methodArgumentNotValidException.getBindingResult().getFieldErrors();
+        for (FieldError fieldError : fieldErrors) {
+            this.invalidFields.add(new InvalidField(fieldError.getField(),
+                    fieldError.getDefaultMessage(),
+                    fieldError.getRejectedValue(),
+                    fieldError.getDefaultMessage()));
+        }
+        this.beanClass = methodArgumentNotValidException.getParameter().getContainingClass();
+        this.methodName = methodArgumentNotValidException.getParameter().getMethod().getName();
+    }
 
+    /**
+     * <p>@Validated 对象参数异常</p>
+     *
+     * @param bindException
+     */
+    public DefaultConstraintViolationExceptionWrapper(BindException bindException) {
+        List<FieldError> fieldErrors = bindException.getBindingResult().getFieldErrors();
+        for (FieldError fieldError : fieldErrors) {
+            this.invalidFields.add(new InvalidField(fieldError.getField(),
+                    fieldError.getDefaultMessage(),
+                    fieldError.getRejectedValue(),
+                    fieldError.getDefaultMessage()));
+        }
     }
 
     @Override
     public List<InvalidField> getInvalidFields() {
         return invalidFields;
+    }
+
+    @Override
+    public String getMethodName() {
+        return methodName;
+    }
+
+    @Override
+    public Class<?> getBeanClass() {
+        return beanClass;
+    }
+
+    @Override
+    public HttpRequestWrapper getHttpRequestWrapper() {
+        return httpRequestWrapper;
+    }
+
+    @Override
+    public String toString() {
+        return "DefaultConstraintViolationExceptionWrapper{" +
+                "invalidFields=" + invalidFields +
+                ", methodName='" + methodName + '\'' +
+                ", beanClass=" + beanClass +
+                ", httpRequestWrapper=" + httpRequestWrapper +
+                '}';
     }
 }

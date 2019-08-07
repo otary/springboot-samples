@@ -5,7 +5,11 @@ import cn.chenzw.springboot.validation.domain.dto.UserParamDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
 
 @RestController
 @RequestMapping("/hello")
@@ -13,7 +17,7 @@ import javax.validation.constraints.NotNull;
 public class HelloController {
 
     @GetMapping("/say")
-    public String say(@NotNull String name) {
+    public String say(@NotNull String name) throws IOException, ServletException {
         return "hello," + name;
     }
 
@@ -31,7 +35,6 @@ public class HelloController {
     public String say4(@RequestParam(required = false) @NotNull String name) {
         return "hello," + name;
     }
-
 
 
 }

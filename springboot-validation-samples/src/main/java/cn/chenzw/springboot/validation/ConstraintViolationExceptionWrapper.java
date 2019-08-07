@@ -1,16 +1,31 @@
 package cn.chenzw.springboot.validation;
 
+import cn.chenzw.toolkit.http.HttpRequestWrapper;
+
 import java.util.List;
 
 public interface ConstraintViolationExceptionWrapper {
 
     List<InvalidField> getInvalidFields();
 
+    String getMethodName();
+
+    Class<?> getBeanClass();
+
+    HttpRequestWrapper getHttpRequestWrapper();
+
     class InvalidField {
         private String fieldName;
         private String message;
-        private Object value;
+        private Object invalidValue;
         private String messageTemplate;
+
+        public InvalidField(String fieldName, String message, Object invalidValue, String messageTemplate) {
+            this.fieldName = fieldName;
+            this.message = message;
+            this.invalidValue = invalidValue;
+            this.messageTemplate = messageTemplate;
+        }
 
         public String getFieldName() {
             return fieldName;
@@ -28,14 +43,6 @@ public interface ConstraintViolationExceptionWrapper {
             this.message = message;
         }
 
-        public Object getValue() {
-            return value;
-        }
-
-        public void setValue(Object value) {
-            this.value = value;
-        }
-
         public String getMessageTemplate() {
             return messageTemplate;
         }
@@ -44,10 +51,22 @@ public interface ConstraintViolationExceptionWrapper {
             this.messageTemplate = messageTemplate;
         }
 
+        public Object getInvalidValue() {
+            return invalidValue;
+        }
+
+        public void setInvalidValue(Object invalidValue) {
+            this.invalidValue = invalidValue;
+        }
+
         @Override
         public String toString() {
-            return "InvalidField{" + "fieldName='" + fieldName + '\'' + ", message='" + message + '\'' + ", value="
-                    + value + ", messageTemplate='" + messageTemplate + '\'' + '}';
+            return "InvalidField{" +
+                    "fieldName='" + fieldName + '\'' +
+                    ", message='" + message + '\'' +
+                    ", invalidValue=" + invalidValue +
+                    ", messageTemplate='" + messageTemplate + '\'' +
+                    '}';
         }
     }
 }

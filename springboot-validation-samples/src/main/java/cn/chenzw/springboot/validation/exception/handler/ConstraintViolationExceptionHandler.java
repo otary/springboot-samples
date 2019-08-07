@@ -1,5 +1,8 @@
 package cn.chenzw.springboot.validation.exception.handler;
 
+import cn.chenzw.springboot.validation.ConstraintViolationExceptionWrapper;
+import cn.chenzw.springboot.validation.DefaultConstraintViolationExceptionWrapper;
+import cn.chenzw.toolkit.http.HttpRequestWrapper;
 import com.google.common.collect.Lists;
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.core.MethodParameter;
@@ -19,6 +22,7 @@ import java.lang.reflect.Member;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 
@@ -72,12 +76,15 @@ public class ConstraintViolationExceptionHandler {
         }*/
 
 
-        List<FieldError> fieldErrorList = e.getBindingResult().getFieldErrors();
+       /* List<FieldError> fieldErrorList = e.getBindingResult().getFieldErrors();
         for (FieldError fieldError : fieldErrorList) {
             System.out.println(fieldError.getField());
             System.out.println(fieldError.getDefaultMessage());
-        }
+        }*/
 
+        DefaultConstraintViolationExceptionWrapper defaultConstraintViolationExceptionWrapper = new DefaultConstraintViolationExceptionWrapper(e);
+
+        System.out.println(defaultConstraintViolationExceptionWrapper);
         return null;
     }
 
@@ -93,26 +100,15 @@ public class ConstraintViolationExceptionHandler {
     public Object handleConstraintViolationException(ConstraintViolationException e) {
         String message = e.getConstraintViolations().stream().map(ConstraintViolation::getMessage)
                 .collect(Collectors.joining());
-
         System.out.println("-------------------handleConstraintViolationException:" + message);
 
-        for (ConstraintViolation<?> cv : e.getConstraintViolations()) {
+        ConstraintViolationExceptionWrapper defaultConstraintViolationExceptionWrapper = new DefaultConstraintViolationExceptionWrapper(e);
+        System.out.println(defaultConstraintViolationExceptionWrapper);
 
-            String propertyPath = cv.getPropertyPath().toString();
-            if (propertyPath.indexOf(".") != -1) {
-                String[] propertyPathArr = propertyPath.split("\\.");
+        HttpRequestWrapper httpRequestWrapper = defaultConstraintViolationExceptionWrapper.getHttpRequestWrapper();
 
-                System.out.println("-----------filedName: " + propertyPathArr[propertyPathArr.length - 1]);
-            } else {
-                System.out.println("-------------------fieldName22:" + propertyPath);
-            }
-            System.out.println("------------------message:" + cv.getMessage());
-            System.out.println("---------------------getPropertyPath:" + cv.getPropertyPath());
-
-            System.out.println("-------------------------------getInvalidValue:" + cv.getInvalidValue());
-
-            System.out.println("--------------------------getMessageTemplate:" + cv.getMessageTemplate());
-        }
+        System.out.println(httpRequestWrapper.getURL());
+        System.out.println(httpRequestWrapper.getMethod());
 
         return null;
     }
@@ -131,7 +127,9 @@ public class ConstraintViolationExceptionHandler {
                 .map(DefaultMessageSourceResolvable::getDefaultMessage).collect(Collectors.joining());
         System.out.println("----------------hanldeBindException:" + message);
 
+        DefaultConstraintViolationExceptionWrapper defaultConstraintViolationExceptionWrapper = new DefaultConstraintViolationExceptionWrapper(e);
 
+        System.out.println(defaultConstraintViolationExceptionWrapper);
         return null;
     }
 
