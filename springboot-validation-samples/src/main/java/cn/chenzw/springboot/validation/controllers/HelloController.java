@@ -1,11 +1,9 @@
 package cn.chenzw.springboot.validation.controllers;
 
+import cn.chenzw.springboot.validation.domain.dto.UserBodyParamDto;
 import cn.chenzw.springboot.validation.domain.dto.UserParamDto;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotNull;
 
@@ -24,5 +22,18 @@ public class HelloController {
         return "hello," + userParamDto.getName();
     }
 
+    @PostMapping("/say3")
+    public String say3(@Validated @RequestBody UserBodyParamDto userBodyParamDto) {
+        return "hello," + userBodyParamDto.getName();
+    }
+
+    @GetMapping("/say4")
+    public String say4(@RequestParam(required = false) @NotNull String name) {
+        return "hello," + name;
+    }
+
+
 
 }
+
+
