@@ -43,40 +43,40 @@ public class HelloControllerTests {
     }
 
 
-    @Test(expected = NestedServletException.class)
-    public void testSay() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/say"))
-                .andExpect(MockMvcResultMatchers.status().isBadRequest());
-    }
-
-
     @Test // (expected = BindException.class)
-    public void testSay2() throws Exception {
+    public void throwBindException() throws Exception {
         UserParamDto userParamDto = new UserParamDto();
 
         ObjectMapper objectMapper = new ObjectMapper();
         String body = objectMapper.writeValueAsString(userParamDto);
 
-        this.mockMvc.perform(MockMvcRequestBuilders.post("/hello/say2").content(body))
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/hello/throw-bind-exception").content(body))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest()).andDo(print());
     }
 
     @Test  // (expected = MethodArgumentNotValidException.class)
-    public void testSay3() throws Exception {
+    public void testThrowMethodArgumentNotValidException() throws Exception {
         UserBodyParamDto userBodyParamDto = new UserBodyParamDto();
 
         ObjectMapper objectMapper = new ObjectMapper();
         String body = objectMapper.writeValueAsString(userBodyParamDto);
 
         this.mockMvc.perform(
-                MockMvcRequestBuilders.post("/hello/say3").content(body).contentType(MediaType.APPLICATION_JSON_UTF8))
+                MockMvcRequestBuilders.post("/hello/throw-method-argument-not-valid-exception").content(body)
+                        .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest()).andDo(print());
     }
 
     @Test // (expected = ConstraintViolationException.class)
-    public void testSay4() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/say4"))
+    public void testThrowConstraintViolationException() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/throw-constraint-violation-exception"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
+    }
+
+    @Test //(expected = ConstraintViolationException.class)
+    public void testThrowConstraintViolationException2() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/hello/throw-constraint-violation-exception2"))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest()).andDo(print());
     }
 
 }

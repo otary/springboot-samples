@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>springboot-mybtias-plugin-samples</artifactId>
+    <artifactId>springboot-mybatis-plugin-samples</artifactId>
 
 
 </project>
