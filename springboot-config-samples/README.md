@@ -1,8 +1,12 @@
 # springboot-config-samples
 
-- springboot-web01-samples
-  - springboot-base01-samples
-  - springboot-base02-samples
+- [springboot-web01-samples](springboot-web01-samples)
+  - [springboot-base01-samples](springboot-base01-samples)
+  - [springboot-base02-samples](springboot-base02-samples)
+  
+- [springboot-configproperties-samples](springboot-configproperties-samples): properties文件属性注入
+  - 注入普通字段
+  - 注入静态字段
   
 ### 说明
 - springboot-web01-samples中的application.properties优先被加载，而springboot-base01-samples、springboot-base02-samples的application.properties不会被加载
