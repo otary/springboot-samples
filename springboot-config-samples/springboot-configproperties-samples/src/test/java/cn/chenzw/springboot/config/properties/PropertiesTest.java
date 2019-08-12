@@ -20,6 +20,7 @@ public class PropertiesTest {
     public void testSSOProperties() {
         Assert.assertEquals("1234567", ssoProperties.getPrivateKey());
         Assert.assertEquals("http://www.baidu.com", ssoProperties.getDefaultUrl());
+        Assert.assertEquals("默认值", ssoProperties.getDefaultValue());
     }
 
     @Test

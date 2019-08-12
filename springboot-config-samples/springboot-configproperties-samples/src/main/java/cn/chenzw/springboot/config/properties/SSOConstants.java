@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
  * 静态字段注入示例
  */
 @Configuration
-@PropertySource({"classpath:sso.properties"})
+@PropertySource(value = {"classpath:sso.properties"}, ignoreResourceNotFound = true)
 @ConfigurationProperties(prefix = "sso")
 public class SSOConstants {
 
