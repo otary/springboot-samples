@@ -15,8 +15,6 @@
         <module>springboot-admin-samples</module>
         <module>springboot-web-samples</module>
         <module>springboot-banner-samples</module>
-        <module>springboot-filters-samples</module>
-        <module>springboot-druid-samples</module>
         <module>springboot-datasources-samples</module>
         <module>springboot-validation-samples</module>
         <module>springboot-druid-samples</module>
@@ -154,7 +152,6 @@
             <version>${commons-collection4.version}</version>
         </dependency>
 
-
         <dependency>
             <groupId>cn.chenzw.toolkit</groupId>
             <artifactId>toolkit</artifactId>
@@ -174,4 +171,4 @@
         </dependency>
 
     </dependencies>
-</project>    
+</project>
