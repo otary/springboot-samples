@@ -17,6 +17,8 @@
 
 - [springboot-aop-samples](./springboot-aop-samples):集成AOP示例
 - [springboot-swagger-samples](./springboot-swagger-samples):集成swagger2示例
+  - [springboot-swagger2-basic-samples](./springboot-swagger-samples/springboot-swagger2-basic-samples): swagger-ui示例
+  - [springboot-swagger2-bootstrap-ui-samples](./springboot-swagger-samples/springboot-swagger2-bootstrap-ui-samples): bootstrap-ui示例
 - [springboot-async-samples](./springboot-async-samples): 异步请求示例
 - [springboot-admin-samples](./springboot-admin-samples): SpringBoot Admin示例
 - [springboot-mail-samples](./springboot-mail-samples)：mail操作示例
