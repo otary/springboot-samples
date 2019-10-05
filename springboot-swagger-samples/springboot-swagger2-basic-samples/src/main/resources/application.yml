@@ -1,5 +1,6 @@
 ## 开启Swagger的Basic认证功能,默认是false
 swagger:
+  production: true
   basic:
     enable: true
     ## Basic认证用户名

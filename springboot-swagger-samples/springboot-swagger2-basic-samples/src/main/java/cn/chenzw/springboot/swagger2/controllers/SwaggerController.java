@@ -49,6 +49,15 @@ public class SwaggerController {
         return map2;
     }
 
+    @ApiOperation(value = "带basic认证的GET请求", notes = "带basic认证的GET请求notes",
+            produces = "application/json, application/xml",
+            consumes = "application/json, application/xml",
+            response = SwaggerRespDto.class,
+            authorizations = {@Authorization(value = "basicAuth")})
+    @GetMapping("/get-with-basic-auth")
+    public SwaggerRespDto testGetWithBasicAuth(SwaggerParamDto swaggerParamEntity, String sex, String query) {
+        return new SwaggerRespDto();
+    }
 
     // post测试
     // @TODO
