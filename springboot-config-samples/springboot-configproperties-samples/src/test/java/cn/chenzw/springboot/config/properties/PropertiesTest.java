@@ -21,6 +21,9 @@ public class PropertiesTest {
         Assert.assertEquals("1234567", ssoProperties.getPrivateKey());
         Assert.assertEquals("http://www.baidu.com", ssoProperties.getDefaultUrl());
         Assert.assertEquals("默认值", ssoProperties.getDefaultValue());
+
+        Assert.assertEquals("[aaa, bbb, ccc]", ssoProperties.getTs().toString());
+        Assert.assertEquals("[[aaa, bbb]", ssoProperties.getDefaultTs().toString());
     }
 
     @Test

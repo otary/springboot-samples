@@ -9,6 +9,7 @@
   - [springboot-ehcache-samples](./springboot-cache-samples/springboot-ehcache-samples): 集成ehcache缓存示例
   - [springboot-redis-cache-samples](./springboot-cache-samples/springboot-redis-cache-samples)：集成redis缓存示例
 
+- [spring-boot-starter](./spring-boot-starter): spring-boot-starter制作示例
 
 - [springboot-config-samples](./springboot-config-samples)：spring配置加载优先级示例
   - [springboot-base01-samples](./springboot-config-samples/springboot-base01-samples)：子模块01配置
@@ -17,6 +18,9 @@
 
 - [springboot-aop-samples](./springboot-aop-samples):集成AOP示例
 - [springboot-swagger-samples](./springboot-swagger-samples):集成swagger2示例
+  - [springboot-swagger2-basic-samples](./springboot-swagger-samples/springboot-swagger2-basic-samples): swagger-ui示例
+    - 集成basic身份认证
+  - [springboot-swagger2-bootstrap-ui-samples](./springboot-swagger-samples/springboot-swagger2-bootstrap-ui-samples): bootstrap-ui示例
 - [springboot-async-samples](./springboot-async-samples): 异步请求示例
 - [springboot-admin-samples](./springboot-admin-samples): SpringBoot Admin示例
 - [springboot-mail-samples](./springboot-mail-samples)：mail操作示例

@@ -12,7 +12,8 @@
     <artifactId>springboot-swagger-samples</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>springboot-swagger2-samples</module>
+        <module>springboot-swagger2-basic-samples</module>
+        <module>springboot-swagger2-bootstrap-ui-samples</module>
     </modules>
 
     <properties>
@@ -23,11 +24,6 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger2.version}</version>
         </dependency>
 
