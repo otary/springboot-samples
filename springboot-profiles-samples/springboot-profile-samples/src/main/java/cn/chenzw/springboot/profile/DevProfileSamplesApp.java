@@ -14,9 +14,11 @@ public class DevProfileSamplesApp {
         ConfigurableApplicationContext cac = SpringApplication.run(DevProfileSamplesApp.class, new String[]{"--spring.profiles.active=dev"});
 
         AbstractTemplate bean = cac.getBean(AbstractTemplate.class);
-        System.out.println(bean);  // => DevTemplate
+
+        // 获取当前profile
+        String[] activeProfiles = cac.getEnvironment().getActiveProfiles();
+        System.out.println("当前profile:" + activeProfiles[0]);
 
         Assert.isTrue("dev-templates".endsWith(bean.getName()), "");
-
     }
 }
