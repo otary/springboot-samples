@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.filters.config;
 
 import org.apache.catalina.filters.RemoteIpFilter;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
