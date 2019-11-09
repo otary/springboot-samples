@@ -31,10 +31,15 @@
 - [springboot-profiles-samples](./springboot-profiles-samples): Profile、Condition示例
   - [springboot-profile-samples](./springboot-profiles-samples/springboot-profile-samples)：Profile示例
   - [springboot-condition-samples](./springboot-profiles-samples/springboot-condition-samples)；Condition示例
-- [springboot-task-samples](./springboot-task-samples): 定时任务示例
-  - [springboot-scheduler-samples](./springboot-task-samples/springboot-scheduler-samples)：scheduler示例
 - [springboot-validation-samples](./springboot-validation-samples)：参数校验示例
 - [springboot-websocket-samples](./springboot-websocket-samples)：集成websocket示例
+
+**批处理**
+- [springboot-batch-samples](./springboot-batch-samples): 批处理示例
+
+**定时处理**
+- [springboot-task-samples](./springboot-task-samples): 定时任务示例
+  - [springboot-scheduler-samples](./springboot-task-samples/springboot-scheduler-samples)：scheduler示例
 
 **持久层**
 - [springboot-mybatis-samples](./springboot-mybatis-samples): 集成mybatis示例

@@ -32,6 +32,7 @@
         <module>springboot-redis-samples</module>
         <module>springboot-config-samples</module>
         <module>spring-boot-starter</module>
+        <module>springboot-batch-samples</module>
     </modules>
 
     <properties>
@@ -59,14 +60,21 @@
         <pagehelper.version>1.2.11</pagehelper.version>
     </properties>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.5.RELEASE</version>
-    </parent>
+    <!-- <parent>
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-parent</artifactId>
+         <version>2.1.5.RELEASE</version>
+     </parent>-->
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.1.5.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>de.codecentric</groupId>
                 <artifactId>spring-boot-admin-server</artifactId>
