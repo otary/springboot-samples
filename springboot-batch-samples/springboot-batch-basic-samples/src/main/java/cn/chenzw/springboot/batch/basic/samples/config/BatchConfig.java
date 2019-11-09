@@ -29,7 +29,9 @@ public class BatchConfig {
     @Bean
     public Job myJob() {
         return jobBuilderFactory.get("myJobName")
-                .incrementer(new RunIdIncrementer()).listener(jobExecutionListener())
+                .incrementer(new RunIdIncrementer())
+                .listener(jobExecutionListener())
+                // .start(myStep1()).next(myStep1()).next(myStep1())
                 .flow(myStep1())
                 .end()
                 .build();
@@ -38,7 +40,8 @@ public class BatchConfig {
     @Bean
     public Step myStep1() {
         return stepBuilderFactory.get("myStepName1")
-                .<String, String>chunk(5)  // 每执行5次processor后write一次
+                .<String, String>chunk(10)  // 每执行10次processor后write一次
+                .faultTolerant().retryLimit(3).retry(Exception.class).skipLimit(100).skip(Exception.class)  // 捕捉到异常就重试,重试100次还是异常,JOB就停止并标志失败
                 .reader(new MyItemReader())
                 .processor(new MyItemProcessor())
                 .writer(new MyItemWriter())

@@ -17,15 +17,15 @@ public class JobInvokerController {
     JobLauncher jobLauncher;
 
     @Autowired
-    Job processJob;
+    Job myJob;
 
-    //每20秒执行一次
+    // 每5秒执行一次
     @Scheduled(cron = "*/5 * *  * * * ")
     public void handle() throws Exception {
 
         JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
                 .toJobParameters();
-        jobLauncher.run(processJob, jobParameters);
+        jobLauncher.run(myJob, jobParameters);
 
     }
 }
