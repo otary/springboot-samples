@@ -37,7 +37,8 @@ public class BatchConfig {
 
     @Bean
     public Step myStep1() {
-        return stepBuilderFactory.get("myStepName1").<String, String>chunk(1)
+        return stepBuilderFactory.get("myStepName1")
+                .<String, String>chunk(5)  // 每执行5次processor后write一次
                 .reader(new MyItemReader())
                 .processor(new MyItemProcessor())
                 .writer(new MyItemWriter())

@@ -16,6 +16,5 @@ public class MyItemWriter implements ItemWriter<String> {
         for (String msg : messages) {
             System.out.println("写入：" + msg);
         }
-
     }
 }
