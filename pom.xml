@@ -33,6 +33,7 @@
         <module>springboot-config-samples</module>
         <module>spring-boot-starter</module>
         <module>springboot-batch-samples</module>
+        <module>springboot-integration-samples</module>
     </modules>
 
     <properties>
