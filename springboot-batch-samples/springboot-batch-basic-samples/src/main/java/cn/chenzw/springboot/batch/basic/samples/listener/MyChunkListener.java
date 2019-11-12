@@ -19,6 +19,6 @@ public class MyChunkListener implements ChunkListener {
 
     @Override
     public void afterChunkError(ChunkContext chunkContext) {
-        System.out.println("chunk执行报错之后");
+        System.out.println("chunk执行报错之后:");
     }
 }

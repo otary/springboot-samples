@@ -1,8 +1,6 @@
 package cn.chenzw.springboot.batch.basic.samples.config;
 
-import cn.chenzw.springboot.batch.basic.samples.item.MyItemProcessor;
 import cn.chenzw.springboot.batch.basic.samples.item.MyItemReader;
-import cn.chenzw.springboot.batch.basic.samples.item.MyItemWriter;
 import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemProcessor;
 import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemWriter;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyJobExecutionListener;
@@ -14,11 +12,15 @@ import org.springframework.batch.core.configuration.annotation.EnableBatchProces
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
+import org.springframework.batch.core.step.skip.AlwaysSkipItemSkipPolicy;
+import org.springframework.batch.core.step.skip.SkipLimitExceededException;
+import org.springframework.batch.core.step.skip.SkipPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.task.SimpleAsyncTaskExecutor;
-import org.springframework.core.task.TaskExecutor;
+import org.springframework.retry.RetryContext;
+import org.springframework.retry.RetryPolicy;
+import org.springframework.retry.policy.NeverRetryPolicy;
 
 
 @Configuration
@@ -46,21 +48,25 @@ public class BatchConfig {
     public Step myStep1() {
         return stepBuilderFactory.get("myStepName1")
                 .<String, String>chunk(5)  // 每执行10次processor后write一次
-                .faultTolerant().retryLimit(3).retry(Exception.class).skipLimit(3).skip(Exception.class)  // 捕捉到异常就重试,重试100次还是异常,JOB就停止并标志失败
+                .faultTolerant()
+                //.retryLimit(0).retry(IllegalArgumentException.class)
+                //.skipLimit(1).skip(Exception.class)  // 捕捉到异常就重试,重试100次还是异常,JOB就停止并标志失败
+                .skipPolicy(new AlwaysSkipItemSkipPolicy())
+                .retryPolicy(new NeverRetryPolicy())
                 .listener(myChunkListener())
                 .listener(mySkipListener())
                 .listener(myStepListener())
                 .reader(new MyItemReader())
-               // .processor(new MyItemProcessor())
+                // .processor(new MyItemProcessor())
                 .processor(new MyAsyncItemProcessor())
                 //.writer(new MyItemWriter())
                 .writer(new MyAsyncItemWriter())
-               // .taskExecutor(myTaskExecutor())
-               // .throttleLimit(100)
+                // .taskExecutor(myTaskExecutor())
+                //.throttleLimit(100)
                 .build();
     }
 
-   /* @Bean
+  /*  @Bean
     public TaskExecutor myTaskExecutor() {
         return new SimpleAsyncTaskExecutor("spring_batch");
     }*/

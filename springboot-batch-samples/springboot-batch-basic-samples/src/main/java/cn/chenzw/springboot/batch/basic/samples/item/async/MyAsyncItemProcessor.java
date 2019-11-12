@@ -2,6 +2,10 @@ package cn.chenzw.springboot.batch.basic.samples.item.async;
 
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.retry.RetryCallback;
+import org.springframework.retry.RetryContext;
+import org.springframework.retry.policy.SimpleRetryPolicy;
+import org.springframework.retry.support.RetryTemplate;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
@@ -17,13 +21,14 @@ public class MyAsyncItemProcessor implements
 
     private SimpleAsyncTaskExecutor taskExecutor = new SimpleAsyncTaskExecutor("batch-executor");
 
-    public MyAsyncItemProcessor(){
+    public MyAsyncItemProcessor() {
         //ThreadFactory
         //taskExecutor.setThreadFactory();
 
-        System.out.println(taskExecutor.isThrottleActive());
-        //taskExecutor.setConcurrencyLimit(2);
+        //  System.out.println(taskExecutor.isThrottleActive());
+        taskExecutor.setConcurrencyLimit(5);
     }
+
 
     @Override
     public Future<String> process(String data) throws Exception {
@@ -32,17 +37,44 @@ public class MyAsyncItemProcessor implements
                 new Callable<String>() {
                     public String call() throws Exception {
 
+                       /* SimpleRetryPolicy policy = new SimpleRetryPolicy(5);
+
+                        RetryTemplate template = new RetryTemplate();
+
+                        template.setRetryPolicy(policy);
+
+                        try {
+                            Object execute = template.execute(new RetryCallback<Object, Throwable>() {
+
+                                int i =0;
+                                @Override
+                                public Object doWithRetry(RetryContext retryContext) throws Throwable {
+                                    if(i < 3){
+                                        i++;
+                                        throw new RuntimeException("泡池");
+                                    }
+                                    return "结果";
+                                }
+                            });
+
+                            System.out.println("execute:" + execute);
+                        } catch (Throwable throwable) {
+                            System.out.println("这是重试异常");
+                        }*/
+
                         System.out.println("before process[" + Thread.currentThread().getId() + "]:" + data);
 
                         Thread.sleep(2000);
 
-                        /*if(true){
-                            throw new IllegalArgumentException("异常！");
-                        }*/
+                        int i = Integer.parseInt(data);
+                        if (i % 5 == 0) {
+                            System.out.println("-----------异常:" + i);
+                            throw new RuntimeException("异常！");
+                        }
 
-                        System.out.println("after process[" + Thread.currentThread().getId() + "]:" + data);
+                       // System.out.println("after process[" + Thread.currentThread().getId() + "]:" + data);
 
-                        return data.toUpperCase();
+                        return "";
                     }
                 });
         this.taskExecutor.execute(task);

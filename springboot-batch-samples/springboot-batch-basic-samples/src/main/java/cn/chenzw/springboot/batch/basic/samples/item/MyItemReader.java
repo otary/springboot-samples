@@ -14,8 +14,8 @@ public class MyItemReader implements ItemReader<String> {
             "lisi"};
 
     public MyItemReader(){
-        messages = new String[1000];
-        for (int i = 0; i < 1000; i++) {
+        messages = new String[500];
+        for (int i = 0; i < 500; i++) {
             messages[i] = String.valueOf(i);
         }
     }
@@ -27,12 +27,14 @@ public class MyItemReader implements ItemReader<String> {
 
         System.out.println("读取:" + messages[count]);
 
-        if (count < messages.length) {
-            return messages[count++];
-        } else {
-            count = 0;
-        }
+        /*if (count < messages.length) {
 
-        return null;
+        }*/
+        return messages[count++];
+       /* else {
+            count = 0;
+        }*/
+
+       // return null;
     }
 }
