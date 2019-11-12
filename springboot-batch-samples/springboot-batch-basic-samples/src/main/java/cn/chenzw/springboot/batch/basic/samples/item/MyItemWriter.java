@@ -13,8 +13,6 @@ public class MyItemWriter implements ItemWriter<String> {
 
     @Override
     public void write(List<? extends String> messages) throws Exception {
-        for (String msg : messages) {
-            System.out.println("写入：" + msg);
-        }
+        System.out.println("--------写入---------:" + messages);
     }
 }

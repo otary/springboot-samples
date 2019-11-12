@@ -19,7 +19,12 @@ public class MyItemProcessor implements ItemProcessor<String, String> {
      */
     @Override
     public String process(String data) throws Exception {
-        System.out.println("process:" + data);
+
+        System.out.println("process[" + Thread.currentThread().getId() +"]:" + data);
+
+        if(true){
+            throw new IllegalArgumentException("异常");
+        }
 
         return data.toUpperCase();
     }

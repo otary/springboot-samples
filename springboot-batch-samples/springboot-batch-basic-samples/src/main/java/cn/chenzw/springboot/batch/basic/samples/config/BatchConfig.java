@@ -4,9 +4,9 @@ import cn.chenzw.springboot.batch.basic.samples.item.MyItemProcessor;
 import cn.chenzw.springboot.batch.basic.samples.item.MyItemReader;
 import cn.chenzw.springboot.batch.basic.samples.item.MyItemWriter;
 import cn.chenzw.springboot.batch.basic.samples.listener.JobCompletionListener;
-import org.springframework.batch.core.Job;
-import org.springframework.batch.core.JobExecutionListener;
-import org.springframework.batch.core.Step;
+import cn.chenzw.springboot.batch.basic.samples.listener.MyChunkListener;
+import cn.chenzw.springboot.batch.basic.samples.listener.MySkipListener;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -40,8 +40,10 @@ public class BatchConfig {
     @Bean
     public Step myStep1() {
         return stepBuilderFactory.get("myStepName1")
-                .<String, String>chunk(10)  // 每执行10次processor后write一次
-                .faultTolerant().retryLimit(3).retry(Exception.class).skipLimit(100).skip(Exception.class)  // 捕捉到异常就重试,重试100次还是异常,JOB就停止并标志失败
+                .<String, String>chunk(5)  // 每执行10次processor后write一次
+                .faultTolerant().retryLimit(3).retry(Exception.class).skipLimit(3).skip(Exception.class)  // 捕捉到异常就重试,重试100次还是异常,JOB就停止并标志失败
+                .listener(myChunkListener())
+                .listener(mySkipListener())
                 .reader(new MyItemReader())
                 .processor(new MyItemProcessor())
                 .writer(new MyItemWriter())
@@ -51,5 +53,15 @@ public class BatchConfig {
     @Bean
     public JobExecutionListener jobExecutionListener() {
         return new JobCompletionListener();
+    }
+
+    @Bean
+    public ChunkListener myChunkListener() {
+        return new MyChunkListener();
+    }
+
+    @Bean
+    public SkipListener mySkipListener() {
+        return new MySkipListener();
     }
 }

@@ -23,7 +23,7 @@ public class JobCompletionListener extends JobExecutionListenerSupport {
         if (jobExecution.getStatus() == BatchStatus.COMPLETED) {
             endTime = System.currentTimeMillis();
 
-            System.out.println("批处理执行结束...., cost: " + (endTime - startTime) + "ms");
+            System.out.println("批处理执行结束....cost: " + (endTime - startTime) + "ms");
         }
     }
 }

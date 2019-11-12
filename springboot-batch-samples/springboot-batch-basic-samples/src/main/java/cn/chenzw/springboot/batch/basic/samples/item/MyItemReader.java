@@ -18,11 +18,13 @@ public class MyItemReader implements ItemReader<String> {
     @Override
     public String read() {
         System.out.println("读取:" + count);
+
         if (count < messages.length) {
             return messages[count++];
         } else {
             count = 0;
         }
+
         return null;
     }
 }
