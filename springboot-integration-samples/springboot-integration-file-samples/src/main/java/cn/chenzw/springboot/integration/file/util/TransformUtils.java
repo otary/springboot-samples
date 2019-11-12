@@ -9,13 +9,11 @@ import java.nio.charset.Charset;
 public class TransformUtils {
 
     public static final String transformFileToString(File file) {
-        System.out.println("-------------------:" + file);
-       /* try {
+        try {
             return FileUtils.readFileToString(file, Charset.defaultCharset());
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-
-        return "--------------------";
+        }
+        return "";
     }
 }

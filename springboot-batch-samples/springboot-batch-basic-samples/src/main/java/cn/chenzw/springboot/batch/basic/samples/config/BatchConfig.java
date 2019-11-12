@@ -3,9 +3,12 @@ package cn.chenzw.springboot.batch.basic.samples.config;
 import cn.chenzw.springboot.batch.basic.samples.item.MyItemProcessor;
 import cn.chenzw.springboot.batch.basic.samples.item.MyItemReader;
 import cn.chenzw.springboot.batch.basic.samples.item.MyItemWriter;
-import cn.chenzw.springboot.batch.basic.samples.listener.JobCompletionListener;
+import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemProcessor;
+import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemWriter;
+import cn.chenzw.springboot.batch.basic.samples.listener.MyJobExecutionListener;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyChunkListener;
 import cn.chenzw.springboot.batch.basic.samples.listener.MySkipListener;
+import cn.chenzw.springboot.batch.basic.samples.listener.MyStepListener;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -14,6 +17,8 @@ import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 
 
 @Configuration
@@ -30,7 +35,7 @@ public class BatchConfig {
     public Job myJob() {
         return jobBuilderFactory.get("myJobName")
                 .incrementer(new RunIdIncrementer())
-                .listener(jobExecutionListener())
+                .listener(myJobExecutionListener())
                 // .start(myStep1()).next(myStep1()).next(myStep1())
                 .flow(myStep1())
                 .end()
@@ -44,15 +49,25 @@ public class BatchConfig {
                 .faultTolerant().retryLimit(3).retry(Exception.class).skipLimit(3).skip(Exception.class)  // 捕捉到异常就重试,重试100次还是异常,JOB就停止并标志失败
                 .listener(myChunkListener())
                 .listener(mySkipListener())
+                .listener(myStepListener())
                 .reader(new MyItemReader())
-                .processor(new MyItemProcessor())
-                .writer(new MyItemWriter())
+               // .processor(new MyItemProcessor())
+                .processor(new MyAsyncItemProcessor())
+                //.writer(new MyItemWriter())
+                .writer(new MyAsyncItemWriter())
+               // .taskExecutor(myTaskExecutor())
+               // .throttleLimit(100)
                 .build();
     }
 
+   /* @Bean
+    public TaskExecutor myTaskExecutor() {
+        return new SimpleAsyncTaskExecutor("spring_batch");
+    }*/
+
     @Bean
-    public JobExecutionListener jobExecutionListener() {
-        return new JobCompletionListener();
+    public JobExecutionListener myJobExecutionListener() {
+        return new MyJobExecutionListener();
     }
 
     @Bean
@@ -63,5 +78,10 @@ public class BatchConfig {
     @Bean
     public SkipListener mySkipListener() {
         return new MySkipListener();
+    }
+
+    @Bean
+    public StepListener myStepListener() {
+        return new MyStepListener();
     }
 }

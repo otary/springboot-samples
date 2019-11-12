@@ -13,11 +13,19 @@ public class MyItemReader implements ItemReader<String> {
             "zhangsan",
             "lisi"};
 
+    public MyItemReader(){
+        messages = new String[1000];
+        for (int i = 0; i < 1000; i++) {
+            messages[i] = String.valueOf(i);
+        }
+    }
+
     private int count = 0;
 
     @Override
     public String read() {
-        System.out.println("读取:" + count);
+
+        System.out.println("读取:" + messages[count]);
 
         if (count < messages.length) {
             return messages[count++];
