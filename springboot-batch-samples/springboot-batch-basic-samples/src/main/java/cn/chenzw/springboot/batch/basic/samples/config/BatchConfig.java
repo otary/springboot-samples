@@ -3,23 +3,18 @@ package cn.chenzw.springboot.batch.basic.samples.config;
 import cn.chenzw.springboot.batch.basic.samples.item.MyItemReader;
 import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemProcessor;
 import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemWriter;
-import cn.chenzw.springboot.batch.basic.samples.listener.MyJobExecutionListener;
-import cn.chenzw.springboot.batch.basic.samples.listener.MyChunkListener;
-import cn.chenzw.springboot.batch.basic.samples.listener.MySkipListener;
-import cn.chenzw.springboot.batch.basic.samples.listener.MyStepListener;
+import cn.chenzw.springboot.batch.basic.samples.listener.*;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.step.skip.AlwaysSkipItemSkipPolicy;
-import org.springframework.batch.core.step.skip.SkipLimitExceededException;
-import org.springframework.batch.core.step.skip.SkipPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.retry.RetryContext;
-import org.springframework.retry.RetryPolicy;
 import org.springframework.retry.policy.NeverRetryPolicy;
 
 
@@ -89,5 +84,10 @@ public class BatchConfig {
     @Bean
     public StepListener myStepListener() {
         return new MyStepListener();
+    }
+
+    @Bean
+    public ItemReadListener myItemReadListener() {
+        return  new MyItemReaderListener();
     }
 }

@@ -20,7 +20,7 @@ public class JobInvokerController {
     Job myJob;
 
     // 每5秒执行一次
-    // @Scheduled(cron = "*/15 * *  * * * ")
+    @Scheduled(cron = "*/5 * *  * * * ")
     public void handle() throws Exception {
 
         JobParameters jobParameters = new JobParametersBuilder().addLong("time", System.currentTimeMillis())
