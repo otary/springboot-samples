@@ -1,6 +1,8 @@
 package cn.chenzw.springboot.batch.basic.samples.item;
 
 import cn.chenzw.springboot.batch.basic.samples.domain.entity.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 
 /**
@@ -8,26 +10,15 @@ import org.springframework.batch.item.ItemProcessor;
  *
  * @author chenzw
  */
-public class MyItemProcessor implements ItemProcessor<String, String> {
+public class MyItemProcessor implements ItemProcessor<Person, Person> {
 
-    /**
-     * 字母转大写
-     *
-     * @param data
-     * @return
-     * @throws Exception
-     */
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+
     @Override
-    public String process(String data) throws Exception {
-
-        System.out.println("process[" + Thread.currentThread().getId() +"]:" + data);
-
-        /*if(true){
-            throw new IllegalArgumentException("异常");
-        }*/
-
-        return data.toUpperCase();
+    public Person process(Person item) throws Exception {
+        logger.info("process[{}]: {}", Thread.currentThread().getId(), item);
+        return item;
     }
-
 
 }

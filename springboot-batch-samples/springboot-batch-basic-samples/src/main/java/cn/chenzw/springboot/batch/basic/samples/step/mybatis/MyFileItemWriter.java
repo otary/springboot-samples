@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.batch.basic.samples.step.file;
+package cn.chenzw.springboot.batch.basic.samples.step.mybatis;
 
 import cn.chenzw.springboot.batch.basic.samples.domain.entity.Person;
 import cn.chenzw.springboot.batch.basic.samples.repository.PersonMapper;

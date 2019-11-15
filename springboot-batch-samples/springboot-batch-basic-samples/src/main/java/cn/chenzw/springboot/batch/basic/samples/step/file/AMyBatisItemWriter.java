@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.batch.basic.samples.step.mybatis;
+package cn.chenzw.springboot.batch.basic.samples.step.file;
 
 import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.item.json.JsonObjectMarshaller;

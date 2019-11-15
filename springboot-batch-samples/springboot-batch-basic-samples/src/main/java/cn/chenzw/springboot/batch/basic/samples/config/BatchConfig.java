@@ -1,10 +1,5 @@
 package cn.chenzw.springboot.batch.basic.samples.config;
 
-import cn.chenzw.springboot.batch.basic.samples.item.MyItemReader;
-import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemProcessor;
-import cn.chenzw.springboot.batch.basic.samples.item.async.MyAsyncItemWriter;
-import cn.chenzw.springboot.batch.basic.samples.listener.*;
-import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -28,7 +23,7 @@ public class BatchConfig {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
-    @Bean
+   /* @Bean
     public Job myJob() {
         return jobBuilderFactory.get("myJobName")
                 .incrementer(new RunIdIncrementer())
@@ -59,14 +54,14 @@ public class BatchConfig {
                 // .taskExecutor(myTaskExecutor())
                 //.throttleLimit(100)
                 .build();
-    }
+    }*/
 
   /*  @Bean
     public TaskExecutor myTaskExecutor() {
         return new SimpleAsyncTaskExecutor("spring_batch");
     }*/
 
-    @Bean
+   /* @Bean
     public JobExecutionListener myJobExecutionListener() {
         return new MyJobExecutionListener();
     }
@@ -83,11 +78,11 @@ public class BatchConfig {
 
     @Bean
     public StepListener myStepListener() {
-        return new MyStepListener();
+        return new MyStepExecutionListener();
     }
 
     @Bean
     public ItemReadListener myItemReadListener() {
         return  new MyItemReaderListener();
-    }
+    }*/
 }

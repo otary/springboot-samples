@@ -4,7 +4,7 @@
     <!-- 控制台输出 -->
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+            <pattern>[%d{MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{20} - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -16,7 +16,7 @@
             <maxHistory>60</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+            <pattern>[%d{MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{20} - %msg%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <!-- 只打印错误日志 -->
@@ -29,12 +29,12 @@
     <appender name="WRITE-ERROR-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- 按天回滚 daily -->
-            <fileNamePattern>logs/write-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>logs/write_error_%d{yyyy-MM-dd}.log</fileNamePattern>
             <!-- 日志最大的历史 60天 -->
             <maxHistory>60</maxHistory>
         </rollingPolicy>
         <encoder>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+            <pattern>[%d{MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{20} - %msg%n</pattern>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
             <!-- 只打印错误日志 -->

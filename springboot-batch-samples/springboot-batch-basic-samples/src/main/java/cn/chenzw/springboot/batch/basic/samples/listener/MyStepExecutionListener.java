@@ -11,9 +11,10 @@ import org.springframework.batch.core.StepExecutionListener;
  *
  * @author chenzw
  */
-public class MyStepListener implements StepExecutionListener {
+public class MyStepExecutionListener implements StepExecutionListener {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
+
 
     @Override
     public void beforeStep(StepExecution stepExecution) {
@@ -22,7 +23,7 @@ public class MyStepListener implements StepExecutionListener {
 
     @Override
     public ExitStatus afterStep(StepExecution stepExecution) {
-        System.out.println("step执行之后");
+        logger.info("after step..." + stepExecution);
         return null;
     }
 }
