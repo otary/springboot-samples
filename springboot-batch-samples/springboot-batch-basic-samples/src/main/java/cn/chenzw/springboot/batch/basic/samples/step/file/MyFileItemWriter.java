@@ -1,9 +1,11 @@
 package cn.chenzw.springboot.batch.basic.samples.step.file;
 
 import cn.chenzw.springboot.batch.basic.samples.domain.entity.Person;
+import cn.chenzw.springboot.batch.basic.samples.repository.PersonMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
@@ -16,12 +18,14 @@ public class MyFileItemWriter implements ItemWriter<Person> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    @Autowired
+    PersonMapper personMapper;
+
     @Override
     public void write(List<? extends Person> list) throws Exception {
 
-        if(true){
-            throw new RuntimeException("异常!");
-        }
+        personMapper.insertBatch((List<Person>) list);
+
         logger.info("文件写入:" + list);
     }
 }

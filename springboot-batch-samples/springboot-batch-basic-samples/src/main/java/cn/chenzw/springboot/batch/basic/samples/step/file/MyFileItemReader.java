@@ -7,7 +7,7 @@ import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.LineCallbackHandler;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
 /**
  * 文件读操作
@@ -16,10 +16,11 @@ import org.springframework.core.io.ClassPathResource;
  */
 public class MyFileItemReader extends FlatFileItemReader {
 
+
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    public MyFileItemReader() {
-        this.setResource(new ClassPathResource("data/1.txt"));
+    public MyFileItemReader(Resource resource) {
+        this.setResource(resource);
         this.setLinesToSkip(1);
         this.setSkippedLinesCallback(new LineCallbackHandler() {
             @Override

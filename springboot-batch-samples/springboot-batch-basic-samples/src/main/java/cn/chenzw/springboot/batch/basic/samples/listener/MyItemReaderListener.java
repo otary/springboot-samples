@@ -32,7 +32,7 @@ public class MyItemReaderListener implements ItemReadListener {
             FlatFileParseException parseException = (FlatFileParseException) e;
             logger.error("read with error! data: [{} - {}], exception: [{} - {}]", parseException.getLineNumber(), parseException.getInput() , e.getClass().getSimpleName(), e.getLocalizedMessage());
         } else {
-            logger.error("read with error! exception: {} - {}", e.getClass(), e.getLocalizedMessage());
+            logger.error("read with error! exception: [{} - {}]", e.getClass().getSimpleName(), e.getLocalizedMessage());
         }
 
     }

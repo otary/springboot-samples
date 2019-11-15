@@ -5,21 +5,30 @@ import cn.chenzw.springboot.batch.basic.samples.listener.MyItemWriteListener;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyStepListener;
 import cn.chenzw.springboot.batch.basic.samples.step.file.MyFileItemReader;
 import cn.chenzw.springboot.batch.basic.samples.step.file.MyFileItemWriter;
+import cn.chenzw.springboot.batch.basic.samples.step.mybatis.AMyBatisItemReader;
+import cn.chenzw.springboot.batch.basic.samples.step.mybatis.AMyBatisItemWriter;
+import cn.chenzw.toolkit.commons.ProjectUtils;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.skip.AlwaysSkipItemSkipPolicy;
-import org.springframework.batch.core.step.skip.NeverSkipItemSkipPolicy;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.batch.item.json.JacksonJsonObjectMarshaller;
+import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.item.support.PassThroughItemProcessor;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 
 
 /**
@@ -36,11 +45,16 @@ public class FileBatchConfig {
     @Autowired
     public StepBuilderFactory stepBuilderFactory;
 
+    @Autowired
+    public SqlSessionFactory sessionFactory;
+
     @Bean
     public Job fileProcessJob() {
         return jobBuilderFactory.get("fileProcessJob")
                 .incrementer(new RunIdIncrementer())
-                .flow(fileProcessStep()).next(fileMoveStep())
+                .flow(fileProcessStep())
+                .next(dbProcessStep())
+                .next(fileMoveStep())
                 .end()
                 .build();
     }
@@ -62,7 +76,20 @@ public class FileBatchConfig {
                 .processor(new PassThroughItemProcessor())
                 .writer(myFileItemWriter())
                 .build();
+    }
 
+    @Bean
+    public Step dbProcessStep() {
+        return stepBuilderFactory.get("dbProcessStep")
+                .chunk(10)
+                .faultTolerant().skipPolicy(new AlwaysSkipItemSkipPolicy())
+                .listener(myFileStepListener())
+                .listener(myFileItemReadListener())
+                .listener(myFileItemWriteListener())
+                .reader(aMyBatisItemReader())
+                .processor(new PassThroughItemProcessor())
+                .writer(aMyBatisItemWriter())
+                .build();
     }
 
     @Bean
@@ -77,11 +104,13 @@ public class FileBatchConfig {
     }
 
     @Bean
-    public ItemReader myFileItemReader() {
-        return new MyFileItemReader();
+    @StepScope
+    public FlatFileItemReader myFileItemReader() {
+        return new MyFileItemReader(new ClassPathResource("data/person/1.txt"));
     }
 
     @Bean
+    @StepScope
     public ItemWriter myFileItemWriter() {
         return new MyFileItemWriter();
     }
@@ -100,4 +129,18 @@ public class FileBatchConfig {
     public ItemWriteListener myFileItemWriteListener() {
         return new MyItemWriteListener();
     }
+
+    @Bean
+    @StepScope
+    public ItemReader aMyBatisItemReader() {
+        return new AMyBatisItemReader(sessionFactory);
+    }
+
+    @Bean
+    @StepScope
+    public JsonFileItemWriter aMyBatisItemWriter() {
+        FileSystemResource fileSystemResource = new FileSystemResource(ProjectUtils.getRootPath() + "/data/1.json");
+        return new AMyBatisItemWriter(fileSystemResource, new JacksonJsonObjectMarshaller());
+    }
+
 }
