@@ -20,6 +20,10 @@ public class MyFileItemReader extends FlatFileItemReader {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
+    /**
+     * 注入资源
+     * @param resource
+     */
     public MyFileItemReader(Resource resource) {
         this.setResource(resource);
         this.setLinesToSkip(1);

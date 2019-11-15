@@ -4,7 +4,7 @@ import cn.chenzw.springboot.batch.basic.samples.listener.MyItemReaderListener;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyItemWriteListener;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyStepExecutionListener;
 import cn.chenzw.springboot.batch.basic.samples.step.file.MyFileItemReader;
-import cn.chenzw.springboot.batch.basic.samples.step.mybatis.MyFileItemWriter;
+import cn.chenzw.springboot.batch.basic.samples.step.file.MyFileItemWriter;
 import cn.chenzw.springboot.batch.basic.samples.step.mybatis.AMyBatisItemReader;
 import cn.chenzw.springboot.batch.basic.samples.step.file.AMyBatisItemWriter;
 import cn.chenzw.toolkit.commons.ProjectUtils;
@@ -79,7 +79,7 @@ public class FileBatchConfig {
     }
 
     /**
-     * 读数据库 -> 写入json文件
+     *  读数据库 -> 写入json文件
      * @return
      */
     @Bean
