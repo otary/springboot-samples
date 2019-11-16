@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * @author chenzw
  */
-@Configuration
+//@Configuration
 public class AsyncBatchConfig {
 
     @Autowired
