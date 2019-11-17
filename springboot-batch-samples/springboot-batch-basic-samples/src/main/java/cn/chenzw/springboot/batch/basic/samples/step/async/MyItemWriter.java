@@ -18,6 +18,11 @@ public class MyItemWriter implements ItemWriter<Person> {
 
     @Override
     public void write(List<? extends Person> items) throws Exception {
+
+       /* if(true){
+            throw new IllegalArgumentException("xxxx");
+        }*/
+
         logger.info("写入:{}", items);
     }
 }
