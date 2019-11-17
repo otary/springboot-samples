@@ -1,13 +1,9 @@
-package cn.chenzw.springboot.batch.basic.samples.item;
+package cn.chenzw.springboot.batch.basic.samples.step.async;
 
 import cn.chenzw.springboot.batch.basic.samples.domain.entity.Person;
 import cn.chenzw.toolkit.commons.RandomStringExtUtils;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.NonTransientResourceException;
-import org.springframework.batch.item.ParseException;
-import org.springframework.batch.item.UnexpectedInputException;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.batch.basic.samples.item;
+package cn.chenzw.springboot.batch.basic.samples.step.async;
 
 import cn.chenzw.springboot.batch.basic.samples.domain.entity.Person;
 import org.slf4j.Logger;
