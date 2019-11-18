@@ -15,10 +15,7 @@ import org.springframework.integration.annotation.Poller;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.integration.config.EnableIntegration;
 import org.springframework.integration.core.MessageSource;
-import org.springframework.integration.dsl.IntegrationFlow;
-import org.springframework.integration.dsl.IntegrationFlows;
-import org.springframework.integration.dsl.MessageChannels;
-import org.springframework.integration.dsl.Pollers;
+import org.springframework.integration.dsl.*;
 import org.springframework.integration.file.FileReadingMessageSource;
 import org.springframework.integration.file.dsl.FileInboundChannelAdapterSpec;
 import org.springframework.integration.file.filters.AcceptOnceFileListFilter;
@@ -121,5 +118,24 @@ public class IntegrationFileDSLConfig {
         };
     }
 
+
+    @Bean
+    public MessageChannel restartChannel() {
+        return MessageChannels.queue().get();
+    }
+
+
+    @Bean
+    public IntegrationFlow processRestartsFlow() {
+        return IntegrationFlows.from(restartChannel())
+                //.delay("wait5sec", (DelayerEndpointSpec e) -> e.defaultDelay(5000))
+                .handle(new MessageHandler() {
+                    @Override
+                    public void handleMessage(Message<?> message) throws MessagingException {
+                        System.out.println("-----------------------:" + message.getPayload());
+                    }
+                })
+                .get();
+    }
 
 }
