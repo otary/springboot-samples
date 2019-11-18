@@ -17,7 +17,7 @@ import java.io.File;
  * @author chenzw
  */
 @Configuration
-public class IntegrationSftpDslConfig {
+public class IntegrationSftpDSLConfig {
 
     @Bean
     public IntegrationFlow sftpInboundFlow(SessionFactory sftpSessionFactory) {
