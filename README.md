@@ -77,6 +77,7 @@
   - [springboot-container-jetty-samples](./springboot-container-samples/springboot-container-jetty-samples)：集成jetty容器示例
   - [springboot-container-tomcat-samples](./springboot-container-samples/springboot-container-tomcat-samples)：集成tomcat容器示例
 
+- [springboot-jmx-samples](./springboot-jmx-samples): JMX示例
 
 ## 问题解决
 

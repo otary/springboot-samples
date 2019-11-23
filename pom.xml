@@ -34,6 +34,7 @@
         <module>spring-boot-starter</module>
         <module>springboot-batch-samples</module>
         <module>springboot-integration-samples</module>
+        <module>springboot-jmx-samples</module>
     </modules>
 
     <properties>
