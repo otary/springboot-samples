@@ -22,9 +22,7 @@ import org.springframework.util.ErrorHandler;
 
 import java.io.File;
 
-//@Configuration
-//@EnableIntegration
-//@IntegrationComponentScan
+@Configuration
 public class IntegrationFileConfig {
 
     @Bean
@@ -57,7 +55,7 @@ public class IntegrationFileConfig {
             @Override
             public void handleError(Throwable throwable) {
 
-                System.out.println("---------error----------" + throwable);
+               // System.out.println("---------error----------" + throwable);
 
                 if (throwable.getCause() instanceof MessagingException) {
                     MessagingException exception = (MessagingException) throwable.getCause();
@@ -77,7 +75,7 @@ public class IntegrationFileConfig {
 
             @Override
             public void handleMessage(Message<?> message) throws MessagingException {
-                System.out.println("-----------------" + message);
+           //     System.out.println("-----------------" + message);
 
                 //throw new RuntimeException("抛出异常!");
             }

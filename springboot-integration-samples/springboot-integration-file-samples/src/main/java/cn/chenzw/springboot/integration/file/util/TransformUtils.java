@@ -8,6 +8,12 @@ import java.nio.charset.Charset;
 
 public class TransformUtils {
 
+    /**
+     * 读取文件
+     *
+     * @param file
+     * @return
+     */
     public static final String transformFileToString(File file) {
         try {
             return FileUtils.readFileToString(file, Charset.defaultCharset());

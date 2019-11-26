@@ -34,6 +34,7 @@
         <module>spring-boot-starter</module>
         <module>springboot-batch-samples</module>
         <module>springboot-integration-samples</module>
+        <module>springboot-jmx-samples</module>
     </modules>
 
     <properties>
@@ -128,6 +129,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator</artifactId>
         </dependency>
 
         <dependency>

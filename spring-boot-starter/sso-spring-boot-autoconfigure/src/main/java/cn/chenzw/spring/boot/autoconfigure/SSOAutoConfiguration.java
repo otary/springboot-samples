@@ -9,6 +9,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 在META-INF/spring.factories中配置自动装载的类
+ */
 @Configuration
 // @ConditionalOnClass
 @EnableConfigurationProperties(SSOProperties.class)
