@@ -11,7 +11,7 @@
         from java_types_entity
     </select>
 
-    <insert id="insertBatch">
+    <!--<insert id="insertBatch">
         insert into java_types_entity (
         byte_type,
         short_type,
@@ -39,6 +39,69 @@
             #{typeEntity.dateType} as date_type
             FROM dual
         </foreach>
+    </insert>-->
+
+    <insert id="insertBatch">
+        <if test="javaTypesEntities != null and javaTypesEntities.size() > 0">
+            insert into java_types_entity (
+            byte_type,
+            short_type,
+            character_type,
+            float_type,
+            integer_type,
+            long_type,
+            double_type,
+            bytes_type,
+            bigdecimal_type,
+            boolean_type,
+            date_type) VALUES
+            <foreach collection="javaTypesEntities" item="typeEntity" separator=",">
+                (
+                #{typeEntity.byteType},
+                #{typeEntity.shortType},
+                #{typeEntity.characterType},
+                #{typeEntity.integerType},
+                #{typeEntity.floatType},
+                #{typeEntity.longType},
+                #{typeEntity.doubleType},
+                #{typeEntity.byteType},
+                #{typeEntity.bigDecimalType},
+                #{typeEntity.booleanType},
+                #{typeEntity.dateType}
+                )
+            </foreach>
+        </if>
     </insert>
 
+    <insert id="insertBatch2">
+        <if test="javaTypesEntities != null and javaTypesEntities.length > 0">
+            insert into java_types_entity (
+            byte_type,
+            short_type,
+            character_type,
+            float_type,
+            integer_type,
+            long_type,
+            double_type,
+            bytes_type,
+            bigdecimal_type,
+            boolean_type,
+            date_type) VALUES
+            <foreach collection="javaTypesEntities" item="typeEntity" separator=",">
+                (
+                #{typeEntity.byteType},
+                #{typeEntity.shortType},
+                #{typeEntity.characterType},
+                #{typeEntity.integerType},
+                #{typeEntity.floatType},
+                #{typeEntity.longType},
+                #{typeEntity.doubleType},
+                #{typeEntity.byteType},
+                #{typeEntity.bigDecimalType},
+                #{typeEntity.booleanType},
+                #{typeEntity.dateType}
+                )
+            </foreach>
+        </if>
+    </insert>
 </mapper>

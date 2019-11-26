@@ -22,4 +22,6 @@ public interface JavaTypesMapper {
      */
     int insertBatch(@Param("javaTypesEntities") List<JavaTypesEntity> javaTypesEntities);
 
+    int insertBatch2(@Param("javaTypesEntities") JavaTypesEntity[] javaTypesEntities);
+
 }

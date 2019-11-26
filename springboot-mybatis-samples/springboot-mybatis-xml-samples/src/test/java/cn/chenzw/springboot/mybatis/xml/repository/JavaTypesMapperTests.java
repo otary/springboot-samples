@@ -38,7 +38,7 @@ public class JavaTypesMapperTests {
     public void testInsertBatch(){
         List<JavaTypesEntity> typesEntities = new ArrayList<>();
 
-        for (int i = 0; i < 10 ; i++) {
+        /*for (int i = 0; i < 10 ; i++) {
             JavaTypesEntity javaTypesEntity = new JavaTypesEntity();
             javaTypesEntity.setByteType((byte) i);
             javaTypesEntity.setBooleanType(false);
@@ -48,13 +48,20 @@ public class JavaTypesMapperTests {
             javaTypesEntity.setDateType(new Date());
 
             typesEntities.add(javaTypesEntity);
-        }
+        }*/
 
         int count = typesMapper.insertBatch(typesEntities);
-
-        System.out.println(count);
-
+        Assert.assertEquals(0, count);
 
     }
+
+    @Test
+    public void testInsertBatch2(){
+        JavaTypesEntity[] typesEntities = new JavaTypesEntity[0];
+
+        int count = typesMapper.insertBatch2(typesEntities);
+        Assert.assertEquals(0, count);
+    }
+
 
 }
