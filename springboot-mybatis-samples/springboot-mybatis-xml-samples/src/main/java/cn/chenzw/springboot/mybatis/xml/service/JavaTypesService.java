@@ -16,4 +16,8 @@ public class JavaTypesService {
     public List<JavaTypesEntity> listAll() {
         return javaTypesMapper.listAll();
     }
+
+    public int insertBatch(List<JavaTypesEntity> javaTypesEntities){
+        return javaTypesMapper.insertBatch(javaTypesEntities);
+    }
 }

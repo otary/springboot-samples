@@ -11,6 +11,5 @@ CREATE TABLE `java_types_entity`  (
   `bigdecimal_type` bigint(20) NULL DEFAULT NULL,
   `boolean_type` boolean NULL DEFAULT NULL,
   `date_type` date NULL DEFAULT NULL
-
 )
 

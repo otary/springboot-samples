@@ -10,6 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,13 +25,36 @@ public class JavaTypesMapperTests {
 
     @Test
     public void testListAll() {
-        List<JavaTypesEntity> typesEntiys = typesMapper.listAll();
+        List<JavaTypesEntity> typesEntities = typesMapper.listAll();
 
-        for (JavaTypesEntity typesEntiy : typesEntiys) {
+        for (JavaTypesEntity typesEntiy : typesEntities) {
             Assert.assertNotNull(typesEntiy.getBooleanType());
         }
 
-        Assert.assertFalse(typesEntiys.isEmpty());
+        Assert.assertFalse(typesEntities.isEmpty());
+    }
+
+    @Test
+    public void testInsertBatch(){
+        List<JavaTypesEntity> typesEntities = new ArrayList<>();
+
+        for (int i = 0; i < 10 ; i++) {
+            JavaTypesEntity javaTypesEntity = new JavaTypesEntity();
+            javaTypesEntity.setByteType((byte) i);
+            javaTypesEntity.setBooleanType(false);
+            javaTypesEntity.setCharacterType((char)i);
+            javaTypesEntity.setBigDecimalType(new BigDecimal(i));
+            javaTypesEntity.setDoubleType(1.2);
+            javaTypesEntity.setDateType(new Date());
+
+            typesEntities.add(javaTypesEntity);
+        }
+
+        int count = typesMapper.insertBatch(typesEntities);
+
+        System.out.println(count);
+
+
     }
 
 }

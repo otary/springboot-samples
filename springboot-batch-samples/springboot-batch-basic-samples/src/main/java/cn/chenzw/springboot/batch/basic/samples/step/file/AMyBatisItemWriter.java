@@ -4,7 +4,9 @@ import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.item.json.JsonObjectMarshaller;
 import org.springframework.core.io.Resource;
 
-public class AMyBatisItemWriter extends JsonFileItemWriter {
+import java.util.Map;
+
+public class AMyBatisItemWriter extends JsonFileItemWriter<Map<String, Object>> {
 
     public AMyBatisItemWriter(Resource resource, JsonObjectMarshaller jsonObjectMarshaller) {
         super(resource, jsonObjectMarshaller);
