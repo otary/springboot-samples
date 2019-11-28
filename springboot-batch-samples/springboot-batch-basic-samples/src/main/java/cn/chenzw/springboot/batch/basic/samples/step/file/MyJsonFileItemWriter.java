@@ -6,9 +6,14 @@ import org.springframework.core.io.Resource;
 
 import java.util.Map;
 
-public class AMyBatisItemWriter extends JsonFileItemWriter<Map<String, Object>> {
+/**
+ * JSON格式输出
+ *
+ * @author chenzw
+ */
+public class MyJsonFileItemWriter extends JsonFileItemWriter<Map<String, Object>> {
 
-    public AMyBatisItemWriter(Resource resource, JsonObjectMarshaller jsonObjectMarshaller) {
+    public MyJsonFileItemWriter(Resource resource, JsonObjectMarshaller jsonObjectMarshaller) {
         super(resource, jsonObjectMarshaller);
 
         setResource(resource);

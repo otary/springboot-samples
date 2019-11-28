@@ -16,7 +16,7 @@ import org.springframework.core.io.Resource;
  *
  * @author chenzw
  */
-public class MyFileItemReader extends FlatFileItemReader {
+public class MyFlatFileItemReader extends FlatFileItemReader {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -24,7 +24,7 @@ public class MyFileItemReader extends FlatFileItemReader {
      * 注入资源
      * @param resource
      */
-    public MyFileItemReader(Resource resource) {
+    public MyFlatFileItemReader(Resource resource) {
         this.setResource(resource);
         this.setLinesToSkip(1);
         this.setSkippedLinesCallback(new LineCallbackHandler() {

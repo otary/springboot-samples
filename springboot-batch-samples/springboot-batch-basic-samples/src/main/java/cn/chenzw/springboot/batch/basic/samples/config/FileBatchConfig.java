@@ -3,10 +3,11 @@ package cn.chenzw.springboot.batch.basic.samples.config;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyItemReaderListener;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyItemWriteListener;
 import cn.chenzw.springboot.batch.basic.samples.listener.MyStepExecutionListener;
-import cn.chenzw.springboot.batch.basic.samples.step.file.MyFileItemReader;
-import cn.chenzw.springboot.batch.basic.samples.step.mybatis.MyFileItemWriter;
+import cn.chenzw.springboot.batch.basic.samples.step.file.MyFlatFileItemReader;
+import cn.chenzw.springboot.batch.basic.samples.step.file.MyFlatFileItemWriter;
+import cn.chenzw.springboot.batch.basic.samples.step.mybatis.AMyBatisItemWriter;
 import cn.chenzw.springboot.batch.basic.samples.step.mybatis.AMyBatisItemReader;
-import cn.chenzw.springboot.batch.basic.samples.step.file.AMyBatisItemWriter;
+import cn.chenzw.springboot.batch.basic.samples.step.file.MyJsonFileItemWriter;
 import cn.chenzw.toolkit.commons.ProjectUtils;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.batch.core.*;
@@ -20,6 +21,7 @@ import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.batch.item.file.FlatFileItemWriter;
 import org.springframework.batch.item.json.JacksonJsonObjectMarshaller;
 import org.springframework.batch.item.json.JsonFileItemWriter;
 import org.springframework.batch.item.support.PassThroughItemProcessor;
@@ -60,7 +62,7 @@ public class FileBatchConfig {
     }
 
     /**
-     *  读txt文件 -> 写入数据库
+     * 读txt文件 -> 写入数据库
      *
      * @return
      */
@@ -74,12 +76,13 @@ public class FileBatchConfig {
                 .listener(myFileItemWriteListener())
                 .reader(myFileItemReader())
                 .processor(new PassThroughItemProcessor())
-                .writer(myFileItemWriter())
+                .writer(aMyBatisItemWriter())
                 .build();
     }
 
     /**
-     *  读数据库 -> 写入json文件
+     * 读数据库 -> 写入j文件
+     *
      * @return
      */
     @Bean
@@ -92,7 +95,8 @@ public class FileBatchConfig {
                 .listener(myFileItemWriteListener())
                 .reader(aMyBatisItemReader())
                 .processor(new PassThroughItemProcessor())
-                .writer(aMyBatisItemWriter())
+               // .writer(myJsonFileItemWriter())
+                .writer(myFlatFileItemWriter())
                 .build();
     }
 
@@ -110,13 +114,13 @@ public class FileBatchConfig {
     @Bean
     @StepScope
     public FlatFileItemReader myFileItemReader() {
-        return new MyFileItemReader(new ClassPathResource("data/person/1.txt"));
+        return new MyFlatFileItemReader(new ClassPathResource("data/person/1.txt"));
     }
 
     @Bean
     @StepScope
-    public ItemWriter myFileItemWriter() {
-        return new MyFileItemWriter();
+    public ItemWriter aMyBatisItemWriter() {
+        return new AMyBatisItemWriter();
     }
 
     @Bean
@@ -142,9 +146,16 @@ public class FileBatchConfig {
 
     @Bean
     @StepScope
-    public JsonFileItemWriter aMyBatisItemWriter() {
-        FileSystemResource fileSystemResource = new FileSystemResource(ProjectUtils.getRootPath() + "/data/1.json");
-        return new AMyBatisItemWriter(fileSystemResource, new JacksonJsonObjectMarshaller());
+    public JsonFileItemWriter myJsonFileItemWriter() {
+        FileSystemResource fileSystemResource = new FileSystemResource("data/batchJson.json");
+        return new MyJsonFileItemWriter(fileSystemResource, new JacksonJsonObjectMarshaller());
     }
 
+
+    @Bean
+    @StepScope
+    public FlatFileItemWriter myFlatFileItemWriter() {
+        FileSystemResource fileSystemResource = new FileSystemResource("data/flatFile.txt");
+        return new MyFlatFileItemWriter(fileSystemResource);
+    }
 }

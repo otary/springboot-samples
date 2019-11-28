@@ -12,10 +12,12 @@
         )
         -->
 
-        insert into person (ID, NAME, AGE) values
-        <foreach collection="persons" item="item" separator="," open="(" close=")">
-            #{item.id}, #{item.name}, #{item.age}
-        </foreach>
+        <if test="persons != null and persons.size() != 0">
+            insert into person (ID, NAME, AGE) values
+            <foreach collection="persons" item="item" separator=",">
+                (#{item.id}, #{item.name}, #{item.age} )
+            </foreach>
+        </if>
     </insert>
 
     <select id="select" resultType="cn.chenzw.springboot.batch.basic.samples.domain.entity.Person">

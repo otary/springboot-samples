@@ -14,7 +14,7 @@ import java.util.List;
  *
  * @author chenzw
  */
-public class MyFileItemWriter implements ItemWriter<Person> {
+public class AMyBatisItemWriter implements ItemWriter<Person> {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
