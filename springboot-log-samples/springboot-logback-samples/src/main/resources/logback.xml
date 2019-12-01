@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan="true" scanPeriod="30 seconds" debug="true">
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
+
+    <!-- To enable JMX Management -->
+    <jmxConfigurator/>
+
+    <!-- 输出logback的本身状态数据 -->
+    <statusListener class="ch.qos.logback.core.status.OnConsoleStatusListener"/>
+
+    <!-- 指定spring容器中的变量（可以在application.properties中定义，source字段为spring容器变量） -->
+    <springProperty scope="context" name="base-package" source="my.custom.base.package"/>
+
+    <!--开发环境-->
+    <springProfile name="dev">
+        <logger name="${base-package}" level="DEBUG"/>
+        <logger name="org.springframework.web" level="DEBUG"/>
+        <logger name="org.springframework.security" level="INFO"/>
+        <logger name="org.springframework.cache" level="INFO"/>
+
+        <logger name="com.ibatis" level="DEBUG" />
+        <logger name="com.ibatis.common.jdbc.SimpleDataSource" level="DEBUG" />
+        <logger name="com.ibatis.common.jdbc.ScriptRunner" level="DEBUG" />
+        <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" />
+        <logger name="java.sql.Connection" level="DEBUG" />
+        <logger name="java.sql.Statement" level="DEBUG" />
+        <logger name="java.sql.PreparedStatement" level="DEBUG" />
+
+        <logger name="druid.sql.Statement" level="DEBUG"/>
+        <logger name="druid.sql.ResultSet" level="DEBUG"/>
+        <logger name="druid.sql.Connection" level="DEBUG"/>
+        <logger name="druid.sql.PreparedStatement" level="DEBUG"/>
+        <logger name="c.a.druid.pool.PreparedStatementPool" level="INFO"/>
+
+        <!-- 控制台输出 -->
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%red([%d{MM-dd HH:mm:ss.SSS}]) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{20}) - %cyan(%msg%n)
+                </pattern>
+            </encoder>
+        </appender>
+
+        <root level="DEBUG">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
+
+    <!--测试环境&生产环境-->
+    <springProfile name="test,prod">
+
+        <!-- 控制台输出 -->
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>%red([%d{MM-dd HH:mm:ss.SSS}]) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{20}) - %cyan(%msg%n)
+                </pattern>
+            </encoder>
+        </appender>
+
+        <appender name="LOG-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- 按天回滚 daily -->
+                <fileNamePattern>logs/log-file-%d{yyyy-MM-dd}.log</fileNamePattern>
+                <!-- 日志最大的历史 7天 -->
+                <maxHistory>7</maxHistory>
+            </rollingPolicy>
+            <encoder>
+                <pattern>[%d{MM-dd HH:mm:ss.SSS}] [%thread] %-5level %logger{20} - %msg%n</pattern>
+            </encoder>
+            <filter class="ch.qos.logback.classic.filter.LevelFilter">
+                <!-- 只打印错误日志 -->
+                <level>ERROR</level>
+                <onMatch>ACCEPT</onMatch>
+                <onMismatch>DENY</onMismatch>
+            </filter>
+        </appender>
+
+        <!-- 异步输出 -->
+        <appender name="ASYNC_DEBUG" class="ch.qos.logback.classic.AsyncAppender">
+            <!-- 默认如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志，若要保留全部日志，设置为0 -->
+            <discardingThreshold>0</discardingThreshold>
+            <!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+            <queueSize>1024</queueSize>
+            <!-- 添加附加的appender,最多只能添加一个 -->
+            <appender-ref ref="LOG-FILE"/>
+            <includeCallerData>true</includeCallerData>
+        </appender>
+
+
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="LOG-FILE"/>
+        </root>
+    </springProfile>
+
+
+
+
+    <!--
+       <root level="INFO">
+           <appender-ref ref="CONSOLE"/>
+       </root>
+   -->
+</configuration>

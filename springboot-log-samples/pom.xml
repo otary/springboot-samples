@@ -8,24 +8,18 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>springboot-mybatis-samples</artifactId>
+
+    <artifactId>springboot-log-samples</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>springboot-mybatis-xml-samples</module>
-        <module>springboot-tkmybatis-samples</module>
-        <module>springboot-mybatis-annotation-samples</module>
-        <module>springboot-mybatis-plugin-samples</module>
+        <module>springboot-logback-samples</module>
     </modules>
-
-    <properties>
-        <mybatis.springboot.version>1.3.1</mybatis.springboot.version>
-    </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis.springboot.version}</version>
+            <version>1.3.1</version>
         </dependency>
         <dependency>
             <groupId>com.github.pagehelper</groupId>
@@ -34,22 +28,11 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.35</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.1.17</version>
-        </dependency>
-
-        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.4.199</version>
         </dependency>
-
     </dependencies>
+
+
 </project>
