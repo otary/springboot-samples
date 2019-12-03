@@ -1,6 +1,8 @@
 # springboot-samples
 
 ![springboot](https://img.shields.io/badge/springboot-2.1.5.RELEASE-brightgreen.svg)
+![JDK](https://img.shields.io/badge/Java-7-brightgreen.svg)
+
 
 ## 模块
 - [springboot-helloworld-samples](./springboot-helloworld-samples): helloworld示例
@@ -33,6 +35,16 @@
   - [springboot-condition-samples](./springboot-profiles-samples/springboot-condition-samples)；Condition示例
 - [springboot-validation-samples](./springboot-validation-samples)：参数校验示例
 - [springboot-websocket-samples](./springboot-websocket-samples)：集成websocket示例
+
+
+- [springboot-jmx-samples](./springboot-jmx-samples): JMX示例
+
+- [springboot-log-samples](./springboot-log-samples): 日志示例
+  - [spring-logback-samples](./springboot-log-samples/springboot-logback-samples): logback集成示例
+
+- [springboot-test-samples](./springboot-test-samples): 单元测试
+
+
 
 **批处理**
 - [springboot-batch-samples](./springboot-batch-samples): 批处理示例
@@ -77,7 +89,6 @@
   - [springboot-container-jetty-samples](./springboot-container-samples/springboot-container-jetty-samples)：集成jetty容器示例
   - [springboot-container-tomcat-samples](./springboot-container-samples/springboot-container-tomcat-samples)：集成tomcat容器示例
 
-- [springboot-jmx-samples](./springboot-jmx-samples): JMX示例
 
 ## 问题解决
 

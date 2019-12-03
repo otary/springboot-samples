@@ -36,6 +36,7 @@
         <module>springboot-integration-samples</module>
         <module>springboot-jmx-samples</module>
         <module>springboot-log-samples</module>
+        <module>springboot-test-samples</module>
     </modules>
 
     <properties>
