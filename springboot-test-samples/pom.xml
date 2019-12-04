@@ -28,6 +28,12 @@
             <version>4.2.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.mock-server</groupId>
+            <artifactId>mockserver-netty</artifactId>
+            <version>5.8.0</version>
+        </dependency>
+
     </dependencies>
 
 </project>

@@ -21,6 +21,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MvcOkhttpTests {
@@ -48,6 +49,11 @@ public class MvcOkhttpTests {
         mockWebServer.start();
     }
 
+    /**
+     * 使用MockWebServer
+     *
+     * @throws IOException
+     */
     @Test
     public void test() throws IOException {
         HttpUrl baseUrl = mockWebServer.url("/v2/user/1000001");
@@ -64,4 +70,5 @@ public class MvcOkhttpTests {
         // 关闭服务，因为不能重用
         mockWebServer.shutdown();
     }
+
 }

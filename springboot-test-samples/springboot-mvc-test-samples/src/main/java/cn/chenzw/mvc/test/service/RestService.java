@@ -24,7 +24,7 @@ public class RestService {
     }
 
     public String getUserInfo2() throws IOException {
-        Request request = new Request.Builder().url("http://api.douban.com/v2/user/1000001").build();
+        Request request = new Request.Builder().url("http://localhost:8000/v2/user/1000001").build();
         Response response = okHttpClient.newCall(request).execute();
         return response.body().string();
     }
