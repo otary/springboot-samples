@@ -4,7 +4,6 @@ import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.plugin.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.core.annotation.AnnotationUtils;
 
 import java.lang.reflect.Field;
 import java.sql.PreparedStatement;
@@ -19,7 +18,6 @@ public class MyParameterHandlerPlugin implements Interceptor {
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
-        logger.info("----------------------------------" + invocation);
 
         //拦截 ParameterHandler 的 setParameters 方法 动态设置参数
         if (invocation.getTarget() instanceof ParameterHandler) {

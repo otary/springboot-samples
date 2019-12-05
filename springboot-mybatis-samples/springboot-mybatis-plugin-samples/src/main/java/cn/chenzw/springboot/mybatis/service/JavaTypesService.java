@@ -2,6 +2,7 @@ package cn.chenzw.springboot.mybatis.service;
 
 import cn.chenzw.springboot.mybatis.domain.entity.JavaTypesEntity;
 import cn.chenzw.springboot.mybatis.repository.JavaTypesMapper;
+import cn.chenzw.springboot.mybatis.support.mybatis.plugin.PageParam;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,7 @@ public class JavaTypesService {
 
 
     public List<JavaTypesEntity> listById(Integer id) {
-        return javaTypesMapper.listById(id);
+        return javaTypesMapper.listById(id, new PageParam(1, 25));
     }
 
 }

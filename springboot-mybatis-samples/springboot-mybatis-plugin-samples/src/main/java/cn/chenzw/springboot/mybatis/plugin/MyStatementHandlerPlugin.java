@@ -1,16 +1,20 @@
 package cn.chenzw.springboot.mybatis.plugin;
 
+import cn.chenzw.springboot.mybatis.support.mybatis.plugin.Pageable;
 import cn.chenzw.toolkit.commons.ReflectExtUtils;
 import org.apache.ibatis.executor.statement.BaseStatementHandler;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
+import org.apache.ibatis.mapping.MappedStatement;
+import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.plugin.*;
+import org.h2.store.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
-import java.util.Properties;
+import java.util.*;
 
 /**
  * MyBatis插件开发
@@ -29,22 +33,15 @@ public class MyStatementHandlerPlugin implements Interceptor {
         RoutingStatementHandler handler = (RoutingStatementHandler) invocation.getTarget();
         BaseStatementHandler delegate = (BaseStatementHandler) ReflectExtUtils.getFieldValue(handler, "delegate");
 
-        //  MappedStatement ms = (MappedStatement) ReflectExtUtils.getFieldValue(delegate, "mappedStatement");
+       // MappedStatement ms = (MappedStatement) ReflectExtUtils.getFieldValue(delegate, "mappedStatement");
 
         BoundSql boundSql = delegate.getBoundSql();
+        Optional<Pageable> pageableOptional = getPageableParameter(boundSql.getParameterObject());
+        if(!pageableOptional.isPresent()){
+            return invocation.proceed();
+        }
 
-        Object parameterObject = boundSql.getParameterObject();
-
-        System.out.println(parameterObject.getClass());
-
-      /*
-        List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
-        ParameterMapping parameterMapping = new ParameterMapping.Builder().build();
-        parameterMappings.add(parameterMapping);
-        */
-
-        System.out.println(boundSql.getParameterObject());
-
+      //  pageableOptional.get()
 
         System.out.println(boundSql.getSql());
 
@@ -55,11 +52,6 @@ public class MyStatementHandlerPlugin implements Interceptor {
 
         ReflectExtUtils.setFieldValue(boundSql, "sql", sql);
 
-       /*
-       if (!ms.getId().toUpperCase().matches(sqlIdRegex)) {
-            return invocation.proceed();
-        }
-        */
 
 
 
@@ -81,5 +73,20 @@ public class MyStatementHandlerPlugin implements Interceptor {
     @Override
     public void setProperties(Properties properties) {
         logger.info("[setProperties]:{}", properties);
+    }
+
+
+    private Optional<Pageable> getPageableParameter(Object parameter) {
+        if (parameter != null) {
+            if (parameter instanceof Map) {
+                Map paramMap = (Map) parameter;
+                for (Object param : paramMap.values()) {
+                    if (param instanceof Pageable) {
+                        return Optional.ofNullable((Pageable) param);
+                    }
+                }
+            }
+        }
+        return Optional.empty();
     }
 }
