@@ -4,6 +4,8 @@ import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.*;
+import org.apache.ibatis.session.ResultHandler;
+import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,16 +13,23 @@ import java.lang.reflect.Field;
 import java.util.Properties;
 
 /**
- *
+ * @author chenzw
  */
-@Intercepts({@Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class})})
+@Intercepts({@Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})})
 public class MyExecutorPlugin implements Interceptor {
+
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         logger.info("[intercept]:{}", invocation);
+
+
+        System.out.println(invocation.getTarget());
+
+        //    RoutingStatementHandler handler = (RoutingStatementHandler) invocation.getTarget();
+
 
         MappedStatement mappedStatement = (MappedStatement) invocation.getArgs()[0];
 

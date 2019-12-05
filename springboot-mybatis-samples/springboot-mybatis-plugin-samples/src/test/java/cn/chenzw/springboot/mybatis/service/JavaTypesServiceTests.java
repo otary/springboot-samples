@@ -14,6 +14,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -28,7 +31,6 @@ public class JavaTypesServiceTests {
     public void testListAll() {
         List<JavaTypesEntity> javaTypesEntities = javaTypesService.listAll();
         System.out.println(javaTypesEntities);
-
     }
 
     @Test
@@ -43,6 +45,32 @@ public class JavaTypesServiceTests {
 
         List<JavaTypesEntity> javaTypesEntities2 = page2.getResult();
         Assert.assertTrue(javaTypesEntities2.size() == 1);
+    }
+
+
+    @Test
+    public void testInsertBatch() {
+        List<JavaTypesEntity> javaTypesEntities = new ArrayList<>();
+
+        for (int i = 0; i < 10; i++) {
+            JavaTypesEntity javaTypesEntity = new JavaTypesEntity();
+            javaTypesEntity.setByteType((byte) i);
+            javaTypesEntity.setBooleanType(false);
+            javaTypesEntity.setCharacterType((char) i);
+            javaTypesEntity.setBigDecimalType(new BigDecimal(i));
+            javaTypesEntity.setDoubleType(1.2);
+            javaTypesEntity.setDateType(new Date());
+
+            javaTypesEntities.add(javaTypesEntity);
+        }
+
+        javaTypesService.insertBatch(javaTypesEntities);
+    }
+
+    @Test
+    public void testListById() {
+        List<JavaTypesEntity> javaTypesEntities = javaTypesService.listById(1);
+        System.out.println(javaTypesEntities);
     }
 
 

@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.mybatis.config;
 
 import cn.chenzw.springboot.mybatis.plugin.MyExecutorPlugin;
+import cn.chenzw.springboot.mybatis.plugin.MyParameterHandlerPlugin;
 import cn.chenzw.springboot.mybatis.plugin.MyStatementHandlerPlugin;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,5 +23,11 @@ public class MybatisPluginsConfig {
     @Bean
     public MyExecutorPlugin myExecutorPlugin() {
         return new MyExecutorPlugin();
+    }
+
+
+    @Bean
+    public MyParameterHandlerPlugin myParameterHandlerPlugin() {
+        return new MyParameterHandlerPlugin();
     }
 }
