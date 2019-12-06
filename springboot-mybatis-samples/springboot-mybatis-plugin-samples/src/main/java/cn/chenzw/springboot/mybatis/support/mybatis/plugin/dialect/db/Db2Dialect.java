@@ -3,21 +3,18 @@ package cn.chenzw.springboot.mybatis.support.mybatis.plugin.dialect.db;
 import cn.chenzw.springboot.mybatis.support.mybatis.plugin.Pageable;
 import cn.chenzw.springboot.mybatis.support.mybatis.plugin.dialect.AbstractDialect;
 
-/**
- * @author chenzw
- */
-public class MySqlDialect extends AbstractDialect {
+public class Db2Dialect extends AbstractDialect {
+
 
     @Override
     public String getPageSql(String sql, Pageable pageable) {
         int startRow = pageable.getLimit() * pageable.getOffset();
-        StringBuilder sqlBuilder = new StringBuilder(sql.length() + 14);
+        int endRow = pageable.getLimit() * (pageable.getOffset() + 1);
+
+        StringBuilder sqlBuilder = new StringBuilder(sql.length() + 200);
+        sqlBuilder.append("SELECT * FROM (SELECT TMP_PAGE.*,ROWNUMBER() OVER() AS ROW_ID FROM ( ");
         sqlBuilder.append(sql);
-        if (startRow > 0) {
-            sqlBuilder.append(" LIMIT ").append(startRow).append(",").append(pageable.getLimit());
-        } else {
-            sqlBuilder.append(" LIMIT ").append(pageable.getLimit());
-        }
+        sqlBuilder.append(" ) AS TMP_PAGE) TMP_PAGE WHERE ROW_ID BETWEEN ").append(startRow).append(" AND ").append(endRow);
         return sqlBuilder.toString();
     }
 }

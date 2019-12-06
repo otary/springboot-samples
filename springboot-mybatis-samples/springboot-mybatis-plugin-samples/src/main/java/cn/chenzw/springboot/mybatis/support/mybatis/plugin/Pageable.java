@@ -21,4 +21,11 @@ public interface Pageable {
      */
     int getLimit();
 
+    /**
+     * 总条数
+     *
+     * @return
+     */
+    long getTotalRows();
+
 }

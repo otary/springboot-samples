@@ -1,14 +1,14 @@
 package cn.chenzw.springboot.mybatis.support.mybatis.plugin.dialect.db;
 
 import cn.chenzw.springboot.mybatis.support.mybatis.plugin.Pageable;
-import cn.chenzw.springboot.mybatis.support.mybatis.plugin.dialect.Dialect;
+import cn.chenzw.springboot.mybatis.support.mybatis.plugin.dialect.AbstractDialect;
 
 /**
  * Oracle实现
  *
  * @author chenzw
  */
-public class OracleDialect implements Dialect {
+public class OracleDialect extends AbstractDialect {
 
 
     @Override

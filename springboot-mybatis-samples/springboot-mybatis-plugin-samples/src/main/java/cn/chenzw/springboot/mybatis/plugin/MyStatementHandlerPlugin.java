@@ -1,19 +1,20 @@
 package cn.chenzw.springboot.mybatis.plugin;
 
 import cn.chenzw.springboot.mybatis.support.mybatis.plugin.Pageable;
+import cn.chenzw.springboot.mybatis.support.mybatis.plugin.dialect.Dialect;
+import cn.chenzw.springboot.mybatis.support.mybatis.plugin.dialect.factory.DialectFactory;
 import cn.chenzw.toolkit.commons.ReflectExtUtils;
+import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.BaseStatementHandler;
 import org.apache.ibatis.executor.statement.RoutingStatementHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
-import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.mapping.ParameterMapping;
 import org.apache.ibatis.plugin.*;
-import org.h2.store.Page;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.util.*;
 
 /**
@@ -33,31 +34,23 @@ public class MyStatementHandlerPlugin implements Interceptor {
         RoutingStatementHandler handler = (RoutingStatementHandler) invocation.getTarget();
         BaseStatementHandler delegate = (BaseStatementHandler) ReflectExtUtils.getFieldValue(handler, "delegate");
 
-       // MappedStatement ms = (MappedStatement) ReflectExtUtils.getFieldValue(delegate, "mappedStatement");
+        // MappedStatement ms = (MappedStatement) ReflectExtUtils.getFieldValue(delegate, "mappedStatement");
 
         BoundSql boundSql = delegate.getBoundSql();
         Optional<Pageable> pageableOptional = getPageableParameter(boundSql.getParameterObject());
-        if(!pageableOptional.isPresent()){
+        if (!pageableOptional.isPresent()) {
             return invocation.proceed();
         }
 
-      //  pageableOptional.get()
-
-        System.out.println(boundSql.getSql());
-
-        System.out.println(boundSql.getParameterMappings());
-
-
+        Pageable pageable = pageableOptional.get();
+        Connection connection = (Connection) invocation.getArgs()[0];
+        Dialect dialect = DialectFactory.getDialect(connection.getMetaData().getURL());
         String sql = boundSql.getSql();
 
-        ReflectExtUtils.setFieldValue(boundSql, "sql", sql);
+        ReflectExtUtils.setFieldValue(boundSql, "sql", dialect.getPageSql(sql, pageable));
 
-
-
-
-       /*
-       MappedStatement mappedStatement = (MappedStatement) invocation.getArgs()[0];
-       */
+        long total = countTotal(dialect.getCountSql(sql), connection, delegate.getParameterHandler());
+        ReflectExtUtils.setFieldValue(pageable, "total", total);
 
         logger.info("[intercept]:{}", invocation);
         return invocation.proceed();
@@ -88,5 +81,34 @@ public class MyStatementHandlerPlugin implements Interceptor {
             }
         }
         return Optional.empty();
+    }
+
+
+    private long countTotal(String countSql, Connection connection, ParameterHandler phd) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            ps = connection.prepareStatement(countSql);
+            phd.setParameters(ps);
+            ps.execute();
+            rs = ps.getResultSet();
+            rs.next();
+
+            return rs.getLong(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+
+            }
+        }
     }
 }

@@ -17,4 +17,7 @@ public interface Dialect {
      */
     String getPageSql(String sql, Pageable pageable);
 
+
+    String getCountSql(String sql);
+
 }

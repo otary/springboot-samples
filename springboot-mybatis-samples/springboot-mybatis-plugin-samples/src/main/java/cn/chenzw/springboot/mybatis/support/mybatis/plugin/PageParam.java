@@ -6,9 +6,8 @@ package cn.chenzw.springboot.mybatis.support.mybatis.plugin;
 public class PageParam implements Pageable {
 
     private int offset = 0;
-
     private int limit = 25;
-
+    private long total = -1;
 
     public PageParam(int offset, int limit) {
         this.offset = offset;
@@ -24,4 +23,12 @@ public class PageParam implements Pageable {
     public int getLimit() {
         return limit;
     }
+
+    @Override
+    public long getTotalRows() {
+        return total;
+    }
+
+
+
 }
