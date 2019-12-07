@@ -16,8 +16,8 @@ public class MyJsonFileItemWriter extends JsonFileItemWriter<Map<String, Object>
     public MyJsonFileItemWriter(Resource resource, JsonObjectMarshaller jsonObjectMarshaller) {
         super(resource, jsonObjectMarshaller);
 
-        setResource(resource);
-        setJsonObjectMarshaller(jsonObjectMarshaller);
+        //setResource(resource);
+        //setJsonObjectMarshaller(jsonObjectMarshaller);
         setEncoding("UTF-8");
         setName("tradeJsonFileItemWriter");
     }
