@@ -12,6 +12,6 @@ public class NotificationJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        logger.info("定时发送通知:-----****------");
+        logger.info("定时发送通知:-----[{}]------", jobExecutionContext.getJobDetail().getKey().getName());
     }
 }

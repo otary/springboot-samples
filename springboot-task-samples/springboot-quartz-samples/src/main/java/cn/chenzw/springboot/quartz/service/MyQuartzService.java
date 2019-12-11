@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.quartz.service;
 
 import cn.chenzw.springboot.quartz.job.NotificationJob;
+import cn.chenzw.springboot.quartz.listener.SchedulerListener;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,12 @@ public class MyQuartzService {
         Trigger trigger = TriggerBuilder.newTrigger().withIdentity("NotificationJob", "chenzw_group").startNow().withSchedule(SimpleScheduleBuilder.simpleSchedule()
                 .withIntervalInSeconds(1)
                 .repeatForever()).build();
-        scheduler.scheduleJob(job, trigger);
+        // 添加监听器
+        scheduler.getListenerManager().addJobListener(new SchedulerListener());
+
+        if(!scheduler.checkExists(job.getKey())){
+            scheduler.scheduleJob(job, trigger);
+        }
     }
 
 
