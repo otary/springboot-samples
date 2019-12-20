@@ -24,10 +24,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!--<configuration>
                     <fork>true</fork>
                     <mainClass>cn.chenzw.springboot.admin.client.AdminClientSamplesApp</mainClass>
-                </configuration>
+                </configuration>-->
                <executions>
                    <execution>
                        <goals>

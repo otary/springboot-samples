@@ -27,10 +27,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!--<configuration>
                     <fork>true</fork>
                     <mainClass>cn.chenzw.springboot.admin.server.AdminServerSamplesApp</mainClass>
-                </configuration>
+                </configuration>-->
             </plugin>
         </plugins>
     </build>

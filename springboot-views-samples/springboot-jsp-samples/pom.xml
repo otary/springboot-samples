@@ -46,10 +46,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!--<configuration>
                     <fork>true</fork>
                     <mainClass>cn.chenzw.springboot.jsp.JspSamplesApp</mainClass>
-                </configuration>
+                </configuration>-->
             </plugin>
         </plugins>
     </build>

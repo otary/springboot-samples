@@ -30,10 +30,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
+                <!--<configuration>
                     <fork>true</fork>
                     <mainClass>cn.chenzw.springboot.web01.Web01SamplesApp</mainClass>
-                </configuration>
+                </configuration>-->
             </plugin>
         </plugins>
     </build>
