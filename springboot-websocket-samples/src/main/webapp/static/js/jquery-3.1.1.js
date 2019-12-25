@@ -3784,7 +3784,7 @@
             return deferred;
         },
 
-        // Deferred helper
+        // Deferred factory
         when: function( singleValue ) {
             var
 

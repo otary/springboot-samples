@@ -52,3 +52,27 @@ public class SchedulerConfig implements SchedulingConfigurer {
     }
 }
 ```
+
+### 动态设置corn
+
+``` java
+@Autowired
+private ThreadPoolTaskScheduler threadPoolTaskScheduler;
+
+@Bean
+public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
+    return new ThreadPoolTaskScheduler();
+}
+
+threadPoolTaskScheduler.schedule(new Runnable() {
+    @Override
+    public void run() {
+        logger.info("------DynamicSchedulerTask------");
+    }
+}, new Trigger() {
+    @Override
+    public Date nextExecutionTime(TriggerContext triggerContext) {
+        return new CronTrigger("0/5 * * * * ?").nextExecutionTime(triggerContext);
+    }
+});
+```
