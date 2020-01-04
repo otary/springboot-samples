@@ -7,9 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.Objects;
 
@@ -34,7 +36,11 @@ public class UserRepositoryTests {
         userRepository.save(user);
 
         // 读取
-        User user2 = userRepository.findById(1L);
+        User user2 = userRepository.findById("1");
         Assert.assertTrue(Objects.equals(user, user2));
     }
+
+    @Resource(name = "redisTemplate")
+    ValueOperations<String, String> valOps;
+
 }

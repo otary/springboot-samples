@@ -2,6 +2,7 @@ package cn.chenzw.springboot.redis.repository.redis;
 
 import cn.chenzw.springboot.redis.domain.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
@@ -23,15 +24,15 @@ public class UserRepository {
 
 
     @Resource(name = "redisTemplate")
-    ValueOperations<Object, Object> valOps;
+    ValueOperations<String, User> valOps;
 
 
     public void save(User user) {
-        valOps.set(user.getId(), user);
+        valOps.set(String.valueOf(user.getId()), user);
     }
 
-    public User findById(Long id) {
+    public User findById(String id) {
         return (User) valOps.get(id);
     }
-    
+
 }
