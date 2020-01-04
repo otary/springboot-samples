@@ -36,6 +36,8 @@
 - [springboot-validation-samples](./springboot-validation-samples)：参数校验示例
 - [springboot-websocket-samples](./springboot-websocket-samples)：集成websocket示例
 
+- [springboot-session-samples](./springboot-session-samples): spring-session示例
+  - [spring-session-redis-samples](./springboot-session-samples/springboot-session-redis-samples): session同步redis示例
 
 - [springboot-jmx-samples](./springboot-jmx-samples): JMX示例
 

@@ -1,4 +1,4 @@
-CREATE TABLE `java_types_entity` (
+CREATE TABLE IF NOT EXISTS `java_types_entity`(
   `byte_type` CHAR(1) NULL DEFAULT NULL,
   `short_type` tinyint(4) NULL DEFAULT NULL,
   `character_type` char(2)  NULL DEFAULT NULL,
