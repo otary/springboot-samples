@@ -40,7 +40,4 @@ public class UserRepositoryTests {
         Assert.assertTrue(Objects.equals(user, user2));
     }
 
-    @Resource(name = "redisTemplate")
-    ValueOperations<String, String> valOps;
-
 }

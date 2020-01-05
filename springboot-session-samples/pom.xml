@@ -15,12 +15,6 @@
         <module>springboot-session-redis-samples</module>
     </modules>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.session</groupId>
-            <artifactId>spring-session-core</artifactId>
-            <version>2.1.6.RELEASE</version>
-        </dependency>
-    </dependencies>
+
 
 </project>

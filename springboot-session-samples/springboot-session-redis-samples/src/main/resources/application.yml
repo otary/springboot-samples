@@ -1,0 +1,10 @@
+spring:
+  redis:
+    host: localhost
+    password:
+    port: 6379
+    database: 0
+
+  # 指定使用redis缓存session
+  session:
+    store-type: redis
