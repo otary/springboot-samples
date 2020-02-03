@@ -5,7 +5,8 @@ import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.AdviceModeImportSelector;
 
 /**
- *
+ * 动态注册Bean( 传递AdviceMode参数)
+ * @author chenzw
  */
 public class SSOConfigurationSelector extends AdviceModeImportSelector<EnableSSO> {
 

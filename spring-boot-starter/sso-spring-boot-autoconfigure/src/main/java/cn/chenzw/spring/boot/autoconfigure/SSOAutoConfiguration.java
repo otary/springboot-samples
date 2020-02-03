@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  * 在META-INF/spring.factories中配置自动装载的类
  */
 @Configuration
-// @ConditionalOnClass
+@ConditionalOnClass({DefaultSSOTemplate.class})
 @EnableConfigurationProperties(SSOProperties.class)
 // @AutoConfigureAfter
 public class SSOAutoConfiguration {

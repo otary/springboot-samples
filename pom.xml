@@ -38,6 +38,7 @@
         <module>springboot-log-samples</module>
         <module>springboot-test-samples</module>
         <module>springboot-session-samples</module>
+        <module>springboot-liquibase-samples</module>
         <module>springboot-webflux-samples</module>
     </modules>
 
