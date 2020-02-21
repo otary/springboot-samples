@@ -1,6 +1,8 @@
 package cn.chenzw.springboot.scheduler.task;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -9,11 +11,13 @@ import java.util.Date;
 @Component
 public class SchedulerTask1 {
 
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     /**
      * 指定时间执行（每隔6s执行一次）
      */
     @Scheduled(cron = "*/6 * * * * ?")
     private void process() {
-        System.out.println("schedule task1 running, now time:" + DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
+        logger.info("Schedule task1 running");
     }
 }

@@ -34,7 +34,7 @@ public class DynamicSchedulerTask implements InitializingBean {
         }, new Trigger() {
             @Override
             public Date nextExecutionTime(TriggerContext triggerContext) {
-                return new CronTrigger("0/5 * * * * ?").nextExecutionTime(triggerContext);
+                return new CronTrigger("0/1 * * * * ?").nextExecutionTime(triggerContext);
             }
         });
     }
