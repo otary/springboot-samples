@@ -11,7 +11,6 @@ import org.springframework.scheduling.config.ScheduledTaskRegistrar;
 @EnableScheduling
 public class SchedulerConfig implements SchedulingConfigurer {
 
-    private final int POOL_SIZE = 10;
 
     /**
      * 默认所有@Scheduled任务都在Spring创建的大小为1的默认线程池中执行，可以在此处自定义线程池来执行任务
@@ -20,17 +19,17 @@ public class SchedulerConfig implements SchedulingConfigurer {
      */
     @Override
     public void configureTasks(ScheduledTaskRegistrar scheduledTaskRegistrar) {
-        ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
-
-        threadPoolTaskScheduler.setPoolSize(POOL_SIZE);
-        threadPoolTaskScheduler.setThreadNamePrefix("my-scheduled-task-pool-");
-        threadPoolTaskScheduler.initialize();
-
-        scheduledTaskRegistrar.setTaskScheduler(threadPoolTaskScheduler);
+        scheduledTaskRegistrar.setTaskScheduler(threadPoolTaskScheduler());
     }
 
     @Bean
     public ThreadPoolTaskScheduler threadPoolTaskScheduler() {
+        ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
+
+        threadPoolTaskScheduler.setPoolSize(10);
+        threadPoolTaskScheduler.setThreadNamePrefix("my-scheduled-task-pool-");
+        threadPoolTaskScheduler.setAwaitTerminationSeconds(60);
+        threadPoolTaskScheduler.setWaitForTasksToCompleteOnShutdown(true);
         return new ThreadPoolTaskScheduler();
     }
 }

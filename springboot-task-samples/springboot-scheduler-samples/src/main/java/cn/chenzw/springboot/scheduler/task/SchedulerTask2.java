@@ -8,11 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
-import org.springframework.scheduling.support.CronTrigger;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SchedulerTask2 implements InitializingBean {
+public class SchedulerTask2  {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -34,15 +33,11 @@ public class SchedulerTask2 implements InitializingBean {
         logger.info("[1] Schedule task2 end running");
     }
 
-   // @Scheduled(cron = "0/1 * * * * ?")
-    private void process2() {
+    @Scheduled(cron = "0/1 * * * * ?")
+    private void process2() throws InterruptedException {
         logger.info("[2] Schedule task2-2  start running");
 
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Thread.sleep(3000);
 
         logger.info("[2] Schedule task2-2 end running");
     }
@@ -60,8 +55,5 @@ public class SchedulerTask2 implements InitializingBean {
         logger.info("[3] Schedule aysnc task2 end running");
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        threadPoolTaskScheduler.schedule(() -> process2(), triggerContext -> new CronTrigger("0/1 * * * * ?").nextExecutionTime(triggerContext));
-    }
+
 }
