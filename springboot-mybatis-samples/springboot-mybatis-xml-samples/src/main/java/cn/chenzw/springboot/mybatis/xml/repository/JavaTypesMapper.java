@@ -15,13 +15,29 @@ public interface JavaTypesMapper {
     List<JavaTypesEntity> listAll();
 
     /**
-     * 批量插入示例
-     *
+     * 批量插入示例（列表）
+     * mysql
      * @param javaTypesEntities
      * @return
      */
     int insertBatch(@Param("javaTypesEntities") List<JavaTypesEntity> javaTypesEntities);
 
-    int insertBatch2(@Param("javaTypesEntities") JavaTypesEntity[] javaTypesEntities);
+
+    /**
+     * 批量插入（数组）
+     * @param javaTypesEntities
+     * @return
+     */
+    int insertBatchOfArrary(@Param("javaTypesEntities") JavaTypesEntity[] javaTypesEntities);
+
+
+    /**
+     * 批量插入（insert into ... select ）
+     * oracle
+     * @param javaTypesEntities
+     * @return
+     */
+    int insertBatch2(@Param("javaTypesEntities") List<JavaTypesEntity> javaTypesEntities);
+
 
 }

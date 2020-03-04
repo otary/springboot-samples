@@ -23,7 +23,9 @@ public class PropertiesTest {
         Assert.assertEquals("默认值", ssoProperties.getDefaultValue());
 
         Assert.assertEquals("[aaa, bbb, ccc]", ssoProperties.getTs().toString());
-        Assert.assertEquals("[[aaa, bbb]", ssoProperties.getDefaultTs().toString());
+        Assert.assertEquals("[aaa, bbb]", ssoProperties.getDefaultTs().toString());
+
+        System.out.println(ssoProperties.getTwoLevel());
     }
 
     @Test

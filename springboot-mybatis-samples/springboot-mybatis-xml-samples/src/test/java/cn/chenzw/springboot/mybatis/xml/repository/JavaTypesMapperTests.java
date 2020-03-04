@@ -5,6 +5,8 @@ import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +21,8 @@ import java.util.List;
 @SpringBootTest(classes = {MybatisXmlSamplesApp.class})
 @WebAppConfiguration
 public class JavaTypesMapperTests {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Autowired
     JavaTypesMapper typesMapper;
@@ -35,7 +39,7 @@ public class JavaTypesMapperTests {
     }
 
     @Test
-    public void testInsertBatch(){
+    public void testInsertBatch() {
         List<JavaTypesEntity> typesEntities = new ArrayList<>();
 
         /*for (int i = 0; i < 10 ; i++) {
@@ -56,12 +60,43 @@ public class JavaTypesMapperTests {
     }
 
     @Test
-    public void testInsertBatch2(){
-        JavaTypesEntity[] typesEntities = new JavaTypesEntity[0];
+    public void testInsertBatchOfArrary() {
+        JavaTypesEntity[] typesEntities = new JavaTypesEntity[10000];
 
+        for (int i = 0; i < 10000; i++) {
+            typesEntities[i] = new JavaTypesEntity();
+            typesEntities[i].setBooleanType(true);
+            typesEntities[i].setByteType((byte) 1);
+            typesEntities[i].setDateType(new Date());
+            typesEntities[i].setDoubleType(1.5);
+            typesEntities[i].setCharacterType((char) 1);
+            typesEntities[i].setBigDecimalType(new BigDecimal(i));
+            typesEntities[i].setFloatType(new Float(i + "." + i));
+        }
+
+        long t1 = System.currentTimeMillis();
+        int count = typesMapper.insertBatchOfArrary(typesEntities);
+        Assert.assertEquals(10000, count);
+
+        logger.info("插入{}条数据耗时:{}ms", count, System.currentTimeMillis() - t1);
+    }
+
+    @Test
+    public void testInsertBatch2() {
+        List<JavaTypesEntity> typesEntities = new ArrayList<>();
+        for (int i = 0; i < 10 ; i++) {
+            JavaTypesEntity javaTypesEntity = new JavaTypesEntity();
+            javaTypesEntity.setByteType((byte) i);
+            javaTypesEntity.setBooleanType(false);
+            javaTypesEntity.setCharacterType((char)i);
+            javaTypesEntity.setBigDecimalType(new BigDecimal(i));
+            javaTypesEntity.setDoubleType(1.2);
+            javaTypesEntity.setDateType(new Date());
+
+            typesEntities.add(javaTypesEntity);
+        }
         int count = typesMapper.insertBatch2(typesEntities);
         Assert.assertEquals(0, count);
     }
-
 
 }
