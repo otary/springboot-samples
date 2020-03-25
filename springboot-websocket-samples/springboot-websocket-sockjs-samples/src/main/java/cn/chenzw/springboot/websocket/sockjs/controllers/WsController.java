@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.websocket.controllers;
+package cn.chenzw.springboot.websocket.sockjs.controllers;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.websocket.config;
+package cn.chenzw.springboot.websocket.sockjs.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
