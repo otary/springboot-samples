@@ -39,6 +39,7 @@
         <module>springboot-test-samples</module>
         <module>springboot-session-samples</module>
         <module>springboot-liquibase-samples</module>
+        <module>springboot-pid-samples</module>
     </modules>
 
     <properties>

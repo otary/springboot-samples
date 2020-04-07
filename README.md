@@ -46,7 +46,7 @@
 
 - [springboot-test-samples](./springboot-test-samples): 单元测试
 
-
+- [springboot-pid-samples](./springboot-pid-samples): 生成pid文件
 
 **批处理**
 - [springboot-batch-samples](./springboot-batch-samples): 批处理示例

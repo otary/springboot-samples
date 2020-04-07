@@ -1,0 +1,4 @@
+spring:
+  pid:
+    ## 默认值即是application.pid,可以不配置
+    file: application.pid
