@@ -73,7 +73,7 @@
         </if>
     </insert>
 
-    <insert id="insertBatch2">
+    <insert id="insertBatchOfArrary">
         <if test="javaTypesEntities != null and javaTypesEntities.length > 0">
             insert into java_types_entity (
             byte_type,
@@ -103,5 +103,40 @@
                 )
             </foreach>
         </if>
+    </insert>
+
+    <insert id="insertBatch2">
+
+        <if test="javaTypesEntities != null and javaTypesEntities.size() > 0">
+            insert into java_types_entity (
+            byte_type,
+            short_type,
+            character_type,
+            float_type,
+            integer_type,
+            long_type,
+            double_type,
+            bytes_type,
+            bigdecimal_type,
+            boolean_type,
+            date_type)
+            <foreach collection="javaTypesEntities" item="typeEntity" separator="union">
+                select
+                #{typeEntity.byteType} as byte_type,
+                #{typeEntity.shortType} as short_type,
+                #{typeEntity.characterType} as character_type,
+                #{typeEntity.floatType} as float_type,
+                #{typeEntity.integerType} as integer_type,
+                #{typeEntity.longType} as long_type,
+                #{typeEntity.doubleType} as double_type,
+                #{typeEntity.byteType} as bytes_type,
+                #{typeEntity.bigDecimalType} as bigdecimal_type,
+                #{typeEntity.booleanType} as boolean_type,
+                #{typeEntity.dateType} as date_type
+                from dual
+            </foreach>
+        </if>
+
+
     </insert>
 </mapper>

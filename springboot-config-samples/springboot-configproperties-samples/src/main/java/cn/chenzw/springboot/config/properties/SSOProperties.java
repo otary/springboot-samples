@@ -37,6 +37,9 @@ public class SSOProperties {
     @Value("${sso.defalut-ts[0]:aaa,bbb}")
     private List<String> defaultTs;
 
+    @Value("${sso.two.level}")
+    private Integer twoLevel;
+
     public String getPrivateKey() {
         return privateKey;
     }
@@ -77,6 +80,14 @@ public class SSOProperties {
         this.defaultTs = defaultTs;
     }
 
+    public Integer getTwoLevel() {
+        return twoLevel;
+    }
+
+    public void setTwoLevel(Integer twoLevel) {
+        this.twoLevel = twoLevel;
+    }
+
     @Override
     public String toString() {
         return "SSOProperties{" +
@@ -85,6 +96,7 @@ public class SSOProperties {
                 ", defaultValue='" + defaultValue + '\'' +
                 ", ts=" + ts +
                 ", defaultTs=" + defaultTs +
+                ", twoLevel=" + twoLevel +
                 '}';
     }
 }

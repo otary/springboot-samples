@@ -6,7 +6,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @Configuration
 @MapperScan(basePackages = {
-        "cn.chenzw.springboot.datasource.multiple.annotation"}, annotationClass = TkMybatisRepository.class)
+        "cn.chenzw.springboot.datasources.multiple.annotation"}, annotationClass = TkMybatisRepository.class)
 public class TkMybatisConfig {
 
 

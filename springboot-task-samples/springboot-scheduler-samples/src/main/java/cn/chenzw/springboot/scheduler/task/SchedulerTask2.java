@@ -1,15 +1,22 @@
 package cn.chenzw.springboot.scheduler.task;
 
 
-import org.apache.commons.lang3.time.DateFormatUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
 @Component
-public class SchedulerTask2 {
+public class SchedulerTask2  {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
+    @Autowired
+    private ThreadPoolTaskScheduler threadPoolTaskScheduler;
 
     /**
      * 固定频率执行（间隔1s执行一次）
@@ -19,9 +26,20 @@ public class SchedulerTask2 {
      */
     @Scheduled(fixedRate = 1000)
     private void process() throws InterruptedException {
+        logger.info("[1] Schedule task2 start running");
+
+        Thread.sleep(5000);
+
+        logger.info("[1] Schedule task2 end running");
+    }
+
+    @Scheduled(cron = "0/1 * * * * ?")
+    private void process2() throws InterruptedException {
+        logger.info("[2] Schedule task2-2  start running");
+
         Thread.sleep(3000);
 
-        System.out.println("schedule task2 running, now time: " + DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
+        logger.info("[2] Schedule task2-2 end running");
     }
 
     /**
@@ -30,8 +48,12 @@ public class SchedulerTask2 {
     @Async
     @Scheduled(fixedRate = 1000)
     public void asyncProcess() throws InterruptedException {
+        logger.info("[3] Schedule aysnc task2 start running");
+
         Thread.sleep(3000);
 
-        System.out.println("schedule aysnc task2 running, now time: " + DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
+        logger.info("[3] Schedule aysnc task2 end running");
     }
+
+
 }
