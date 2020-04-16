@@ -17,6 +17,7 @@ public interface JavaTypesMapper {
     /**
      * 批量插入示例（列表）
      * mysql
+     *
      * @param javaTypesEntities
      * @return
      */
@@ -25,6 +26,7 @@ public interface JavaTypesMapper {
 
     /**
      * 批量插入（数组）
+     *
      * @param javaTypesEntities
      * @return
      */
@@ -34,10 +36,18 @@ public interface JavaTypesMapper {
     /**
      * 批量插入（insert into ... select ）
      * oracle
+     *
      * @param javaTypesEntities
      * @return
      */
     int insertBatch2(@Param("javaTypesEntities") List<JavaTypesEntity> javaTypesEntities);
 
 
+    /**
+     * 灵活的字段插入
+     *
+     * @param javaTypesEntity
+     * @return
+     */
+    int insert3(@Param("javaTypesEntity") JavaTypesEntity javaTypesEntity);
 }

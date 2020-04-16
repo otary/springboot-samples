@@ -136,7 +136,80 @@
                 from dual
             </foreach>
         </if>
+    </insert>
 
-
+    <!-- 动态参数插入 -->
+    <insert id="insert3">
+        insert into java_types_entity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="javaTypesEntity.byteType != null">
+                byte_type,
+            </if>
+            <if test="javaTypesEntity.shortType != null">
+                short_type,
+            </if>
+            <if test="javaTypesEntity.characterType != null">
+                character_type,
+            </if>
+            <if test="javaTypesEntity.floatType != null">
+                float_type,
+            </if>
+            <if test="javaTypesEntity.integerType != null">
+                integer_type,
+            </if>
+            <if test="javaTypesEntity.longType != null">
+                long_type,
+            </if>
+            <if test="javaTypesEntity.doubleType != null">
+                double_type,
+            </if>
+            <if test="javaTypesEntity.bytesType != null">
+                bytes_type,
+            </if>
+            <if test="javaTypesEntity.bigDecimalType != null">
+                bigdecimal_type,
+            </if>
+            <if test="javaTypesEntity.booleanType != null">
+                boolean_type,
+            </if>
+            <if test="javaTypesEntity.dateType != null">
+                date_type,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="javaTypesEntity.byteType != null">
+                #{javaTypesEntity.byteType},
+            </if>
+            <if test="javaTypesEntity.shortType != null">
+                #{javaTypesEntity.shortType},
+            </if>
+            <if test="javaTypesEntity.characterType != null">
+                #{javaTypesEntity.characterType},
+            </if>
+            <if test="javaTypesEntity.floatType != null">
+                #{javaTypesEntity.floatType},
+            </if>
+            <if test="javaTypesEntity.integerType != null">
+                #{javaTypesEntity.integerType},
+            </if>
+            <if test="javaTypesEntity.longType != null">
+                #{javaTypesEntity.longType},
+            </if>
+            <if test="javaTypesEntity.doubleType != null">
+                #{javaTypesEntity.doubleType},
+            </if>
+            <if test="javaTypesEntity.bytesType != null">
+                #{javaTypesEntity.bytesType},
+            </if>
+            <if test="javaTypesEntity.bigDecimalType != null">
+                #{javaTypesEntity.bigDecimalType},
+            </if>
+            <if test="javaTypesEntity.booleanType != null">
+                #{javaTypesEntity.booleanType},
+            </if>
+            <if test="javaTypesEntity.dateType != null">
+                #{javaTypesEntity.dateType},
+            </if>
+        </trim>
     </insert>
 </mapper>
