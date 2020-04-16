@@ -3,14 +3,20 @@ package cn.chenzw.springboot.swagger2.controllers;
 import cn.chenzw.springboot.swagger2.domain.dto.input.SwaggerRespDto;
 import cn.chenzw.springboot.swagger2.domain.dto.output.SwaggerParamDto;
 import io.swagger.annotations.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Api(value = "@Api-value", tags = {"@Api-tags1", "@Api-tags2"}, protocols = "https")
 @RestController
 @RequestMapping("/swagger-test")
 public class SwaggerController {
+
+    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @ApiOperation(value = "@ApiOperation-value", notes = "@ApiOperation-notes", tags = {"@ApiOperation-tags1",
             "@ApiOperation-tags2"}, response = SwaggerRespDto.class, nickname = "@ApiOperation-nickname"
@@ -59,8 +65,16 @@ public class SwaggerController {
         return new SwaggerRespDto();
     }
 
+    @ApiOperation(value = "带List参数的POST请求",
+            response = SwaggerRespDto.class)
+    @PostMapping("/post-with-list")
+    public SwaggerRespDto testPostWithList(@RequestBody List<String> usernames) {
+        logger.info("--------post-with-list--------" + usernames);
+        return new SwaggerRespDto();
+    }
+
     // post测试
-    // @TODO
+    //@TODO
 
     // 上传文件
     // @TODO
