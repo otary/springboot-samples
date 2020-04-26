@@ -2,6 +2,8 @@ package cn.chenzw.spring.boot.registrar;
 
 import cn.chenzw.spring.boot.annotation.EnableSSO;
 import cn.chenzw.spring.boot.domain.entity.Person;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -16,11 +18,18 @@ import java.util.Map;
 
 public class SSORegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, BeanFactoryAware {
 
+    private Logger logger = LoggerFactory.getLogger(getClass());
+
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry registry) {
         // 获取注解属性
         Map<String, Object> annotationAttributes = annotationMetadata.getAnnotationAttributes(EnableSSO.class.getName());
 
+        logger.info("@EnableSSO注解属性:" + annotationAttributes);
+
+
+        // 扫描包
+        // ClassPathScanningCandidateComponentProvider
 
         // 动态注册bean
         if(!registry.containsBeanDefinition("person")){
