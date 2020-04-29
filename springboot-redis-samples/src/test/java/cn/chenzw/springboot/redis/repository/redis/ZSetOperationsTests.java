@@ -48,6 +48,7 @@ public class ZSetOperationsTests {
         redisTemplate.opsForZSet().incrementScore("class_score", "张三", 2);
         printEntries("incrementScore");
 
+
         // 扫描
         Cursor<ZSetOperations.TypedTuple> classScoreCursor = null;
         try {
@@ -74,6 +75,8 @@ public class ZSetOperationsTests {
         // 统计0~100分之间的个数
         Long count = redisTemplate.opsForZSet().count("class_score", 0, 100);
         logger.info("【count】: {}", count);
+
+
 
     }
 

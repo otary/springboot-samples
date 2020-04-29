@@ -50,4 +50,11 @@ public interface JavaTypesMapper {
      * @return
      */
     int insert3(@Param("javaTypesEntity") JavaTypesEntity javaTypesEntity);
+
+
+    /**
+     * 批量删除（多字段）
+     * @param javaTypesEntities
+     */
+    int deleteBatch2(@Param("javaTypesEntity")List<JavaTypesEntity> javaTypesEntities);
 }

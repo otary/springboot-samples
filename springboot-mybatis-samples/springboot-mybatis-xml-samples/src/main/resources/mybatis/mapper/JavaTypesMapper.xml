@@ -10,37 +10,9 @@
         select *
         from java_types_entity
     </select>
+    
 
-    <!--<insert id="insertBatch">
-        insert into java_types_entity (
-        byte_type,
-        short_type,
-        character_type,
-        float_type,
-        integer_type,
-        long_type,
-        double_type,
-        bytes_type,
-        bigdecimal_type,
-        boolean_type,
-        date_type)
-        <foreach collection="javaTypesEntities" item="typeEntity" separator="union">
-            SELECT
-            #{typeEntity.byteType} as byte_type,
-            #{typeEntity.shortType} as short_type,
-            #{typeEntity.characterType} as character_type,
-            #{typeEntity.integerType} as integer_type,
-            #{typeEntity.floatType} as float_type,
-            #{typeEntity.longType} as long_type,
-            #{typeEntity.doubleType} as double_type,
-            #{typeEntity.byteType} as bytes_type,
-            #{typeEntity.bigDecimalType} as bigdecimal_type,
-            #{typeEntity.booleanType} as boolean_type,
-            #{typeEntity.dateType} as date_type
-            FROM dual
-        </foreach>
-    </insert>-->
-
+    <!-- 批量插入（List）-->
     <insert id="insertBatch">
         <if test="javaTypesEntities != null and javaTypesEntities.size() > 0">
             insert into java_types_entity (
@@ -73,6 +45,7 @@
         </if>
     </insert>
 
+    <!-- 批量插入（数组）-->
     <insert id="insertBatchOfArrary">
         <if test="javaTypesEntities != null and javaTypesEntities.length > 0">
             insert into java_types_entity (
@@ -105,6 +78,7 @@
         </if>
     </insert>
 
+    <!-- 批量插入（List）insert...select... -->
     <insert id="insertBatch2">
 
         <if test="javaTypesEntities != null and javaTypesEntities.size() > 0">
@@ -212,4 +186,13 @@
             </if>
         </trim>
     </insert>
+    
+    <delete id="deleteBatch2">
+        delete from java_types_entity
+        <where>
+            <foreach collection="javaTypesEntity" item="item" separator="or">
+                ( integer_type = #{item.integerType} and long_type = #{item.longType} )
+            </foreach>
+        </where>
+    </delete>
 </mapper>

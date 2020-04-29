@@ -84,11 +84,11 @@ public class JavaTypesMapperTests {
     @Test
     public void testInsertBatch2() {
         List<JavaTypesEntity> typesEntities = new ArrayList<>();
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 10; i++) {
             JavaTypesEntity javaTypesEntity = new JavaTypesEntity();
             javaTypesEntity.setByteType((byte) i);
             javaTypesEntity.setBooleanType(false);
-            javaTypesEntity.setCharacterType((char)i);
+            javaTypesEntity.setCharacterType((char) i);
             javaTypesEntity.setBigDecimalType(new BigDecimal(i));
             javaTypesEntity.setDoubleType(1.2);
             javaTypesEntity.setDateType(new Date());
@@ -97,6 +97,24 @@ public class JavaTypesMapperTests {
         }
         int count = typesMapper.insertBatch2(typesEntities);
         Assert.assertEquals(0, count);
+    }
+
+    @Test
+    public void testDeleteBatch2() {
+        List<JavaTypesEntity> typesEntities = new ArrayList<>();
+
+        JavaTypesEntity typesEntity = new JavaTypesEntity();
+        typesEntity.setIntegerType(1637);
+        typesEntity.setLongType(125679L);
+        typesEntities.add(typesEntity);
+
+        JavaTypesEntity typesEntity2 = new JavaTypesEntity();
+        typesEntity2.setIntegerType(123);
+        typesEntity2.setLongType(123456789L);
+        typesEntities.add(typesEntity2);
+
+        int count = typesMapper.deleteBatch2(typesEntities);
+        Assert.assertEquals(2, count);
     }
 
 }

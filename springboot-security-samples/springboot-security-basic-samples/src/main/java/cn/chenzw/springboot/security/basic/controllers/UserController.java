@@ -28,7 +28,6 @@ public class UserController {
     public ModelAndView delete(ModelAndView modelAndView) {
         modelAndView.addObject("users", userService.listAll());
         modelAndView.setViewName("/users/list");
-        System.out.println(userService.listAll());
         return modelAndView;
     }
 }
