@@ -53,8 +53,18 @@ public interface JavaTypesMapper {
 
 
     /**
+     * 批量删除（单字段）
+     * @param javaTypesEntities
+     * @return
+     */
+    int deleteBatch(@Param("javaTypesEntity")List<JavaTypesEntity> javaTypesEntities);
+
+    /**
      * 批量删除（多字段）
      * @param javaTypesEntities
      */
     int deleteBatch2(@Param("javaTypesEntity")List<JavaTypesEntity> javaTypesEntities);
+
+
+
 }

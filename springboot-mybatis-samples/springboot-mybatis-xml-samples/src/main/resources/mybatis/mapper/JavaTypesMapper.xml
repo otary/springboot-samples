@@ -10,7 +10,7 @@
         select *
         from java_types_entity
     </select>
-    
+
 
     <!-- 批量插入（List）-->
     <insert id="insertBatch">
@@ -186,7 +186,19 @@
             </if>
         </trim>
     </insert>
-    
+
+    <!-- 批量删除（单字段） -->
+    <delete id="deleteBatch">
+        delete from java_types_entity
+        <where>
+            integer_type in
+            <foreach collection="javaTypesEntity" item="item" open="(" separator="," close=")">
+                #{item.integerType}
+            </foreach>
+        </where>
+    </delete>
+
+    <!-- 批量删除（多字段） -->
     <delete id="deleteBatch2">
         delete from java_types_entity
         <where>

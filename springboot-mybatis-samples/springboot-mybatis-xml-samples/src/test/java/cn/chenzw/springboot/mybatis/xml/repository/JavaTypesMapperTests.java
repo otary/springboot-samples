@@ -100,6 +100,22 @@ public class JavaTypesMapperTests {
     }
 
     @Test
+    public void testDeleteBatch(){
+        List<JavaTypesEntity> typesEntities = new ArrayList<>();
+
+        JavaTypesEntity typesEntity = new JavaTypesEntity();
+        typesEntity.setIntegerType(1637);
+        typesEntities.add(typesEntity);
+
+        JavaTypesEntity typesEntity2 = new JavaTypesEntity();
+        typesEntity2.setIntegerType(123);
+        typesEntities.add(typesEntity2);
+
+        int count = typesMapper.deleteBatch(typesEntities);
+        Assert.assertEquals(2, count);
+    }
+
+    @Test
     public void testDeleteBatch2() {
         List<JavaTypesEntity> typesEntities = new ArrayList<>();
 
