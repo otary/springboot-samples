@@ -1,5 +1,6 @@
 package cn.chenzw.springboot.mybatis.xml.repository;
 
+import cn.chenzw.springboot.mybatis.xml.domain.dto.JavaTypesEntityQueryDto;
 import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,7 +13,7 @@ import java.util.List;
  */
 public interface JavaTypesMapper {
 
-    List<JavaTypesEntity> listAll();
+    List<JavaTypesEntity> listAll(@Param("javaTypesEntityQueryDto") JavaTypesEntityQueryDto javaTypesEntityQueryDto);
 
     /**
      * 批量插入示例（列表）

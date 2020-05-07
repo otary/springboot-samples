@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.mybatis.xml.repository;
 
 import cn.chenzw.springboot.mybatis.xml.MybatisXmlSamplesApp;
+import cn.chenzw.springboot.mybatis.xml.domain.dto.JavaTypesEntityQueryDto;
 import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
 import org.junit.Assert;
 import org.junit.Test;
@@ -29,8 +30,12 @@ public class JavaTypesMapperTests {
 
     @Test
     public void testListAll() {
-        List<JavaTypesEntity> typesEntities = typesMapper.listAll();
+        JavaTypesEntityQueryDto javaTypesEntityQueryDto = new JavaTypesEntityQueryDto();
+        //javaTypesEntityQueryDto.setIntegerType(1441);
+        javaTypesEntityQueryDto.setVarcharType("这是");
+        List<JavaTypesEntity> typesEntities = typesMapper.listAll(javaTypesEntityQueryDto);
 
+        System.out.println(typesEntities);
         for (JavaTypesEntity typesEntiy : typesEntities) {
             Assert.assertNotNull(typesEntiy.getBooleanType());
         }

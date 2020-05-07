@@ -1,5 +1,6 @@
 package cn.chenzw.springboot.mybatis.xml.controllers;
 
+import cn.chenzw.springboot.mybatis.xml.domain.dto.JavaTypesEntityQueryDto;
 import cn.chenzw.springboot.mybatis.xml.domain.dto.PageResult;
 import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
 import cn.chenzw.springboot.mybatis.xml.service.JavaTypesService;
@@ -22,9 +23,9 @@ public class JavaTypesController {
     JavaTypesService javaTypesService;
 
     @GetMapping("/list")
-    public PageResult listAll() {
+    public PageResult listAll(JavaTypesEntityQueryDto javaTypesEntityQueryDto) {
         PageHelper.startPage(0, 2);
-        List<JavaTypesEntity> javaTypesEntities = javaTypesService.listAll();
+        List<JavaTypesEntity> javaTypesEntities = javaTypesService.listAll(javaTypesEntityQueryDto);
         System.out.println(javaTypesEntities);
 
         Page page = (Page) javaTypesEntities;

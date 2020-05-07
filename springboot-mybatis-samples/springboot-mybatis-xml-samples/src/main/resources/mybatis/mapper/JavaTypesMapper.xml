@@ -8,7 +8,18 @@
 
     <select id="listAll" resultMap="javaTypesEntity">
         select *
-        from java_types_entity
+        from java_types_entity jte
+        <where>
+            <if test="javaTypesEntityQueryDto != null ">
+                <if test="javaTypesEntityQueryDto.integerType != null">
+                    jte.integer_type = #{javaTypesEntityQueryDto.integerType}
+                </if>
+                <!-- 模糊查询 -->
+                <if test="javaTypesEntityQueryDto.varcharType != null and javaTypesEntityQueryDto.varcharType != ''">
+                    jte.varchar_type like CONCAT(CONCAT('%', #{javaTypesEntityQueryDto.varcharType}), '%')
+                </if>
+            </if>
+        </where>
     </select>
 
 
