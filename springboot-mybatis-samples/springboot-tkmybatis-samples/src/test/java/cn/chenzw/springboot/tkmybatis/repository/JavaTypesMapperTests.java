@@ -2,6 +2,7 @@ package cn.chenzw.springboot.tkmybatis.repository;
 
 import cn.chenzw.springboot.tkmybatis.TkMybatisSamplesApp;
 import cn.chenzw.springboot.tkmybatis.domain.entity.JavaTypesEntity;
+import cn.chenzw.springboot.tkmybatis.serivce.JavaTypesService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -23,12 +24,12 @@ public class JavaTypesMapperTests {
     @Autowired
     JavaTypesMapper javaTypesMapper;
 
+    @Autowired
+    JavaTypesService javaTypesService;
 
     @Test
     public void testSelectAll() {
         List<JavaTypesEntity> javaTypesEntities = javaTypesMapper.selectAll();
-
-
         Assert.assertNotNull(javaTypesEntities);
     }
 
@@ -42,13 +43,24 @@ public class JavaTypesMapperTests {
         Assert.assertEquals(5, javaTypesEntities.size());
 
         // 分页信息
-        Page pageInfo = (Page)javaTypesEntities;
+        Page pageInfo = (Page) javaTypesEntities;
         Assert.assertEquals(12, pageInfo.getTotal());
         Assert.assertEquals(3, pageInfo.getPages());
 
 
         PageInfo<JavaTypesEntity> pageInfo2 = pageInfo.toPageInfo();
         System.out.println(pageInfo2);
+    }
+
+    /**
+     * Example查询示例
+     */
+    @Test
+    public void testSelectByExample() {
+        List<JavaTypesEntity> javaTypesEntities = javaTypesService.selectByExample();
+
+        System.out.println(javaTypesEntities.size());
+        System.out.println(javaTypesEntities);
     }
 
 
