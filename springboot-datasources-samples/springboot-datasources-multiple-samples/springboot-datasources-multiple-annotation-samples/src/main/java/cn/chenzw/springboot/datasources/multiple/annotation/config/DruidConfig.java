@@ -1,9 +1,11 @@
 package cn.chenzw.springboot.datasources.multiple.annotation.config;
 
 import cn.chenzw.springboot.datasources.multiple.annotation.support.mybatis.DynamicDataSource;
+import com.alibaba.druid.pool.DruidDataSource;
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class DruidConfig {
+public class DruidConfig implements InitializingBean {
 
     public static final String H2_DATASOURCE_NAME = "h2";
     public static final String MYSQL_DATASOURCE_NAME = "mysql";
@@ -28,19 +30,11 @@ public class DruidConfig {
     @Bean
     @ConfigurationProperties("spring.datasource.druid.h2")
     public DataSource h2DataSource() {
-        DataSource ds = DruidDataSourceBuilder.create().build();
-
-        ResourceDatabasePopulator populator = new
-                ResourceDatabasePopulator();
-        populator.addScript(new ClassPathResource("classpath:/data.sql"));
-        populator.addScript(new ClassPathResource("classpath:/schema.sql"));
-
-        DatabasePopulatorUtils.execute(populator, ds);
-        return  ds;
+        return DruidDataSourceBuilder.create().build();
     }
 
     @Bean
-    @ConfigurationProperties("spring.datasource.mysql")
+    @ConfigurationProperties("spring.datasource.druid.mysql")
     public DataSource mysqlDataSource() {
         return DruidDataSourceBuilder.create().build();
     }
@@ -88,4 +82,12 @@ public class DruidConfig {
     }
 
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        ResourceDatabasePopulator populator = new
+                ResourceDatabasePopulator();
+        populator.addScript(new ClassPathResource("db/schema.sql"));
+        populator.addScript(new ClassPathResource("db/data.sql"));
+        DatabasePopulatorUtils.execute(populator, h2DataSource());
+    }
 }

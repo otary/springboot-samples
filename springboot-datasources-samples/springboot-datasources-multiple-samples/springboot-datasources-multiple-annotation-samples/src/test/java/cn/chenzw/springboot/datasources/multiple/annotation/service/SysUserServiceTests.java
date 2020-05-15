@@ -2,7 +2,8 @@ package cn.chenzw.springboot.datasources.multiple.annotation.service;
 
 import cn.chenzw.springboot.datasources.multiple.annotation.MultipleDatasourceAnnotationSamplesApp;
 import cn.chenzw.springboot.datasources.multiple.annotation.domain.entity.SysUser;
-import cn.chenzw.springboot.datasources.multiple.annotation.repository.SysUserMapper;
+import cn.chenzw.springboot.datasources.multiple.annotation.repository.SysUserH2Mapper;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,38 @@ import java.util.List;
 @WebAppConfiguration
 public class SysUserServiceTests {
 
-    @Autowired
-    SysUserMapper sysUserMapper;
 
+    @Autowired
+    SysUserService sysUserService;
+
+    @Autowired
+    SysUserH2Mapper sysUserH2Mapper;
 
     @Test
-    public void testListAll(){
-        List<SysUser> sysUsers = sysUserMapper.selectAll();
+    public void testListAll() {
+        List<SysUser> sysUsers = sysUserH2Mapper.selectAll();
+        Assert.assertTrue(sysUsers.size() > 0);
+
         System.out.println(sysUsers);
     }
+
+    @Test
+    public void testListH2All() {
+        List<SysUser> sysUsers = sysUserService.listH2All();
+        System.out.println(sysUsers);
+    }
+
+    @Test
+    public void testListMySqlAll() {
+        List<SysUser> sysUsers = sysUserService.listMySqlAll();
+        System.out.println(sysUsers);
+    }
+
+    @Test
+    public void testListMySqlAll2(){
+        List<SysUser> sysUsers = sysUserService.listMySqlAll2();
+        System.out.println(sysUsers);
+    }
+
 
 }

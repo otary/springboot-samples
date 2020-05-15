@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  *  指定使用的数据源
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.METHOD)
+@Target({ElementType.METHOD, ElementType.TYPE})
 public @interface DataSource {
 
     /**

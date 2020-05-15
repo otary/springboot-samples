@@ -13,6 +13,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * 数据源切面
@@ -22,12 +23,13 @@ import java.lang.reflect.Method;
 @Order(-99)
 public class DataSourceAspect {
 
-
     private static final Logger logger = LoggerFactory.getLogger(DataSourceAspect.class);
+
     private static final String POINT_CUT = "datasource()";
 
 
-    @Pointcut("@annotation(cn.chenzw.springboot.datasources.multiple.annotation.support.mybatis.DataSource)")
+    @Pointcut("execution(* cn.chenzw.springboot.datasources.multiple.annotation.repository..*.*(..))")
+    //@Pointcut("@annotation(cn.chenzw.springboot.datasources.multiple.annotation.support.mybatis.DataSource)")
     public void datasource() {
 
     }
@@ -39,9 +41,37 @@ public class DataSourceAspect {
     public void before(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
-        DataSource dataSource = method.getAnnotation(DataSource.class);
-        // @TODO 为空判断？
-        DataSourceHolder.set(dataSource.value());
+
+
+      /*  System.out.println(joinPoint.getThis().getClass().getAnnotation(DataSource.class));
+        Object aThis = joinPoint.getTarget();
+        System.out.println(aThis.getClass().getAnnotation(DataSource.class));*/
+
+        Class<?> declaringClass = method.getDeclaringClass();
+        System.out.println(declaringClass);
+
+        Class<?> proxyClass = Proxy.getProxyClass(Thread.currentThread().getContextClassLoader(), declaringClass.getInterfaces());
+
+        System.out.println(proxyClass);
+
+        System.out.println(declaringClass.getAnnotation(DataSource.class));
+     //   Class<?> aClass = joinPoint.getTarget().getClass();
+     //   System.out.println(aClass.getComponentType());
+     //   System.out.println(aClass);
+
+      /*  Class<?> proxyClass = Proxy.getProxyClass(ClassLoader.getSystemClassLoader(), joinPoint.getTarget().getClass().getInterfaces());
+        System.out.println(proxyClass);*/
+
+
+        if (method.isAnnotationPresent(DataSource.class)) {
+            DataSource dataSource = method.getAnnotation(DataSource.class);
+            DataSourceHolder.set(dataSource.value());
+
+
+        } else {
+            System.out.println("----------------------------");
+        }
+
     }
 
 
