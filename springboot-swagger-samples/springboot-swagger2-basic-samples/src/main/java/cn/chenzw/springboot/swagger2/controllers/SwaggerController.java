@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -62,6 +63,33 @@ public class SwaggerController {
             authorizations = {@Authorization(value = "basicAuth")})
     @GetMapping("/get-with-basic-auth")
     public SwaggerRespDto testGetWithBasicAuth(SwaggerParamDto swaggerParamEntity, String sex, String query) {
+        return new SwaggerRespDto();
+    }
+
+    /**
+     * 请求URL: http://localhost:8080/swagger-test/get-with-list?list=11&list=222
+     *
+     * @param list
+     * @return
+     */
+    @ApiOperation(value = "接收List参数的Get请求")
+    @GetMapping("/get-with-list")
+    public SwaggerRespDto testGetWithList(@RequestParam(value = "list", required = false) ArrayList<String> list, SwaggerParamDto swaggerParamEntity) {
+        logger.info("---------get-with-list------------list:" + list + ", swaggerParamDto:" + swaggerParamEntity);
+        return new SwaggerRespDto();
+    }
+
+
+    /**
+     * 请求URL: http://localhost:8080/swagger-test/get-with-array?as=1&as=2&as=3
+     *
+     * @param as
+     * @return
+     */
+    @ApiOperation(value = "接收数组参数的Get请求")
+    @GetMapping("/get-with-array")
+    public SwaggerRespDto testGetWithArray(String[] as) {
+        logger.info("-----------get-with-array------------" + Arrays.toString(as));
         return new SwaggerRespDto();
     }
 
