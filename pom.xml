@@ -42,6 +42,7 @@
         <module>springboot-pid-samples</module>
         <module>springboot-webflux-samples</module>
         <module>springboot-junit5-samples</module>
+        <module>springboot-resource-message-samples</module>
     </modules>
 
     <properties>
