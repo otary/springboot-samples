@@ -89,6 +89,7 @@
 **安全认证**
 - [springboot-security-samples](./springboot-security-samples)：集成spring security示例
   - [springboot-security-basic-samples](./springboot-security-samples/springboot-security-basic-samples)：spring security基础示例
+  - [springboot-security-basic-json-samples](./springboot-security-basic-json-samples)：spring security json示例
   - [springboot-security-jwt-samples](./springboot-security-samples/springboot-security-jwt-samples)：
   - [springboot-security-oauth2-samples](./springboot-security-samples/springboot-security-oauth2-samples):
 - [springboot-shiro-samples](./springboot-shiro-samples)：集成shiro示例
