@@ -1,4 +1,4 @@
 spring:
   messages:
-    basename: messages/messages
+    basename: messages/message
     encoding: UTF-8

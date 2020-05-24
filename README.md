@@ -50,6 +50,8 @@
 - [springboot-webflux-samples](./springboot-webflux-samples): WebFlux示例
 - [springboot-pid-samples](./springboot-pid-samples): 生成pid文件
 
+- [springboot-resource-message-samples](./springboot-resource-message-samples):  多语言（国际化）示例
+
 **批处理**
 - [springboot-batch-samples](./springboot-batch-samples): 批处理示例
 
