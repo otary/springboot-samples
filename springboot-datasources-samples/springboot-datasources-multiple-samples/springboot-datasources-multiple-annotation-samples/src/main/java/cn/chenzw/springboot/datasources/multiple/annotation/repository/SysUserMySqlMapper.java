@@ -8,7 +8,7 @@ import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 
-@DataSource(DruidConfig.MYSQL_DATASOURCE_NAME)
+//@DataSource(DruidConfig.MYSQL_DATASOURCE_NAME)
 @TkMybatisRepository
 public interface SysUserMySqlMapper extends BaseMapper<SysUser> {
 

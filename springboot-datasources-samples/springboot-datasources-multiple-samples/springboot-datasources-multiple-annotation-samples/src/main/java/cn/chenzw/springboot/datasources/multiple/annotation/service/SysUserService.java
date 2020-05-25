@@ -20,12 +20,13 @@ public class SysUserService {
     @Autowired
     SysUserMySqlMapper sysUserMySqlMapper;
 
-    @DataSource(DruidConfig.H2_DATASOURCE_NAME)
+  //  @DataSource(DruidConfig.H2_DATASOURCE_NAME)
     public List<SysUser> listH2All() {
         return sysUserH2Mapper.selectAll();
     }
 
 
+    @DataSource(DruidConfig.H2_DATASOURCE_NAME)
     public List<SysUser> listMySqlAll() {
         return sysUserMySqlMapper.selectAll();
     }
