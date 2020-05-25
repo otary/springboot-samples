@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 未认证时的格式
+ *
+ * @author chenzw
+ */
 public class LoginUrl2JsonAuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint {
 
     private Logger logger = LoggerFactory.getLogger(getClass());

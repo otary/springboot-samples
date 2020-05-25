@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * 登录失败处理器
+ *
+ * @author chenzw
+ */
 public class LoginFailureHandler implements AuthenticationFailureHandler {
 
     private Logger logger = LoggerFactory.getLogger(getClass());

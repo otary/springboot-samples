@@ -16,7 +16,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * 权限认证不通过处理器
+ * 角色权限认证拒绝处理器
+ * @author chenzw
  */
 public class AuthenticationAccessDeniedHandler implements AccessDeniedHandler {
 
