@@ -14,6 +14,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import javax.servlet.http.Cookie;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ResourceMessageSamplesApp.class)
 public class UserControllerTests {
@@ -41,7 +45,10 @@ public class UserControllerTests {
     @Test
     public void testGetNameWithEn() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/user/name?lang=en_US"))
+                .andDo(print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
+                // 注入cookie
+                .andExpect(MockMvcResultMatchers.cookie().value("lang", "en-US"))
                 // 返回zhangsan
                 .andExpect(MockMvcResultMatchers.content().string("zhangsan"))
                 .andReturn();
@@ -52,6 +59,19 @@ public class UserControllerTests {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/user/name?lang=zh_CN"))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string("张三"));
+    }
+
+
+    /**
+     * cookie参数示例
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetNameWithCookieEn() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/user/name").cookie(new Cookie("lang", "en_US")))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string("zhangsan"));
     }
 
 
