@@ -13,6 +13,7 @@
 
     <modules>
         <module>springboot-datasources-multiple-annotation-samples</module>
+        <module>springboot-datasources-multiple-dynamic-samples</module>
     </modules>
 
 </project>

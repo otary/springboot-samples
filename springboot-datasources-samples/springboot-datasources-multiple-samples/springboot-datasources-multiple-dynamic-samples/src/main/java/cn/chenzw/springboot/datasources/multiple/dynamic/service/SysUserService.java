@@ -1,8 +1,9 @@
-package cn.chenzw.springboot.datasources.multiple.annotation.service;
+package cn.chenzw.springboot.datasources.multiple.dynamic.service;
 
-import cn.chenzw.springboot.datasources.multiple.annotation.domain.entity.SysUser;
-import cn.chenzw.springboot.datasources.multiple.annotation.repository.SysUserH2Mapper;
-import cn.chenzw.springboot.datasources.multiple.annotation.repository.SysUserMySqlMapper;
+
+import cn.chenzw.springboot.datasources.multiple.dynamic.domain.entity.SysUser;
+import cn.chenzw.springboot.datasources.multiple.dynamic.repository.SysUserH2Mapper;
+import cn.chenzw.springboot.datasources.multiple.dynamic.repository.SysUserMySqlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,18 +19,16 @@ public class SysUserService {
     @Autowired
     SysUserMySqlMapper sysUserMySqlMapper;
 
-  //  @DataSource(DruidConfig.H2_DATASOURCE_NAME)
     public List<SysUser> listH2All() {
         return sysUserH2Mapper.selectAll();
     }
 
 
-    // @DataSource(DruidConfig.H2_DATASOURCE_NAME)
     public List<SysUser> listMySqlAll() {
         return sysUserMySqlMapper.selectAll();
     }
 
-    public List<SysUser> listMySqlAll2(){
+    public List<SysUser> listMySqlAll2() {
         return sysUserMySqlMapper.listAll();
     }
 

@@ -37,4 +37,8 @@ public class AopServiceTests {
         aopService.doWithArgs("查询", 1, 10);
     }
 
+    @Test
+    public void testDoWithInnerInvoke() {
+        aopService.doWithInnerInvoke();
+    }
 }
