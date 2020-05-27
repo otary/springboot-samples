@@ -62,8 +62,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // .antMatchers("/user/**").hasAnyRole("ROLE_ADMIN", "ROLE_GUEST")
         // .anyRequest().authenticated();
 
+
         http.authorizeRequests()
-                .antMatchers("/assets/**", "/h2-console/**").permitAll()
+                .antMatchers("/assets/**", "/h2-console/**", "/webjars/**").permitAll()
                 .antMatchers("/users/**").hasRole("USER")
                 .antMatchers("/admins/**").hasRole("ADMIN")
                 .anyRequest().authenticated().and()
