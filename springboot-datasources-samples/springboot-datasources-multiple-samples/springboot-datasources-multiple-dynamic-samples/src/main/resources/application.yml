@@ -6,13 +6,13 @@ mybatis:
 
 spring:
   datasource:
-    druid:
+    dynamic:
       mysql:
         type: com.alibaba.druid.pool.DruidDataSource
         driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://106.12.136.105:3306/users?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
         username: root
-        password: otary_321
+        password: otary_32 1
         primary: false
       h2:
         type: com.alibaba.druid.pool.DruidDataSource
@@ -21,3 +21,5 @@ spring:
         username: sa
         password:
         primary: true
+        data: classpath:db/data.sql
+        schema: classpath:db/h2_schema.sql

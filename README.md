@@ -69,6 +69,7 @@
   - [springboot-datasources-h2-samples](./springboot-datasources-samples/springboot-datasources-h2-samples)：集成H2数据库示例
   - [springboot-datasources-multiple-samples](./springboot-datasources-samples/springboot-datasources-multiple-samples)：多数据源示例
     - [springboot-datasources-multiple-annotation-samples](./springboot-datasources-samples/springboot-datasources-multiple-samples/springboot-datasources-multiple-annotation-samples):基于自定义注解的多数据源示例
+    - [springboot-datasources-multiple-dynamic-samples](./springboot-datasources-samples/springboot-datasources-multiple-samples/springboot-datasources-multiple-dynamic-samples): 基于tookit的多数据源示例 
   - [springboot-datasources-mysql-samples](./springboot-datasources-samples/springboot-datasources-mysql-samples)：集成mysql示例
 - [springboot-druid-samples](./springboot-druid-samples)：集成Druid相关示例
   - [springboot-druid-config-samples](./springboot-druid-samples/springboot-druid-config-samples)：纯代码配置方式

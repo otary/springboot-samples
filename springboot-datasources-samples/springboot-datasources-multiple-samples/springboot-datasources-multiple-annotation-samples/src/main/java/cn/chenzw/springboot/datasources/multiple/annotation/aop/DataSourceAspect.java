@@ -1,11 +1,14 @@
 package cn.chenzw.springboot.datasources.multiple.annotation.aop;
 
+import cn.chenzw.springboot.datasources.multiple.annotation.support.mybatis.DataSource;
+import cn.chenzw.springboot.datasources.multiple.annotation.support.mybatis.DataSourceHolder;
 import cn.chenzw.toolkit.commons.ReflectExtUtils;
 import org.apache.ibatis.binding.MapperProxy;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
@@ -41,11 +44,8 @@ public class DataSourceAspect {
      */
     @Before(POINT_CUT)
     public void before(JoinPoint joinPoint) throws Exception {
-
-        System.out.println("--------------------------------------------------------");
-        /*MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
-
 
         System.out.println(method);
 
@@ -58,7 +58,7 @@ public class DataSourceAspect {
         }
         if (dataSourceOptl.isPresent()) {
             DataSourceHolder.set(dataSourceOptl.get().value());
-        }*/
+        }
     }
 
 

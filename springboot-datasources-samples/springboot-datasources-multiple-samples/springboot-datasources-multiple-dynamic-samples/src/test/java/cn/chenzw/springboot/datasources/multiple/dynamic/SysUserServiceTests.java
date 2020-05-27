@@ -31,8 +31,6 @@ public class SysUserServiceTests {
     public void testListAll() {
         List<SysUser> sysUsers = sysUserH2Mapper.selectAll();
         Assert.assertTrue(sysUsers.size() > 0);
-
-        System.out.println(sysUsers);
     }
 
     @Test
@@ -51,7 +49,7 @@ public class SysUserServiceTests {
     public void testListMySqlAll2() {
         List<SysUser> sysUsers = sysUserService.listMySqlAll2();
         System.out.println(sysUsers);
-
     }
+
 
 }
