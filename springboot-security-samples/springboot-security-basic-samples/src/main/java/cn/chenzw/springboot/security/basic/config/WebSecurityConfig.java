@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)  // 启用方法安全设置
@@ -62,7 +63,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // .antMatchers("/user/**").hasAnyRole("ROLE_ADMIN", "ROLE_GUEST")
         // .anyRequest().authenticated();
 
-
         http.authorizeRequests()
                 .antMatchers("/assets/**", "/h2-console/**", "/webjars/**").permitAll()
                 .antMatchers("/users/**").hasRole("USER")
@@ -94,9 +94,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    public static void main(String[] args) {
-        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        String password = passwordEncoder.encode("123456");
-        System.out.println(password);
-    }
 }

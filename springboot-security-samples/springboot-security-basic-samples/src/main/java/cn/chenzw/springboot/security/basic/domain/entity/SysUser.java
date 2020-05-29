@@ -127,7 +127,7 @@ public class SysUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return false;
+        return state == 0;
     }
 
 
