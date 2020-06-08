@@ -30,6 +30,7 @@ public class JavaTypesMapperTests {
     @Test
     public void testSelectAll() {
         List<JavaTypesEntity> javaTypesEntities = javaTypesMapper.selectAll();
+        System.out.println(javaTypesEntities);
         Assert.assertNotNull(javaTypesEntities);
     }
 

@@ -9,5 +9,6 @@ CREATE TABLE `java_types_entity`  (
   `double_type` double NULL DEFAULT NULL,
   `bytes_type` blob NULL,
   `bigdecimal_type` bigint(20) NULL DEFAULT NULL,
-  `boolean_type` bit(1) NULL DEFAULT NULL
+  `boolean_type` bit(1) NULL DEFAULT NULL,
+  `enum_type` varchar(500) null default null
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;

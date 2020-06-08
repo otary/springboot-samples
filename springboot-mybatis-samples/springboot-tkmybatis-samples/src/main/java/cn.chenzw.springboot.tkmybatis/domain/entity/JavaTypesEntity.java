@@ -20,6 +20,9 @@ public class JavaTypesEntity {
     private Long longType;
     private Double doubleType;
 
+    @Column
+    private EnumType enumType;
+
     @Column(name = "bigdecimal_type")
     private BigDecimal bigDecimalType;
 
@@ -114,12 +117,30 @@ public class JavaTypesEntity {
         this.dateType = dateType;
     }
 
+    public EnumType getEnumType() {
+        return enumType;
+    }
+
+    public void setEnumType(EnumType enumType) {
+        this.enumType = enumType;
+    }
+
     @Override
     public String toString() {
-        return "JavaTypesEntity{" + "byteType=" + byteType + ", bytesType=" + Arrays.toString(bytesType)
-                + ", booleanType=" + booleanType + ", shortType=" + shortType + ", characterType=" + characterType
-                + ", integerType=" + integerType + ", floatType=" + floatType + ", longType=" + longType
-                + ", doubleType=" + doubleType + ", bigDecimalType=" + bigDecimalType + '}';
+        return "JavaTypesEntity{" +
+                "byteType=" + byteType +
+                ", bytesType=" + Arrays.toString(bytesType) +
+                ", booleanType=" + booleanType +
+                ", shortType=" + shortType +
+                ", characterType=" + characterType +
+                ", integerType=" + integerType +
+                ", floatType=" + floatType +
+                ", longType=" + longType +
+                ", doubleType=" + doubleType +
+                ", enumType=" + enumType +
+                ", bigDecimalType=" + bigDecimalType +
+                ", dateType=" + dateType +
+                '}';
     }
 
     public static enum EnumType {

@@ -21,6 +21,7 @@ public class JavaTypesEntity {
     private BigDecimal bigDecimalType;
     private Date dateType;
     private String varcharType;
+    private EnumType enumType;
 
 
     public Byte getByteType() {
@@ -120,6 +121,14 @@ public class JavaTypesEntity {
         this.varcharType = varcharType;
     }
 
+    public EnumType getEnumType() {
+        return enumType;
+    }
+
+    public void setEnumType(EnumType enumType) {
+        this.enumType = enumType;
+    }
+
     @Override
     public String toString() {
         return "JavaTypesEntity{" +
@@ -135,6 +144,7 @@ public class JavaTypesEntity {
                 ", bigDecimalType=" + bigDecimalType +
                 ", dateType=" + dateType +
                 ", varcharType='" + varcharType + '\'' +
+                ", enumType=" + enumType +
                 '}';
     }
 

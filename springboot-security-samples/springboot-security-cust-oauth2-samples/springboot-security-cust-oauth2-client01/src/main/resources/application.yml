@@ -1,0 +1,44 @@
+server:
+  port: 8082
+
+  servlet:
+    session:
+      cookie:
+        name: OAUTH2SESSION
+
+  main:
+    allow-bean-definition-overridng: true
+
+auth-server: http://localhost:8080
+security:
+  oauth2:
+    client:
+      registered-redirect-uri: sss
+      client-id: abc
+      client-secret: 123456
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      pre-established-redirect-uri: http://localhost:8082/callback
+      success-redirect-uri: /test
+      use-current-uri: false
+    resource:
+      token-info-uri: ${auth-server}/oauth/check_token
+      user-info-uri: ${auth-server}/user/me
+
+itm:
+  oauth2:
+    client:
+      client-id: abc
+      client-secret: 123456
+      access-token-uri: ${auth-server}/oauth/token
+      user-authorization-uri: ${auth-server}/oauth/authorize
+      pre-established-redirect-uri: http://localhost:8082/callback
+      success-redirect-uri: /test
+      use-current-uri: false
+    resource:
+      token-info-uri: ${auth-server}/oauth/check_token
+      user-info-uri: ${auth-server}/user/me
+      jwt:
+        key-uri: ${auth-server}/oauth/token_key
+    authorization:
+      check-token-access: ${auth-server}/oauth/check_toke

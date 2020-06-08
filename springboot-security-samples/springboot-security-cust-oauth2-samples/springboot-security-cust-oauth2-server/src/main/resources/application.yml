@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    path: /h2-console
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+  h2:
+    console:
+      enabled: true
+
+  thymeleaf:
+    encoding: UTF-8
+    cache: false
+    mode: HTML5
+
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+logging:
+  level:
+    root: debug

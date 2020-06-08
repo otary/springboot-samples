@@ -1,7 +1,7 @@
-package cn.chenzw.springboot.security.oauth2.server.controllers;
+package cn.chenzw.springboot.security.cust.oauth2.server.controllers;
 
-import cn.chenzw.springboot.security.oauth2.server.domain.entity.SysUser;
-import cn.chenzw.springboot.security.oauth2.server.service.CustomUserService;
+import cn.chenzw.springboot.security.cust.oauth2.server.domain.entity.SysUser;
+import cn.chenzw.springboot.security.cust.oauth2.server.service.CustomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -16,6 +16,7 @@
         <module>springboot-security-oauth2-samples</module>
         <module>springboot-security-basic-samples</module>
         <module>springboot-security-basic-json-samples</module>
+        <module>springboot-security-cust-oauth2-samples</module>
     </modules>
 
     <dependencies>
