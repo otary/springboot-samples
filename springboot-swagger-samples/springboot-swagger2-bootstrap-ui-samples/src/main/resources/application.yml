@@ -1,6 +1,7 @@
-## 开启Swagger的Basic认证功能,默认是false
+
 swagger:
   basic:
+    ## 开启Swagger的Basic认证功能,默认是false
     enable: true
     ## Basic认证用户名
     username: chenzw
