@@ -1,23 +1,15 @@
 package cn.chenzw.springboot.quartz.config;
 
-import org.quartz.Scheduler;
 import org.quartz.ee.servlet.QuartzInitializerListener;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
-import java.io.IOException;
 
 @Configuration
 public class QuartzConfig {
 
-    @Autowired
-    SchedulerFactoryBean schedulerFactoryBean;
-
-    public Scheduler scheduler() throws IOException {
-        return schedulerFactoryBean.getScheduler();
-    }
+  /*  @Autowired
+    SchedulerFactoryBean schedulerFactoryBean;*/
 
     /**
      * quartz初始化监听器

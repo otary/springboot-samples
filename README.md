@@ -49,6 +49,7 @@
 - [spirngboot-web-samples](./springboot-web-samples): WebMvc示例
 - [springboot-webflux-samples](./springboot-webflux-samples): WebFlux示例
 - [springboot-pid-samples](./springboot-pid-samples): 生成pid文件
+- [springboot-event-samples](./springboot-event-samples): 事件发布
 
 - [springboot-resource-message-samples](./springboot-resource-message-samples):  多语言（国际化）示例
 
