@@ -1,6 +1,5 @@
 package cn.chenzw.springboot.security.basic.json.config;
 
-import cn.chenzw.springboot.security.basic.json.entrypoint.LoginUrl2JsonAuthenticationEntryPoint;
 import cn.chenzw.springboot.security.basic.json.handler.AuthenticationAccessDeniedHandler;
 import cn.chenzw.springboot.security.basic.json.handler.LoginFailureHandler;
 import cn.chenzw.springboot.security.basic.json.handler.LoginSuccessHandler;
@@ -40,11 +39,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests().antMatchers("/login").permitAll()
-                .antMatchers("/**").authenticated()
+                .and()
+                .authorizeRequests()
+                .anyRequest().authenticated()
                 .and()
                 .exceptionHandling()
                 //  未登录
-                .authenticationEntryPoint(new LoginUrl2JsonAuthenticationEntryPoint(""))
+               // .authenticationEntryPoint(new LoginUrl2JsonAuthenticationEntryPoint(""))
                 // 无权访问
                 .accessDeniedHandler(new AuthenticationAccessDeniedHandler())
                 .and()
