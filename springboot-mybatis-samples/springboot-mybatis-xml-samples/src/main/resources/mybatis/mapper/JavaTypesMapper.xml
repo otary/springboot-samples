@@ -218,4 +218,43 @@
             </foreach>
         </where>
     </delete>
+
+
+    <select id="getMap" resultType="cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity">
+        select
+            byte_type,
+            short_type,
+            character_type,
+            float_type,
+            integer_type,
+            long_type,
+            double_type,
+            bytes_type,
+            bigdecimal_type,
+            boolean_type,
+            date_type,
+            varchar_type
+        from
+          java_types_entity
+
+    </select>
+
+
+    <select id="getMapList" resultType="cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity">
+         select
+            byte_type,
+            short_type,
+            character_type,
+            float_type,
+            integer_type,
+            long_type,
+            double_type,
+            bytes_type,
+            bigdecimal_type,
+            boolean_type,
+            date_type,
+            varchar_type
+        from
+          java_types_entity
+    </select>
 </mapper>

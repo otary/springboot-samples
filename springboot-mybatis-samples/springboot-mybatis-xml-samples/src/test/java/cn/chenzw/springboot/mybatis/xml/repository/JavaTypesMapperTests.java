@@ -17,6 +17,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {MybatisXmlSamplesApp.class})
@@ -105,7 +106,7 @@ public class JavaTypesMapperTests {
     }
 
     @Test
-    public void testDeleteBatch(){
+    public void testDeleteBatch() {
         List<JavaTypesEntity> typesEntities = new ArrayList<>();
 
         JavaTypesEntity typesEntity = new JavaTypesEntity();
@@ -136,6 +137,19 @@ public class JavaTypesMapperTests {
 
         int count = typesMapper.deleteBatch2(typesEntities);
         Assert.assertEquals(2, count);
+    }
+
+
+    @Test
+    public void testGetMap() {
+        Map<String, JavaTypesEntity> map = typesMapper.getMap();
+        Assert.assertNotNull(map);
+    }
+
+    @Test
+    public void testGetMapList() {
+        Map<String, List<JavaTypesEntity>> mapList = typesMapper.getMapList();
+        System.out.println(mapList);
     }
 
 }

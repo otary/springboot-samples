@@ -2,9 +2,11 @@ package cn.chenzw.springboot.mybatis.xml.repository;
 
 import cn.chenzw.springboot.mybatis.xml.domain.dto.JavaTypesEntityQueryDto;
 import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
+import org.apache.ibatis.annotations.MapKey;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 默认不需要任何注解
@@ -55,17 +57,32 @@ public interface JavaTypesMapper {
 
     /**
      * 批量删除（单字段）
+     *
      * @param javaTypesEntities
      * @return
      */
-    int deleteBatch(@Param("javaTypesEntity")List<JavaTypesEntity> javaTypesEntities);
+    int deleteBatch(@Param("javaTypesEntity") List<JavaTypesEntity> javaTypesEntities);
 
     /**
      * 批量删除（多字段）
+     *
      * @param javaTypesEntities
      */
-    int deleteBatch2(@Param("javaTypesEntity")List<JavaTypesEntity> javaTypesEntities);
+    int deleteBatch2(@Param("javaTypesEntity") List<JavaTypesEntity> javaTypesEntities);
 
+    /**
+     * 返回Map示例(相同的值会被覆盖)
+     *
+     * @return
+     */
+    @MapKey("varcharType")
+    Map<String, JavaTypesEntity> getMap();
 
-
+    /**
+     * 返回Map List示例
+     *
+     * @return
+     */
+    @MapKey("varcharType")
+    Map<String, List<JavaTypesEntity>> getMapList();
 }
