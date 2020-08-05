@@ -21,6 +21,13 @@ public class PublishEventTests {
         User user = new User();
         user.setUserId(1L);
         user.setUserName("admin");
+
         applicationContext.publishEvent(new MyEvent(user));
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
