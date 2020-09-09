@@ -44,6 +44,7 @@
         <module>springboot-junit5-samples</module>
         <module>springboot-resource-message-samples</module>
         <module>springboot-event-samples</module>
+        <module>springboot-slot-samples</module>
     </modules>
 
     <properties>

@@ -18,7 +18,7 @@ public class MyEventListener {
 
     /**
      * 监听MyEvent事件
-     * @Async必须开启 @EnableAsync
+     * 使用@Async时必须开启 @EnableAsync
      */
     @Async
     @Order

@@ -51,6 +51,7 @@
 - [springboot-pid-samples](./springboot-pid-samples): 生成pid文件
 - [springboot-event-samples](./springboot-event-samples): 事件发布
 
+- [springboot-slot-samples](./springboot-slot-samples): 可扩展插槽示例
 - [springboot-resource-message-samples](./springboot-resource-message-samples):  多语言（国际化）示例
 
 **批处理**

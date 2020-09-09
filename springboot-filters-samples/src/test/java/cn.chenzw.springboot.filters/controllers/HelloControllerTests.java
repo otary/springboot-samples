@@ -1,12 +1,15 @@
 package cn.chenzw.springboot.filters.controllers;
 
 import cn.chenzw.springboot.filters.FiltersSamplesApp;
+import cn.chenzw.springboot.filters.f.OnceFilter;
+import cn.chenzw.springboot.filters.f.ServletFilter;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -17,8 +20,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
+@RunWith(SpringRunner.class)
 @SpringBootTest(classes = FiltersSamplesApp.class)
 public class HelloControllerTests {
 
@@ -29,7 +31,11 @@ public class HelloControllerTests {
 
     @Before
     public void setUp() throws Exception {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        this.mockMvc = MockMvcBuilders
+                .webAppContextSetup(this.wac)
+                .addFilter(new ServletFilter())
+                .addFilter(new OnceFilter())
+                .build();
     }
 
     @Test

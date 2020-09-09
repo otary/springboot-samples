@@ -20,7 +20,7 @@ public class RestService {
 
 
     public String getUserInfo() {
-        return restTemplate.getForObject("http://api.douban.com/v2/user/1000001", String.class);
+        return restTemplate.getForObject("http://api.douban.com2/v2/user/1000001", String.class);
     }
 
     public String getUserInfo2() throws IOException {

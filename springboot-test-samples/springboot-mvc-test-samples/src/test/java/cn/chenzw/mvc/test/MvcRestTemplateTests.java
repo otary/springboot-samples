@@ -34,7 +34,7 @@ public class MvcRestTemplateTests {
     @Before
     public void beforeClass() {
         server = MockRestServiceServer.bindTo(restTemplate).build();
-        server.expect(manyTimes(), requestTo("http://api.douban.com/v2/user/1000001")).andExpect(method(HttpMethod.GET))
+        server.expect(manyTimes(), requestTo("http://api.douban.com2/v2/user/1000001")).andExpect(method(HttpMethod.GET))
                 .andRespond(withSuccess("{ \"id\" : \"42\", \"name\" : \"Holiday Inn\"}", MediaType.APPLICATION_JSON));
     }
 

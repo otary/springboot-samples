@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.hamcrest.Matchers.equalTo;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -32,8 +33,15 @@ public class RestWebControllerTests {
 
     @Test
     public void testHello() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/hello"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/hello?ids[]=1&ids[]=2"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("hello!")));
+    }
+
+    @Test
+    public void testArrayQuery() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/arrayQuery"))
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 }

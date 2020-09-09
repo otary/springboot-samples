@@ -1,5 +1,6 @@
 package cn.chenzw.springboot.web.controllers;
 
+import cn.chenzw.springboot.web.domain.dto.ArrayQueryDto;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.bind.annotation.*;
@@ -26,5 +27,11 @@ public class RestWebController {
             e.printStackTrace();
         }
         return "hello, " + MapUtils.getString(map, "username");
+    }
+
+
+    @GetMapping("/arrayQuery")
+    public ArrayQueryDto arrayQuery(ArrayQueryDto arrayQueryDto) {
+        return arrayQueryDto;
     }
 }

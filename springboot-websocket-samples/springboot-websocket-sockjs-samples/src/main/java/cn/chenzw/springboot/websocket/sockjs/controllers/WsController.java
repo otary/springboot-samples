@@ -14,6 +14,9 @@ import java.util.Map;
 @Controller
 public class WsController {
 
+    @Autowired
+    private SimpMessagingTemplate template;
+
     /**
      * 接收消息的同时进行广播发送
      *
@@ -25,9 +28,6 @@ public class WsController {
         return map;
     }
 
-
-    @Autowired
-    private SimpMessagingTemplate template;
 
     /**
      * 后台推送
