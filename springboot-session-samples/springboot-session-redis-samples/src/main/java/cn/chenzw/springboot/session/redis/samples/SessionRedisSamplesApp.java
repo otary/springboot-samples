@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.session.redis.samples.cn.chenzw.springboot.session.redis.samples;
+package cn.chenzw.springboot.session.redis.samples;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

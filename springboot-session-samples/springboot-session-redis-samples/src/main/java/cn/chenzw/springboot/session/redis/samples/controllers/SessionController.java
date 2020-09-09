@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.session.redis.samples.cn.chenzw.springboot.session.redis.samples.controllers;
+package cn.chenzw.springboot.session.redis.samples.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
