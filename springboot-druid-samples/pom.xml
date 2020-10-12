@@ -14,6 +14,7 @@
     <modules>
         <module>springboot-druid-config-samples</module>
         <module>springboot-druid-props-samples</module>
+        <module>springboot-druid-code-samples</module>
     </modules>
 
     <dependencies>
