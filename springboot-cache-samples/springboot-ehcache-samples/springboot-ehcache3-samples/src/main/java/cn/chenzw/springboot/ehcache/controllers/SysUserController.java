@@ -2,12 +2,8 @@ package cn.chenzw.springboot.ehcache.controllers;
 
 import cn.chenzw.springboot.ehcache.domain.entity.SysUser;
 import cn.chenzw.springboot.ehcache.service.SysUserService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -18,7 +14,7 @@ public class SysUserController {
     SysUserService sysUserService;
 
    // @Autowired
-   // CacheManager cacheManager;
+    //  CacheManager cacheManager;
 
     @GetMapping("/{id}")
     public SysUser findOne(@PathVariable Long id, String name) {
@@ -26,8 +22,8 @@ public class SysUserController {
     }
 
 
-    @GetMapping("/save")
-    public void save(SysUser sysUser) {
+    @PostMapping("/save")
+    public void save(@RequestBody SysUser sysUser) {
         sysUserService.save(sysUser);
     }
 
@@ -39,6 +35,10 @@ public class SysUserController {
     @GetMapping("/caches/list")
     public String listCaches() {
         StringBuilder buffer = new StringBuilder();
+
+     /*   Collection<String> cacheNames = cacheManager.getCacheNames();
+        System.out.println(cacheNames);*/
+
         /*String[] cacheNames = ((EhcacheManager)cacheManager).getCacheNames();
         for (String cacheName : cacheNames) {
             Cache cache = cacheManager.getCache(cacheName);

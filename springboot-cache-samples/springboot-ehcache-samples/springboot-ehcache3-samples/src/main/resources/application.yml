@@ -1,0 +1,11 @@
+spring:
+  cache:
+    # 程序启动时创建缓存名称
+    # cache-names: user-caches
+    type: ehcache
+    ehcache:
+      config: classpath:cache/ehcache.xml
+    jcache:
+      # ehcache3.x required
+      provider: org.ehcache.jsr107.EhcacheCachingProvider
+
