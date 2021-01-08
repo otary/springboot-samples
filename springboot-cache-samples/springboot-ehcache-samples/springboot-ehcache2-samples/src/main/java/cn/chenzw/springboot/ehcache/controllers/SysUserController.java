@@ -2,17 +2,19 @@ package cn.chenzw.springboot.ehcache.controllers;
 
 import cn.chenzw.springboot.ehcache.domain.entity.SysUser;
 import cn.chenzw.springboot.ehcache.service.SysUserService;
+import lombok.extern.slf4j.Slf4j;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * @author chenzw
+ */
+@Slf4j
 @RestController
 @RequestMapping("/user")
 public class SysUserController {
@@ -29,12 +31,12 @@ public class SysUserController {
     }
 
 
-    @GetMapping("/save")
-    public void save(SysUser sysUser) {
+    @PostMapping("/save")
+    public void save(@RequestBody SysUser sysUser) {
         sysUserService.save(sysUser);
     }
 
-    @GetMapping("/del/{id}")
+    @DeleteMapping("/del/{id}")
     public void deleteOne(@PathVariable Long id) {
         sysUserService.deleteOne(id);
     }
