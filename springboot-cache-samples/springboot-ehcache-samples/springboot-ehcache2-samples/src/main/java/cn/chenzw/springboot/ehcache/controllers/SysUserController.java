@@ -48,11 +48,12 @@ public class SysUserController {
         for (String cacheName : cacheNames) {
             Cache cache = cacheManager.getCache(cacheName);
             buffer.append("Cache: " + cache.toString() + "<br/>");
-
+            buffer.append(" ");
+            buffer.append("Element(元素):");
             List keys = cache.getKeys();
             for (Object key : keys) {
                 Element element = cache.get(key);
-                buffer.append("Element: " + element.toString() + "<br/>");
+                buffer.append(element.toString() + "<br/>");
             }
         }
         return buffer.toString();

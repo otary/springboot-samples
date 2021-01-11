@@ -3,6 +3,8 @@
          monitoring="autodetect"
          dynamicConfig="true">
 
+    <cacheManagerEventListenerFactory class="cn.chenzw.springboot.ehcache.event.MyCacheManagerEventListenerFactory"/>
+
     <cache name="userCache"
            maxElementsInMemory="100"
            eternal="false"
@@ -11,5 +13,8 @@
            timeToIdleSeconds="0"
            memoryStoreEvictionPolicy="LFU"
            transactionalMode="off">
+        <cacheEventListenerFactory class="cn.chenzw.springboot.ehcache.event.MyCacheEventListenerFactory"/>
+        <bootstrapCacheLoaderFactory
+                class="cn.chenzw.springboot.ehcache.loader.MyBootstrapCacheLoaderFactory"></bootstrapCacheLoaderFactory>
     </cache>
 </ehcache>

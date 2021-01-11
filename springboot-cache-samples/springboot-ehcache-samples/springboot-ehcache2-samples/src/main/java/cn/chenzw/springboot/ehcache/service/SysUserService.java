@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.ehcache.service;
 
 import cn.chenzw.springboot.ehcache.domain.entity.SysUser;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
+@Slf4j
 public class SysUserService {
 
 
@@ -19,7 +21,7 @@ public class SysUserService {
      */
     @Cacheable(value = "userCache", key = "#id")
     public SysUser findOne(Long id, String name) {
-        System.out.println("--------------数据库查询-----------------");
+        log.info("---- 数据库查询 ----");
 
         SysUser sysUser = new SysUser();
         sysUser.setId(id);
@@ -34,7 +36,7 @@ public class SysUserService {
      */
     @CacheEvict(value = "userCache", key = "#id")
     public void deleteOne(Long id) {
-        System.out.println("---------------数据库删除------------------");
+        log.info("---- 数据库删除 ----");
     }
 
     /**
@@ -43,6 +45,6 @@ public class SysUserService {
      */
     @CachePut(value = "userCache", key = "#sysUser.id")
     public void save(SysUser sysUser) {
-        System.out.println("---------------数据库保存------------------");
+        log.info("----  数据库保存 ----");
     }
 }
