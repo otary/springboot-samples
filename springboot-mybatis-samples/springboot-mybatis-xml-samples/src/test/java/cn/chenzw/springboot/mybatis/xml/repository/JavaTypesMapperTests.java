@@ -3,6 +3,7 @@ package cn.chenzw.springboot.mybatis.xml.repository;
 import cn.chenzw.springboot.mybatis.xml.MybatisXmlSamplesApp;
 import cn.chenzw.springboot.mybatis.xml.domain.dto.JavaTypesEntityQueryDto;
 import cn.chenzw.springboot.mybatis.xml.domain.entity.JavaTypesEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {MybatisXmlSamplesApp.class})
 @WebAppConfiguration
@@ -36,7 +38,7 @@ public class JavaTypesMapperTests {
         javaTypesEntityQueryDto.setVarcharType("这是");
         List<JavaTypesEntity> typesEntities = typesMapper.listAll(javaTypesEntityQueryDto);
 
-        System.out.println(typesEntities);
+        logger.info("typesEntities => {}" ,typesEntities);
         for (JavaTypesEntity typesEntiy : typesEntities) {
             Assert.assertNotNull(typesEntiy.getBooleanType());
         }
