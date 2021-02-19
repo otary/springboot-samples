@@ -45,6 +45,7 @@
         <module>springboot-resource-message-samples</module>
         <module>springboot-event-samples</module>
         <module>springboot-slot-samples</module>
+        <module>springboot-design-pattern-samples</module>
     </modules>
 
     <properties>

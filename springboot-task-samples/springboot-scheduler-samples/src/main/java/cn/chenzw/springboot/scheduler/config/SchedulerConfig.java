@@ -30,6 +30,6 @@ public class SchedulerConfig implements SchedulingConfigurer {
         threadPoolTaskScheduler.setThreadNamePrefix("my-scheduled-task-pool-");
         threadPoolTaskScheduler.setAwaitTerminationSeconds(60);
         threadPoolTaskScheduler.setWaitForTasksToCompleteOnShutdown(true);
-        return new ThreadPoolTaskScheduler();
+        return threadPoolTaskScheduler;
     }
 }
