@@ -1,18 +1,14 @@
 package cn.chenzw.springboot.web.domain.dto;
 
-import cn.chenzw.springboot.web.annotation.ArrayParameter;
+import lombok.Data;
 
+@Data
 public class ArrayQueryDto {
 
-    @ArrayParameter
+    // @ArrayParameter
     private String[] ids;
 
+    private String name;
 
-    public String[] getIds() {
-        return ids;
-    }
 
-    public void setIds(String[] ids) {
-        this.ids = ids;
-    }
 }

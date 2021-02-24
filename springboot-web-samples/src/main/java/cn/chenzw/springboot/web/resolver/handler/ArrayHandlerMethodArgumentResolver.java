@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.web.resolver.handler;
 
 import cn.chenzw.springboot.web.annotation.ArrayParameter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
@@ -9,36 +10,36 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.Arrays;
 
 /**
  * 方法参数解析（数组）
  *
  * @author chenzw
  */
+@Slf4j
 public class ArrayHandlerMethodArgumentResolver implements HandlerMethodArgumentResolver {
 
     @Override
-    public boolean supportsParameter(MethodParameter parameter) {
-        System.out.println(parameter.getParameter().isVarArgs());
-        System.out.println(parameter.getParameter().getType());
-        System.out.println(parameter.getParameter().getParameterizedType());
+    public boolean supportsParameter(MethodParameter methodParameter) {
+        log.info("methodParameter args => {}", methodParameter.getParameter().isVarArgs());
+        log.info("methodParameter type => {}", methodParameter.getParameter().getType());
+        log.info("parameterized type => {}", methodParameter.getParameter().getParameterizedType());
 
-        Field[] fields = parameter.getParameter().getType().getDeclaredFields();
+        Field[] fields = methodParameter.getParameter().getType().getDeclaredFields();
         for (Field field : fields) {
             Annotation[] annotations = field.getAnnotations();
             for (Annotation annotation : annotations) {
-                System.out.println(annotation);
+                log.info("找到注解 => {}", annotation);
             }
         }
-        //  return parameter.hasParameterAnnotation(ArrayParameter.class);
-        return true;
+
+        return methodParameter.hasParameterAnnotation(ArrayParameter.class);
     }
 
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
-        System.out.println("----------------xxx---" + parameter);
 
+        // @TODO 解析参数
 
         return null;
     }

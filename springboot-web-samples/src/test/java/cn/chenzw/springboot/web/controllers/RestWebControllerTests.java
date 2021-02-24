@@ -33,15 +33,34 @@ public class RestWebControllerTests {
 
     @Test
     public void testHello() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/hello?ids[]=1&ids[]=2"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/hello"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("hello!")));
     }
 
     @Test
     public void testArrayQuery() throws Exception {
-        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/arrayQuery"))
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/arrayQuery?ids=1&ids=2"))
                 .andExpect(status().isOk())
                 .andDo(print());
+    }
+
+    @Test
+    public void testPostHello() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/hello")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content("{\"userName\":\"张三\",\"age\":20}"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(equalTo("hello, 张三")));
+    }
+
+    @Test
+    public void testPostHelloXml() throws Exception {
+        // 需要再添加一个支持XML的解析器HttpMessageConverter
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/arrayQuery?ids=1&ids=2&name=xxx")
+                .header("Accept", "application/xml"))
+                .andExpect(status().isOk())
+                .andDo(print());
+
     }
 }
