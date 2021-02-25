@@ -28,7 +28,8 @@ public class RestWebControllerTests {
 
     @Before
     public void setUp() throws Exception {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac)
+                .build();
     }
 
     @Test
@@ -69,4 +70,6 @@ public class RestWebControllerTests {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+
+
 }
