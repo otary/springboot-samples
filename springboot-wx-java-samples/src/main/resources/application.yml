@@ -1,0 +1,16 @@
+# 微信公众号（必填）
+wx:
+  mp:
+    appId: wxfc51b046043629b7
+    secret: e2173483b4a4a7b37bbf5609d6529f178
+    token: 123456
+    aesKey: 12345678
+
+    # 存储配置（可选）
+    # config-storage:
+    #   type: RedisTemplate
+    #   key-prefix: wx
+    #   redis:
+    #     host: xx
+    #     port: 6379
+

@@ -47,6 +47,7 @@
         <module>springboot-slot-samples</module>
         <module>springboot-design-pattern-samples</module>
         <module>springboot-scope-samples</module>
+        <module>springboot-wx-java-samples</module>
     </modules>
 
     <properties>

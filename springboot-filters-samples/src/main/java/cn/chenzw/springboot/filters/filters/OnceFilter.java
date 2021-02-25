@@ -1,7 +1,6 @@
-package cn.chenzw.springboot.filters.f;
+package cn.chenzw.springboot.filters.filters;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -11,14 +10,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 @Component
 public class OnceFilter extends OncePerRequestFilter {
 
-    private static final Logger logger = LoggerFactory.getLogger(OnceFilter.class);
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        logger.info("------------OnceFilter----------------");
+        log.info("OnceFilter before => {}", request);
+
         filterChain.doFilter(request, response);
+
+        log.info("OnceFilter after => {}", request);
     }
 }

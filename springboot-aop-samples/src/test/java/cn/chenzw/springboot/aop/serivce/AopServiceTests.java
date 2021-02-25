@@ -1,14 +1,18 @@
 package cn.chenzw.springboot.aop.serivce;
 
 import cn.chenzw.springboot.aop.AopSamplesApp;
+import cn.chenzw.springboot.aop.ext.SysLogAdvice;
 import cn.chenzw.springboot.aop.service.AopService;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = {AopSamplesApp.class})
 @WebAppConfiguration
@@ -43,5 +47,19 @@ public class AopServiceTests {
     @Test
     public void testDoWithStaticMethod() {
         aopService.doWithStaticMethod();
+    }
+
+    /**
+     * 自定义代理
+     */
+    @Test
+    public void testCustProxy() {
+        ProxyFactory proxyFactory = new ProxyFactory();
+        proxyFactory.setTargetClass(AopService.class);
+        proxyFactory.setInterfaces(AopService.class.getInterfaces());
+        proxyFactory.addAdvice(new SysLogAdvice());
+
+        AopService proxy = (AopService) proxyFactory.getProxy();
+
     }
 }
