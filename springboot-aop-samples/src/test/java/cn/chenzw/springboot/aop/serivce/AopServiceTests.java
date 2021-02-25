@@ -37,8 +37,11 @@ public class AopServiceTests {
         aopService.doWithArgs("查询", 1, 10);
     }
 
+    /**
+     * AOP对静态方法不生效
+     */
     @Test
-    public void testDoWithInnerInvoke() {
-        aopService.doWithInnerInvoke();
+    public void testDoWithStaticMethod() {
+        aopService.doWithStaticMethod();
     }
 }

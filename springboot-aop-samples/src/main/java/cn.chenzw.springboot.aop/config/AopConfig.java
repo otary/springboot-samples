@@ -12,12 +12,15 @@ import org.springframework.context.annotation.Configuration;
 //@EnableAspectJAutoProxy
 public class AopConfig {
 
-
+    /**
+     * 自定义通知
+     *
+     * @return
+     */
     @Bean
     public MethodBeforeAdvice sysLogAdvice() {
         return new SysLogAdvice();
     }
-
 
 
 }

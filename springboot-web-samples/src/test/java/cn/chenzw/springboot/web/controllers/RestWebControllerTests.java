@@ -61,6 +61,12 @@ public class RestWebControllerTests {
                 .header("Accept", "application/xml"))
                 .andExpect(status().isOk())
                 .andDo(print());
+    }
 
+    @Test
+    public void testUrlPathUtils() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/url-path-utils?a=1&b=2"))
+                .andExpect(status().isOk())
+                .andDo(print());
     }
 }
