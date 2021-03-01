@@ -8,4 +8,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 public @interface ArrayParameter {
+
+    String value() default "";
+
+    boolean required() default false;
+
 }

@@ -1,5 +1,6 @@
 package cn.chenzw.springboot.web.controllers;
 
+import cn.chenzw.springboot.web.annotation.ArrayParameter;
 import cn.chenzw.springboot.web.domain.dto.ArrayQueryDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
@@ -34,6 +35,12 @@ public class RestWebController {
     @GetMapping("/arrayQuery")
     public ArrayQueryDto arrayQuery(ArrayQueryDto arrayQueryDto) {
         return arrayQueryDto;
+    }
+
+
+    @GetMapping("/cust-arg-resolver")
+    public String[] custArgResolverQuery(@ArrayParameter String[] ids) {
+        return ids;
     }
 
     /**
