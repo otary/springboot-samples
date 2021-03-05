@@ -2,6 +2,7 @@ package cn.chenzw.springboot.web.controllers;
 
 import cn.chenzw.springboot.web.annotation.ArrayParameter;
 import cn.chenzw.springboot.web.domain.dto.ArrayQueryDto;
+import cn.chenzw.springboot.web.domain.dto.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.io.IOUtils;
@@ -41,6 +42,40 @@ public class RestWebController {
     @GetMapping("/cust-arg-resolver")
     public String[] custArgResolverQuery(@ArrayParameter String[] ids) {
         return ids;
+    }
+
+    /**
+     * Post Pojo数组
+     *
+     * @param userDtos
+     * @return
+     */
+    @PostMapping("/postArrayPojoQuery")
+    public UserDto[] postArrayPojoQuery(@RequestBody UserDto[] userDtos) {
+        return userDtos;
+    }
+
+
+    /**
+     * Get Pojo数组 -- 不支持、报错
+     *
+     * @param userDtos
+     * @return
+     */
+    @GetMapping("/getArrayPojoQuery")
+    public UserDto[] getArrayPojoQuery(UserDto[] userDtos) {
+        return userDtos;
+    }
+
+    /**
+     * Post Map示例
+     *
+     * @param maps
+     * @return
+     */
+    @PostMapping("/postMapQuery")
+    public Map<String, Object> postMapQuery(@RequestBody Map<String, Object> maps) {
+        return maps;
     }
 
     /**

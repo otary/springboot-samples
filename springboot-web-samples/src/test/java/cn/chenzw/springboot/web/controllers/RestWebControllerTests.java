@@ -53,6 +53,24 @@ public class RestWebControllerTests {
     }
 
     @Test
+    public void testPostArrayPojoQuery() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/postArrayPojoQuery")
+                .content("[{\"name\":\"zhangsan\",\"age\":12},{\"name\":\"lisi\",\"age\":23}]")
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    public void testPostMapQuery() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/postMapQuery")
+                .content("{\"xxx\":\"111\"}")
+                .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
     public void testPostHello() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/hello")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
