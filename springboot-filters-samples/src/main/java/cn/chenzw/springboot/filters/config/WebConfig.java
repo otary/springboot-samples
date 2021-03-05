@@ -2,9 +2,7 @@ package cn.chenzw.springboot.filters.config;
 
 import cn.chenzw.springboot.filters.interceptors.MyHandlerInterceptor;
 import cn.chenzw.springboot.filters.interceptors.SecondHandlerInterceptor;
-import org.apache.catalina.filters.RemoteIpFilter;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.context.request.RequestContextListener;
@@ -12,18 +10,9 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-@ComponentScan(basePackages = {"cn.chenzw.springboot.filters"})
+//@ComponentScan(basePackages = {"cn.chenzw.springboot.filters"})
 public class WebConfig implements WebMvcConfigurer {
 
-    /**
-     * 客户端真实IP
-     *
-     * @return
-     */
-    @Bean
-    public RemoteIpFilter remoteIpFilter() {
-        return new RemoteIpFilter();
-    }
 
 
     /**

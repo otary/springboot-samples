@@ -29,11 +29,12 @@ public class ContextController {
     @Autowired
     WebApplicationContext webApplicationContext;
 
+
     @GetMapping("/findWebApplicationContext")
     public void findWebApplicationContext(HttpServletRequest request) {
         WebApplicationContext wac = RequestContextUtils.findWebApplicationContext(request);
 
-        log.info("RequestContextUtils.findWebApplicationContext => {}", wac);
+        log.info("RequestContextUtils.findWebApplicationContext => {}", wac);  // => AnnotationConfigServletWebServerApplicationContext
         log.info("容器比对 => {}", wac == webApplicationContext);
     }
 
