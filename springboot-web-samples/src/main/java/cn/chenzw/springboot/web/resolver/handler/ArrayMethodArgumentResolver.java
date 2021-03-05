@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
  * @author chenzw
  */
 @Slf4j
-public class ArrayHandlerMethodArgumentResolver extends AbstractNamedValueMethodArgumentResolver {
+public class ArrayMethodArgumentResolver extends AbstractNamedValueMethodArgumentResolver {
 
     @Override
     public boolean supportsParameter(MethodParameter methodParameter) {

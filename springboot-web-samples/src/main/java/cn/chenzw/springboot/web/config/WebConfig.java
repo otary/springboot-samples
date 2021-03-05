@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.web.config;
 
-import cn.chenzw.springboot.web.resolver.handler.ArrayHandlerMethodArgumentResolver;
+import cn.chenzw.springboot.web.resolver.argument.RequestBase64ArgumentResolver;
+import cn.chenzw.springboot.web.resolver.handler.ArrayMethodArgumentResolver;
 import cn.chenzw.toolkit.spring.annotation.EnableToolkit;
 import cn.chenzw.toolkit.spring.ratelimit.annotation.EnableRateLimit;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +27,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new ArrayHandlerMethodArgumentResolver());
+        resolvers.add(new ArrayMethodArgumentResolver());
+        resolvers.add(new RequestBase64ArgumentResolver());
     }
 
 }
