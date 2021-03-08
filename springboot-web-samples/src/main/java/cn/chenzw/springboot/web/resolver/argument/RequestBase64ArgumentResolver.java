@@ -1,6 +1,6 @@
 package cn.chenzw.springboot.web.resolver.argument;
 
-import cn.chenzw.springboot.web.annotation.RequestBase64;
+import cn.chenzw.springboot.web.annotation.RequestBodyBase64;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
@@ -31,7 +31,7 @@ public class RequestBase64ArgumentResolver implements HandlerMethodArgumentResol
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.hasParameterAnnotation(RequestBase64.class);
+        return parameter.hasParameterAnnotation(RequestBodyBase64.class);
     }
 
     @Override
@@ -54,7 +54,6 @@ public class RequestBase64ArgumentResolver implements HandlerMethodArgumentResol
         if (body != null && body.length() > 0) {
             if (Base64.isBase64(body)) {
                 content = Base64.decodeBase64(body);
-
             } else {
                 content = body.getBytes(charset);
             }

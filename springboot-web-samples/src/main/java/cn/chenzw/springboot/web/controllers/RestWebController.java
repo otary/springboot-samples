@@ -32,13 +32,18 @@ public class RestWebController {
         return "hello, " + MapUtils.getString(map, "userName");
     }
 
-
     @GetMapping("/arrayQuery")
     public ArrayQueryDto arrayQuery(ArrayQueryDto arrayQueryDto) {
         return arrayQueryDto;
     }
 
 
+    /**
+     * 数组参数解析器
+     *
+     * @param ids
+     * @return
+     */
     @GetMapping("/cust-arg-resolver")
     public String[] custArgResolverQuery(@ArrayParameter String[] ids) {
         return ids;
@@ -77,6 +82,7 @@ public class RestWebController {
     public Map<String, Object> postMapQuery(@RequestBody Map<String, Object> maps) {
         return maps;
     }
+
 
     /**
      * 使用UrlPathHelper工具类
