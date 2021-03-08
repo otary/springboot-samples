@@ -103,7 +103,14 @@ public class RestWebController {
         log.info("getOriginatingRequestUri => {}", urlPathHelper.getOriginatingRequestUri(request));
         log.info("getOriginatingServletPath => {}", urlPathHelper.getOriginatingServletPath(request));
         log.info("getOriginatingContextPath => {}", urlPathHelper.getOriginatingContextPath(request));
+    }
 
+    /**
+     * 抛出异常
+     */
+    @GetMapping("/throw-exception")
+    public void throwException() {
+        throw new RuntimeException("抛出了异常!");
     }
 
 

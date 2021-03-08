@@ -2,6 +2,7 @@ package cn.chenzw.springboot.validation.exception.handler;
 
 import cn.chenzw.toolkit.validation.exception.ConstraintViolationExceptionWrapper;
 import cn.chenzw.toolkit.validation.exception.DefaultConstraintViolationExceptionWrapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.validation.ConstraintViolationException;
 
-
+@Slf4j
 @ControllerAdvice
 public class ConstraintViolationExceptionHandler {
 
@@ -23,7 +24,7 @@ public class ConstraintViolationExceptionHandler {
         ConstraintViolationExceptionWrapper constraintViolationExceptionWrapper = new DefaultConstraintViolationExceptionWrapper(
                 e);
 
-        System.out.println("handleConstraintViolationException:" + constraintViolationExceptionWrapper.toHumanString());
+        log.info("handleConstraintViolationException => {}", constraintViolationExceptionWrapper.toHumanString());
 
         return new HttpEntity<>(constraintViolationExceptionWrapper.toHumanString());
     }
@@ -34,8 +35,8 @@ public class ConstraintViolationExceptionHandler {
         ConstraintViolationExceptionWrapper constraintViolationExceptionWrapper = new DefaultConstraintViolationExceptionWrapper(
                 e);
 
-        System.out.println(
-                "handleMethodArgumentNotValidException:" + constraintViolationExceptionWrapper.toHumanString());
+        log.info(
+                "handleMethodArgumentNotValidException => {}", constraintViolationExceptionWrapper.toHumanString());
 
         return new HttpEntity<>(constraintViolationExceptionWrapper.toHumanString());
     }
@@ -46,7 +47,7 @@ public class ConstraintViolationExceptionHandler {
         ConstraintViolationExceptionWrapper constraintViolationExceptionWrapper = new DefaultConstraintViolationExceptionWrapper(
                 e);
 
-        System.out.println("handleBindException:" + constraintViolationExceptionWrapper.toHumanString());
+        log.info("handleBindException => {}", constraintViolationExceptionWrapper.toHumanString());
 
         return new HttpEntity(constraintViolationExceptionWrapper.toHumanString());
     }

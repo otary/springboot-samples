@@ -52,6 +52,11 @@ public class RestWebControllerTests {
                 .andDo(print());
     }
 
+    /**
+     * POST 数组参数
+     *
+     * @throws Exception
+     */
     @Test
     public void testPostArrayPojoQuery() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/postArrayPojoQuery")
@@ -61,6 +66,11 @@ public class RestWebControllerTests {
                 .andDo(print());
     }
 
+    /**
+     * POST Map参数
+     *
+     * @throws Exception
+     */
     @Test
     public void testPostMapQuery() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.post("/rest/postMapQuery")
@@ -88,6 +98,11 @@ public class RestWebControllerTests {
                 .andDo(print());
     }
 
+    /**
+     * UrlPathUtils工具类
+     *
+     * @throws Exception
+     */
     @Test
     public void testUrlPathUtils() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/url-path-utils?a=1&b=2"))
@@ -95,5 +110,17 @@ public class RestWebControllerTests {
                 .andDo(print());
     }
 
+
+    /**
+     * 抛出异常
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testThrowException() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/rest/throw-exception"))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 
 }
