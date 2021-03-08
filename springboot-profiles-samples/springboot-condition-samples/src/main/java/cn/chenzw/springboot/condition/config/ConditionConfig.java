@@ -8,7 +8,10 @@ import cn.chenzw.springboot.condition.template.AbstractTemplate;
 import cn.chenzw.springboot.condition.template.LinuxTemplate;
 import cn.chenzw.springboot.condition.template.WindowsTemplate;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+import org.springframework.boot.system.JavaVersion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
@@ -52,7 +55,7 @@ public class ConditionConfig {
 
 
     @Bean
-    HelloBean helloBean(){
+    HelloBean helloBean() {
         return new HelloBean();
     }
 
@@ -64,6 +67,36 @@ public class ConditionConfig {
     @Bean
     @ConditionalOnSingleCandidate(HelloBean.class)
     public MyBean myBean2() {
+        return new MyBean();
+    }
+
+
+    /**
+     * 基于SpEL表达式作为判断条件
+     *
+     * @return
+     */
+    @Bean
+    // @ConditionalOnExpression("")
+    public MyBean myBean3() {
+        return new MyBean();
+    }
+
+
+    /**
+     * 基于JDK版本作为判断条件（Java版本 > 8）
+     *
+     * @return
+     */
+    @Bean
+    @ConditionalOnJava(range = ConditionalOnJava.Range.EQUAL_OR_NEWER, value = JavaVersion.EIGHT)
+    public MyBean myBean4() {
+        return new MyBean();
+    }
+
+    @Bean
+    @ConditionalOnProperty(name = "my.name", havingValue = "my.name")
+    public MyBean myBean5() {
         return new MyBean();
     }
 

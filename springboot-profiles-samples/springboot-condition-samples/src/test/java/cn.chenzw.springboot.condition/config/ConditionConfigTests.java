@@ -1,9 +1,8 @@
 package cn.chenzw.springboot.condition.config;
 
 import cn.chenzw.springboot.condition.ConditionSamplesApp;
-import cn.chenzw.springboot.condition.bean.MyBean;
 import cn.chenzw.springboot.condition.template.AbstractTemplate;
-import javafx.application.Application;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +12,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @SpringBootTest(classes = ConditionSamplesApp.class)
@@ -27,7 +27,7 @@ public class ConditionConfigTests {
 
     @Test
     public void testOs() {
-        System.out.println("OS系统:[ " + applicationContext.getEnvironment().getProperty("os.name") + " ], templates:[ " + abstractTemplate.getName() + " ]");
+        log.info("OS系统:[ " + applicationContext.getEnvironment().getProperty("os.name") + " ], templates:[ " + abstractTemplate.getName() + " ]");
 
         Assert.assertEquals(abstractTemplate.getName(), "windows-templates");
     }
@@ -37,5 +37,9 @@ public class ConditionConfigTests {
         Assert.assertTrue(applicationContext.containsBean("myBean"));
 
         Assert.assertTrue(applicationContext.containsBean("myBean2"));
+
+        Assert.assertTrue(applicationContext.containsBean("myBean4"));
+
+        Assert.assertTrue(applicationContext.containsBean("myBean5"));
     }
 }
