@@ -1,4 +1,4 @@
-package cn.chenzw.springboot.web.resolver.handler;
+package cn.chenzw.springboot.web.resolver.argument;
 
 import cn.chenzw.springboot.web.annotation.ArrayParameter;
 import lombok.extern.slf4j.Slf4j;

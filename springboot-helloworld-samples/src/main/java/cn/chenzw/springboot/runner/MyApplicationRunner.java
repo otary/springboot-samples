@@ -1,21 +1,20 @@
 package cn.chenzw.springboot.runner;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * 系统启动时运行一次
+ * 系统启动时运行一次()
  */
+@Slf4j
 @Component
 public class MyApplicationRunner implements ApplicationRunner {
 
-    private Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        logger.info("----MyApplicationRunner with args:{}----", args);
+        log.info("MyApplicationRunner with args => {}", args);
     }
 }

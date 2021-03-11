@@ -26,9 +26,7 @@ public class RestWebController {
     @PostMapping("/hello")
     public String hello2(@RequestBody Map<String, String> map, HttpServletRequest request) throws IOException {
         String requestParams = IOUtils.toString(request.getInputStream(), "UTF-8");
-
         log.info("request params => {}", requestParams);
-
         return "hello, " + MapUtils.getString(map, "userName");
     }
 
