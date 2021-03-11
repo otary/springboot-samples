@@ -7,10 +7,7 @@ import cn.chenzw.springboot.condition.support.WindowsCondition;
 import cn.chenzw.springboot.condition.template.AbstractTemplate;
 import cn.chenzw.springboot.condition.template.LinuxTemplate;
 import cn.chenzw.springboot.condition.template.WindowsTemplate;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate;
+import org.springframework.boot.autoconfigure.condition.*;
 import org.springframework.boot.system.JavaVersion;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
@@ -55,6 +52,13 @@ public class ConditionConfig {
 
 
     @Bean
+    @ConditionalOnBean(name = {"myBean"}, value = MyBean.class)
+    public MyBean myBean_1() {
+        return new MyBean();
+    }
+
+
+    @Bean
     HelloBean helloBean() {
         return new HelloBean();
     }
@@ -94,9 +98,38 @@ public class ConditionConfig {
         return new MyBean();
     }
 
+    /**
+     * 有指定的属性值时生效
+     *
+     * @return
+     */
     @Bean
-    @ConditionalOnProperty(name = "my.name", havingValue = "my.name")
+    @ConditionalOnProperty(name = "my.name", havingValue = "chenzw")
     public MyBean myBean5() {
+        return new MyBean();
+    }
+
+    /**
+     * 有指定的资源文件时生效
+     *
+     * @return
+     */
+    @Bean
+    @ConditionalOnResource(resources = {"classpath:application.yml"})
+    public MyBean myBean6() {
+        return new MyBean();
+    }
+
+
+    /**
+     * 缺少指定过滤器时生效
+     * 不生效？
+     *
+     * @return
+     */
+    @Bean
+    //  @ConditionalOnMissingFilterBean(CommonsRequestLoggingFilter.class)
+    public MyBean myBean7() {
         return new MyBean();
     }
 

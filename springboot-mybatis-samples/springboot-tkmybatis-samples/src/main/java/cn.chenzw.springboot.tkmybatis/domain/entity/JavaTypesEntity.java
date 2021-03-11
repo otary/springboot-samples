@@ -1,6 +1,7 @@
 package cn.chenzw.springboot.tkmybatis.domain.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
@@ -9,6 +10,9 @@ import java.util.Date;
  * Java数据类型实体
  */
 public class JavaTypesEntity {
+
+    @Id
+    private String id;
 
     private Byte byteType;
     private Byte[] bytesType;

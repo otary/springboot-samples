@@ -32,14 +32,23 @@ public class ConditionConfigTests {
         Assert.assertEquals(abstractTemplate.getName(), "windows-templates");
     }
 
+
     @Test
     public void testMyBean(){
+
         Assert.assertTrue(applicationContext.containsBean("myBean"));
+
+        Assert.assertTrue(applicationContext.containsBean("myBean_1"));
 
         Assert.assertTrue(applicationContext.containsBean("myBean2"));
 
         Assert.assertTrue(applicationContext.containsBean("myBean4"));
 
         Assert.assertTrue(applicationContext.containsBean("myBean5"));
+
+        Assert.assertTrue(applicationContext.containsBean("myBean6"));
+
+        Assert.assertTrue(applicationContext.containsBean("myBean7"));
+
     }
 }

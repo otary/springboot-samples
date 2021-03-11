@@ -15,6 +15,7 @@
         <module>springboot-tkmybatis-samples</module>
         <module>springboot-mybatis-annotation-samples</module>
         <module>springboot-mybatis-plugin-samples</module>
+        <module>springboot-mybatisplus-samples</module>
     </modules>
 
     <properties>

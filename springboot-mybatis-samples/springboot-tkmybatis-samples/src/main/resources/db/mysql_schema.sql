@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS `java_types_entity`;
 CREATE TABLE `java_types_entity`  (
+  `id` varchar(64) NULL,
   `byte_type` bit(1) NULL DEFAULT NULL,
   `short_type` tinyint(4) NULL DEFAULT NULL,
   `character_type` char(2) CHARACTER SET utf8 COLLATE utf8_bin NULL DEFAULT NULL,
