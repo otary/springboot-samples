@@ -3,6 +3,7 @@ package cn.chenzw.springboot.mbean;
 import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -63,6 +64,29 @@ public class HelloBean {
     @ManagedOperation(description = "这里是操作")
     public String display() {
         return this.toString();
+    }
+
+
+    /**
+     * 传入参数测试（使用JConsole连接调用）
+     *
+     * @param name
+     * @param event
+     * @return
+     */
+    @ManagedOperation(description = "传入参数")
+    public String doSomething(String name, String event) {
+        return "name, " + " do " + event;
+    }
+
+
+    /**
+     * 定时更新值（使用JConsole查看）
+     */
+    @Scheduled(fixedRate = 1000)
+    public void scheduleChangeValue() {
+        this.id = System.currentTimeMillis();
+        this.name = "张三_" + this.id;
     }
 
 }
