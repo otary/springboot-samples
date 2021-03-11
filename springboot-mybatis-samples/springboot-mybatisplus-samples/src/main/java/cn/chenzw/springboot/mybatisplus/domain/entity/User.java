@@ -10,6 +10,9 @@ import lombok.Data;
 @TableName("tb_user")
 public class User {
 
+    /**
+     * 指定ID生成方式
+     */
     @TableId(type = IdType.ASSIGN_UUID)
     private String id;
 

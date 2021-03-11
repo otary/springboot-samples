@@ -6,6 +6,7 @@ import cn.chenzw.springboot.tkmybatis.serivce.JavaTypesService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +17,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.List;
 
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = TkMybatisSamplesApp.class)
 @WebAppConfiguration
@@ -30,7 +32,9 @@ public class JavaTypesMapperTests {
     @Test
     public void testSelectAll() {
         List<JavaTypesEntity> javaTypesEntities = javaTypesMapper.selectAll();
-        System.out.println(javaTypesEntities);
+
+        log.info("javaTypesEntities => {}", javaTypesEntities);
+
         Assert.assertNotNull(javaTypesEntities);
     }
 
@@ -50,7 +54,7 @@ public class JavaTypesMapperTests {
 
 
         PageInfo<JavaTypesEntity> pageInfo2 = pageInfo.toPageInfo();
-        System.out.println(pageInfo2);
+        log.info("PageInfo => {}", pageInfo2);
     }
 
     /**
@@ -60,8 +64,13 @@ public class JavaTypesMapperTests {
     public void testSelectByExample() {
         List<JavaTypesEntity> javaTypesEntities = javaTypesService.selectByExample();
 
-        System.out.println(javaTypesEntities.size());
-        System.out.println(javaTypesEntities);
+        log.info("javaTypesEntities.size => {}", javaTypesEntities.size());
+        log.info("javaTypesEntities => {}", javaTypesEntities);
+    }
+
+    @Test
+    public void testCustIdGenerator() {
+        javaTypesService.save();
     }
 
 
