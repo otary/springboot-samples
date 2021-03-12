@@ -3,3 +3,8 @@ logging:
     web: trace
     sql: trace
     root: info
+
+
+spring:
+  mvc:
+    static-path-pattern: /**
