@@ -1,0 +1,6 @@
+app:
+  name: springboot-base01-samples
+  base01:
+    name: base01
+  common:
+    name: base01

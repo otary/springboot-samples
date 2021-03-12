@@ -1,0 +1,6 @@
+app:
+  name: springboot-base01-app
+  base01:
+    name: base01-app
+  common:
+    name: base01-app

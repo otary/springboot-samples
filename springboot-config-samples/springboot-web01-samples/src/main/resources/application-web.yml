@@ -1,0 +1,6 @@
+app:
+  name: springboot-web01-samples
+  web01:
+    name: web01-app
+  common:
+    name: web01-app

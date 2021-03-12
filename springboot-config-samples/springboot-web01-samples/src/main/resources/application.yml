@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: base01, base02, ext
+    include: base01, base02, ext, web
+
+app:
+  name: springboot-web02-samples
+  web01:
+    name: web01
+  common:
+    name: web01
+logging:
+  level:
+    root: debug
