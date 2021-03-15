@@ -22,8 +22,6 @@ public class UserFormatter implements Formatter<UserDto> {
 
     @Override
     public UserDto parse(String id, Locale locale) throws ParseException {
-
-        System.out.println("---------------------------");
         return userMapper.queryById(Long.valueOf(id));
     }
 
