@@ -12,3 +12,6 @@ spring:
     admin:
       client:
         url: http://localhost:8000
+
+cust:
+  name: xxxx
