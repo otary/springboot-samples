@@ -9,6 +9,3 @@ app:
     name: web01
   common:
     name: web01
-logging:
-  level:
-    root: debug
