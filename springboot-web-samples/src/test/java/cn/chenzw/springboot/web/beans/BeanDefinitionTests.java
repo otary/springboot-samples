@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConstructorArgumentValues;
+import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,7 +30,7 @@ public class BeanDefinitionTests {
     }
 
     @Test
-    public void test() {
+    public void testRegisterBeanDefinition() {
         // 注册Bean
         BeanDefinitionRegistry registry = (BeanDefinitionRegistry) context;
 
@@ -41,6 +42,12 @@ public class BeanDefinitionTests {
         constructorArgumentValues.addGenericArgumentValue("1");
         constructorArgumentValues.addGenericArgumentValue("张三");
         constructorArgumentValues.addGenericArgumentValue("20");
+
+        rootBeanDefinition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
+
+        // 可以放一些额外的属性
+        rootBeanDefinition.getPropertyValues().add("xxx", "yyy");
+
         registry.registerBeanDefinition("userDto", rootBeanDefinition);
 
         log.info("userDto => {}", context.getBean("userDto"));

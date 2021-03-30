@@ -12,7 +12,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 @Slf4j
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OpbjectProviderTests {
+public class ObjectProviderTests {
 
     /**
      * 使用ObjectProvider提供弹性注入
