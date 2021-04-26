@@ -1,19 +1,11 @@
 package cn.chenzw.springboot.container.tomcat.config;
 
-import org.apache.catalina.Context;
-import org.apache.catalina.connector.Connector;
-import org.apache.tomcat.util.descriptor.web.SecurityCollection;
-import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
-import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
-import org.springframework.boot.web.server.ErrorPage;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 
 @Configuration
 public class ServerConfig {
 
-    @Bean
+ /*   @Bean
     public TomcatServletWebServerFactory tomcatServletWebServerFactory(Connector connector) {
 
         TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory() {
@@ -41,7 +33,7 @@ public class ServerConfig {
         connector.setSecure(false);
         connector.setRedirectPort(443);
         return connector;
-    }
+    }*/
 
 
 }
