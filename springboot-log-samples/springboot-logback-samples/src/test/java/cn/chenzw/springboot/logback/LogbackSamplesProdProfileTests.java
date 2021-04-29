@@ -20,7 +20,7 @@ public class LogbackSamplesProdProfileTests {
 
     @Test
     public void test() {
-        logger.debug("--------debug--------");
-        logger.info("---------info--------");
+        logger.debug("debug => ...");
+        logger.info("info => ...");
     }
 }

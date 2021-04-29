@@ -43,6 +43,7 @@
 
 - [springboot-log-samples](./springboot-log-samples): 日志示例
   - [spring-logback-samples](./springboot-log-samples/springboot-logback-samples): logback集成示例
+  - [spring-logging-samples](./springboot-log-samples/springboot-logging-samples): spring自带logging示例
 
 - [springboot-test-samples](./springboot-test-samples): 单元测试
 

@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>springboot-logback-samples</module>
+        <module>springboot-logging-samples</module>
     </modules>
 
     <dependencies>

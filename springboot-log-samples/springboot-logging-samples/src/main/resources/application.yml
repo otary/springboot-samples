@@ -1,0 +1,10 @@
+logging:
+  level:
+    root: debug
+
+  # 日志存放目录（默认文件名: spring.log）
+  path: ./logs
+
+  # logging.path 和 logging.file只会生效一个
+  # file: my.log
+

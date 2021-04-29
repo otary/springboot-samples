@@ -38,9 +38,7 @@
         <!-- 控制台输出 -->
         <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
             <encoder>
-                <pattern>%red([%d{MM-dd HH:mm:ss.SSS}]) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{20})
-                    - %cyan(%msg%n)
-                </pattern>
+                <pattern>%red([%d{MM-dd HH:mm:ss.SSS}]) %green([%thread]) %highlight(%-5level) %boldMagenta(%logger{20}) - %cyan(%msg%n)</pattern>
             </encoder>
         </appender>
 
@@ -103,7 +101,6 @@
                 <level>ERROR</level>
             </filter>
         </appender>
-
 
         <root level="INFO">
             <appender-ref ref="CONSOLE"/>
