@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  web:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: web
+    ports:
+      - 18080:18888
+    command: --server.port=18888
+    environment:
+      - SERVER_PORT=18888
+

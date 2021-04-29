@@ -1,10 +1,26 @@
 logging:
   level:
-    root: debug
+    root: info
+    # 内置的2个日志组
+    web: debug
+    sql: debug
 
   # 日志存放目录（默认文件名: spring.log）
   path: ./logs
 
   # logging.path 和 logging.file只会生效一个
   # file: my.log
+  file:
+    # 每个日志文件最大大小（默认10M）
+    max-size: 10MB
+    # 最多保存几个归档文件
+    max-history: 10
 
+  # 日志记录组
+  group:
+    # 默认内嵌2个组
+    web: org.springframework.core.codec, org.springframework.http, org.springframework.web, org.springframework.boot.actuate.endpoint.web, org.springframework.boot.web.servlet.ServletContextInitializerBeans
+    sql: org.springframework.jdbc.core, org.hibernate.SQL, org.jooq.tools.LoggerListener
+
+# 全局开启（简写）
+debug: false
