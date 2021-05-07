@@ -4,11 +4,11 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Swagger2SamplesApp {
+public class JwtSwagger2SamplesApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(Swagger2SamplesApp.class, new String[]{
-                "--spring.profiles.active=basic"
+        SpringApplication.run(JwtSwagger2SamplesApp.class, new String[]{
+                "--spring.profiles.active=jwt"
         });
     }
 }

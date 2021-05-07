@@ -7,3 +7,6 @@ swagger:
     username: chenzw
     ## Basic认证密码
     password: 12345678
+
+server:
+  port: 8790

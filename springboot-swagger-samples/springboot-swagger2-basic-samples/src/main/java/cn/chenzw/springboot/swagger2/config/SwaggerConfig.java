@@ -2,6 +2,7 @@ package cn.chenzw.springboot.swagger2.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -18,6 +19,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * basic环境生效
+ */
+@Profile("basic")
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig implements WebMvcConfigurer {
