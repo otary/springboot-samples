@@ -16,6 +16,7 @@
         <module>springboot-datasources-multiple-samples</module>
         <module>springboot-datasources-mysql-samples</module>
         <module>springboot-datasources-oracle-samples</module>
+        <module>springboot-datasources-hikaricp-samples</module>
     </modules>
 
     <dependencies>

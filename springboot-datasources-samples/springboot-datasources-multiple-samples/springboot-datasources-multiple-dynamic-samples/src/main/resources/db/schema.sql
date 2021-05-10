@@ -1,3 +1,6 @@
+CREATE DATABASE users;
+
+DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
   `id` varchar(36) NOT NULL COMMENT '主键',
   `username` varchar(32) NOT NULL COMMENT '账号',
