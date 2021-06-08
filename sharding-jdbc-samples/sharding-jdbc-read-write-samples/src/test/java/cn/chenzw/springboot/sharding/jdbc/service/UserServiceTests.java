@@ -26,9 +26,15 @@ public class UserServiceTests {
     }
 
     @Test
-    public void testAdd() {
+    public void testAdd() throws InterruptedException {
         User user = new User();
+        user.setId(5L);
         user.setName("张三");
         userService.add(user);
+
+        Thread.sleep(2000);
+
+        List<User> users = userService.list();
+        log.info("users => {}", users);
     }
 }

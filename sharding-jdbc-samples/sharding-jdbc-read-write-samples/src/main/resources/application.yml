@@ -2,32 +2,30 @@ server:
   port: 9839
 
 
-
 spring:
   shardingsphere:
     datasource:
-      names: ds0, ds1
-      ds0:
+      names: ds1, ds1slave
+      # 主节点（写）
+      ds1:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.h2.Driver
         jdbc-url: jdbc:h2:mem:ds1
         username: sa
         password:
-      ds1:
+      # 从节点（读）
+      ds1slave:
         type: com.zaxxer.hikari.HikariDataSource
         driver-class-name: org.h2.Driver
-        jdbc-url: jdbc:h2:mem:ds2
+        jdbc-url: jdbc:h2:mem:ds1slave
         username: sa
         password:
-
-  datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:ds1
-    schema: classpath:db/schema.sql
-    data: classpath:db/data.sql
-    username: sa
-    password:
+    sharding:
+      # 读写分离
+      master-slave-rules:
+        ds1:
+          master-data-source-name: ds1
+          slave-data-source-names: ds1slave
 
   h2:
     console:
