@@ -11,8 +11,6 @@ import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import tk.mybatis.spring.annotation.MapperScan;
 
-import javax.sql.DataSource;
-import java.util.Calendar;
 
 /**
  * @author chenzw

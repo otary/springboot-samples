@@ -18,15 +18,10 @@ public class UserServiceTests {
     @Autowired
     private UserService userService;
 
-    @Test
-    public void testList() {
-        List<User> users = userService.list();
-
-        log.info("users => {}", users);
-    }
 
     @Test
-    public void testAdd() throws InterruptedException {
+    public void test() throws InterruptedException {
+        // 写数据库（主数据源(ds1)）
         User user = new User();
         user.setId(5L);
         user.setName("张三");
@@ -34,6 +29,7 @@ public class UserServiceTests {
 
         Thread.sleep(2000);
 
+        // 读数据库（从数据源(ds1slave)）
         List<User> users = userService.list();
         log.info("users => {}", users);
     }
