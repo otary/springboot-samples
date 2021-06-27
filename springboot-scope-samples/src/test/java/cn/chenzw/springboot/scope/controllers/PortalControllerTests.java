@@ -39,10 +39,10 @@ public class PortalControllerTests {
 
     @Test
     public void testPrint2() throws Exception {
-        for (int i = 0; i < 10; i++) {
+      //  for (int i = 0; i < 10; i++) {
             mockMvc.perform(get("/portal/print2"))
                     .andExpect(status().isOk());
-        }
+     //   }
     }
 
 }

@@ -1,17 +1,21 @@
 package cn.chenzw.springboot.web.config;
 
 import cn.chenzw.springboot.web.domain.dto.UserDto;
+import cn.chenzw.springboot.web.filter.ExceptionFilter;
 import cn.chenzw.springboot.web.formatter.UserFormatter;
 import cn.chenzw.springboot.web.repository.UserMapper;
 import cn.chenzw.springboot.web.resolver.argument.ArrayMethodArgumentResolver;
 import cn.chenzw.springboot.web.resolver.argument.RequestBase64ArgumentResolver;
 import cn.chenzw.toolkit.spring.annotation.EnableToolkit;
 import cn.chenzw.toolkit.spring.ratelimit.annotation.EnableRateLimit;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.servlet.Filter;
 import java.util.List;
 
 
@@ -53,5 +57,14 @@ public class WebConfig implements WebMvcConfigurer {
             return userDto;
         };
         registry.addFormatter(new UserFormatter(userMapper));
+    }
+
+    @Bean
+    public FilterRegistrationBean filterRegistrationBean() {
+        FilterRegistrationBean<Filter> filterRegistrationBean =
+                new FilterRegistrationBean<>();
+        filterRegistrationBean.setFilter(new ExceptionFilter());
+        filterRegistrationBean.addUrlPatterns("/*");
+        return filterRegistrationBean;
     }
 }
