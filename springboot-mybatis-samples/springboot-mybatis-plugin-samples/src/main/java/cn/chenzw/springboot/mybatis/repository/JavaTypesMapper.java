@@ -2,6 +2,7 @@ package cn.chenzw.springboot.mybatis.repository;
 
 import cn.chenzw.springboot.mybatis.domain.entity.JavaTypesEntity;
 import cn.chenzw.springboot.mybatis.support.mybatis.plugin.Pageable;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * @author chenzw
  */
-public interface JavaTypesMapper {
+public interface JavaTypesMapper extends BaseMapper<JavaTypesEntity> {
 
     List<JavaTypesEntity> listAll();
 

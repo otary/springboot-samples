@@ -5,11 +5,13 @@ import cn.chenzw.springboot.jpa.domain.entity.SysUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+
 import java.util.List;
 
 /**
  * @author chenzw
  */
+
 public interface SysRoleRepository extends JpaRepository<SysRole, Long> {
 
     @Query(nativeQuery = true, value = "SELECT " +

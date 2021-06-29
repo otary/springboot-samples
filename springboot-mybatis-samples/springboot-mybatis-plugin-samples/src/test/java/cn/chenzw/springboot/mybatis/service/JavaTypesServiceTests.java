@@ -5,6 +5,7 @@ import cn.chenzw.springboot.mybatis.domain.entity.JavaTypesEntity;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.page.PageParams;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @SpringBootTest(classes = MybatisPluginSamplesApp.class)
@@ -30,7 +32,8 @@ public class JavaTypesServiceTests {
     @Test
     public void testListAll() {
         List<JavaTypesEntity> javaTypesEntities = javaTypesService.listAll();
-        System.out.println(javaTypesEntities);
+
+        log.info(" => {}", javaTypesEntities);
     }
 
     @Test
@@ -70,7 +73,8 @@ public class JavaTypesServiceTests {
     @Test
     public void testListById() {
         List<JavaTypesEntity> javaTypesEntities = javaTypesService.listById(1);
-        System.out.println(javaTypesEntities);
+
+        log.info(" => {}", javaTypesEntities);
     }
 
 
