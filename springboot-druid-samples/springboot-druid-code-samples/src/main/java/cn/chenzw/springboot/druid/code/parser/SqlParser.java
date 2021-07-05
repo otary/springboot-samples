@@ -37,7 +37,7 @@ public class SqlParser {
         log.info("getColumns: {}", visitor.getColumns());
         log.info("getOrderByColumns: {}", visitor.getOrderByColumns());
         log.info("getGroupByColumns: {}", visitor.getGroupByColumns());
-
+        log.info("getConditions => {}", visitor.getConditions());
 
         // 使用select访问者进行select的关键信息打印
         SelectPrintVisitor selectPrintVisitor = new SelectPrintVisitor();
