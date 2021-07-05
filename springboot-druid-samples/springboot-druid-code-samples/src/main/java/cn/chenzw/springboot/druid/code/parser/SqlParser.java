@@ -36,7 +36,7 @@ public class SqlParser {
         log.info("getParameters: {}", visitor.getParameters());
         log.info("getColumns: {}", visitor.getColumns());
         log.info("getOrderByColumns: {}", visitor.getOrderByColumns());
-        log.info("getGroupByColumns: {}" ,visitor.getGroupByColumns());
+        log.info("getGroupByColumns: {}", visitor.getGroupByColumns());
 
 
         // 使用select访问者进行select的关键信息打印
@@ -47,7 +47,8 @@ public class SqlParser {
         StringWriter out = new StringWriter();
         TableNameVisitor outputVisitor = new TableNameVisitor(out);
         sqlStatement.accept(outputVisitor);
-        System.out.println(out.toString());
+
+        log.info(" => {}", out.toString());
     }
 
 
@@ -60,14 +61,14 @@ public class SqlParser {
         public boolean visit(SQLSelectQueryBlock x) {
             List<SQLSelectItem> selectItemList = x.getSelectList();
             selectItemList.forEach(selectItem -> {
-                System.out.println("attr:" + selectItem.getAttributes());
-                System.out.println("expr:" + SQLUtils.toMySqlString(selectItem.getExpr()));
+                log.info("attr => {}", selectItem.getAttributes());
+                log.info("expr => {}", SQLUtils.toMySqlString(selectItem.getExpr()));
             });
 
-            System.out.println("table:" + SQLUtils.toMySqlString(x.getFrom()));
-            System.out.println("where:" + SQLUtils.toMySqlString(x.getWhere()));
-            System.out.println("order by:" + SQLUtils.toMySqlString(x.getOrderBy().getItems().get(0)));
-            System.out.println("limit:" + SQLUtils.toMySqlString(x.getLimit()));
+            log.info("table: {}", SQLUtils.toMySqlString(x.getFrom()));
+            log.info("where: {}", SQLUtils.toMySqlString(x.getWhere()));
+            log.info("order by: {}", SQLUtils.toMySqlString(x.getOrderBy().getItems().get(0)));
+            log.info("limit: {}", SQLUtils.toMySqlString(x.getLimit()));
 
             return true;
         }
