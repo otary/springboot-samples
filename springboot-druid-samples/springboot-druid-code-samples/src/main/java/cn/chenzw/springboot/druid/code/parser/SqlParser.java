@@ -12,10 +12,12 @@ import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlOutputVisitor;
 import com.alibaba.druid.sql.dialect.mysql.visitor.MySqlSchemaStatVisitor;
 import com.alibaba.druid.sql.parser.SQLStatementParser;
 import com.alibaba.druid.sql.visitor.SQLASTVisitorAdapter;
+import com.alibaba.druid.stat.TableStat;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.StringWriter;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 public class SqlParser {
@@ -38,6 +40,12 @@ public class SqlParser {
         log.info("getOrderByColumns: {}", visitor.getOrderByColumns());
         log.info("getGroupByColumns: {}", visitor.getGroupByColumns());
         log.info("getConditions => {}", visitor.getConditions());
+
+        Map<TableStat.Name, TableStat> tables = visitor.getTables();
+        for (Map.Entry<TableStat.Name, TableStat> tableStatEntry : tables.entrySet()) {
+            log.info("Name => {}", tableStatEntry.getKey().getName());
+            log.info("TableStat => {}", tableStatEntry.getValue());
+        }
 
         // 使用select访问者进行select的关键信息打印
         SelectPrintVisitor selectPrintVisitor = new SelectPrintVisitor();
